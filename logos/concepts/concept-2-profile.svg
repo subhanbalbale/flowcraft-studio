@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="c2-top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="c2-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="c2-right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2e93"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="c2-shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#e11d48" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- App Icon Squircle Background -->
+  <rect width="512" height="512" rx="120" fill="#faf8f9"/>
+  <rect x="2" y="2" width="508" height="508" rx="118" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <rect x="4" y="4" width="504" height="504" rx="116" fill="none" stroke="#f1f5f9" stroke-width="2"/>
+
+  <!-- Precision Hex-Prism & NFC Core -->
+  <g id="icon" filter="url(#c2-shadow)">
+    <!-- Top Isometric Facet (Clean White/Pearl Ceramic) -->
+    <polygon points="256,120 375,188 256,256 137,188" fill="url(#c2-top)" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Left Isometric Facet (Midnight Slate F-Foundation) -->
+    <polygon points="137,188 256,256 256,392 137,324" fill="url(#c2-left)"/>
+    
+    <!-- Right Isometric Facet (Vibrant Rose/Pink Craft Chamber) -->
+    <polygon points="256,256 375,188 375,324 256,392" fill="url(#c2-right)"/>
+
+    <!-- Geometric F-Arm Cut on Left Facet -->
+    <path d="M 175 228 H 225 M 175 264 H 210" stroke="#38bdf8" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Geometric C-Arc Cut on Right Facet -->
+    <path d="M 335 240 C 310 230 295 245 295 275 C 295 305 310 320 335 310" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Precision NFC Pulse Wave Rays Emitting from Center-Top -->
+    <path d="M 230 170 C 245 160 267 160 282 170" fill="none" stroke="#ec4899" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 215 150 C 240 135 272 135 297 150" fill="none" stroke="#ec4899" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- Apex Precision Dot -->
+    <circle cx="256" cy="120" r="14" fill="#ff2e93"/>
+    <circle cx="256" cy="120" r="6" fill="#ffffff"/>
+  </g>
+</svg>

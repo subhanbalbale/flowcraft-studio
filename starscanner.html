@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarScanner — Website SEO &amp; Security Scanner (Soon)</title>
+  
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="logos/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="Scan a local business website for broken links, missing security headers, Core Web Vitals problems and search visibility gaps. Coming soon from FlowCraft.">
+  <meta name="author" content="Subhan Balbale">
+  <meta name="application-name" content="StarScanner by Subhan Balbale">
+  <link rel="canonical" href="https://flowcraft-studio.netlify.app/starscanner.html">
+  <meta property="og:site_name" content="FlowCraft Studio by Subhan Balbale">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="StarScanner — Website SEO &amp; Security Scanner (Soon)">
+  <meta property="og:description" content="Scan a local business website for broken links, missing security headers, Core Web Vitals problems and search visibility gaps. Coming soon from FlowCraft.">
+  <meta property="og:url" content="https://flowcraft-studio.netlify.app/starscanner.html">
+  <meta property="og:image" content="https://flowcraft-studio.netlify.app/logos/flowcraft-og-banner.png">
+  <meta property="og:image:alt" content="StarScanner by FlowCraft Studio — website SEO and security scanner">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="StarScanner — Website SEO &amp; Security Scanner (Soon)">
+  <meta name="twitter:description" content="Scan a local business website for broken links, missing security headers, Core Web Vitals problems and search visibility gaps. Coming soon from FlowCraft.">
+  <meta name="twitter:image" content="https://flowcraft-studio.netlify.app/logos/flowcraft-og-banner.png">
+  <meta name="twitter:image:alt" content="StarScanner by FlowCraft Studio — website SEO and security scanner">
+
+  <!-- Schema.org SoftwareApplication & Breadcrumb JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When does it launch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no announced date. Two of the four check groups work and the reporting layer does not exist yet. Joining the waitlist means you hear when it is real rather than when it is nearly real."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from PageSpeed Insights or Lighthouse?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is not trying to beat them at measurement — Lighthouse is excellent and free, and StarScanner leans on the same vitals. The difference is the output. A Lighthouse report is written for a developer. StarScanner's is written to hand to a restaurant owner who needs to understand why their site is losing them bookings, and it adds the local-search and security checks Lighthouse does not cover."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will it work on any website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Any publicly reachable page. Sites behind a login, on an internal network, or blocking automated traffic cannot be scanned, and the report will say that rather than report a passing grade it could not verify."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What will it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not decided. Waitlist members are offered founder pricing when it does launch, but quoting a figure now for a product that is not finished would be a number I could not stand behind later."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you keep my client's data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A scan reads a public page, so there is nothing private in it to begin with. Scan history is on the \"not started\" list above; when it is built, the retention rule will be written on this page before the feature ships, not after."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://flowcraft-studio.netlify.app/starscanner.html#webpage",
+    "url": "https://flowcraft-studio.netlify.app/starscanner.html",
+    "name": "StarScanner — Website SEO & Security Scanner (Soon)",
+    "isPartOf": { "@id": "https://flowcraft-studio.netlify.app/#website" },
+    "about": { "@id": "https://flowcraft-studio.netlify.app/#organization" },
+    "datePublished": "2026-10-16",
+    "dateModified": "2026-10-30",
+    "inLanguage": "en-IN"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://flowcraft-studio.netlify.app/starscanner.html#software",
+        "name": "StarScanner — Automated Digital Footprint & SEO Audit Tool",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web, Cloud",
+        "image": "https://flowcraft-studio.netlify.app/logos/flowcraft-profile-512x512.png",
+        "description": "Next-generation automated digital footprint, SEO diagnostic, and website security scanner built by Subhan Balbale.",
+        "creator": {
+          "@type": "Person",
+          "name": "Subhan Balbale",
+          "url": "https://flowcraft-studio.netlify.app/about.html"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "INR",
+          "price": "0",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://flowcraft-studio.netlify.app/starscanner.html"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://flowcraft-studio.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "StarScanner",
+            "item": "https://flowcraft-studio.netlify.app/starscanner.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS & GSAP -->
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+
+  <!-- Plus Jakarta Sans Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Metric-matched fallback: holds the exact space the webfont will take,
+       so swapping it in causes no layout shift. */
+    @font-face {
+      font-family: 'Jakarta Fallback';
+      src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+      size-adjust: 106.66%;
+      ascent-override: 97.5%;
+      descent-override: 20.6%;
+      line-gap-override: 0%;
+    }
+
+    :root {
+      --bg-base: #faf8fa;
+    }
+    body {
+      background-color: var(--bg-base);
+      color: #0f172a;
+      font-family: 'Plus Jakarta Sans', 'Jakarta Fallback', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ambient Soft Radial Gradient Mesh */
+    .ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      background: #faf8fa;
+    }
+    .mesh-orb-sc1 {
+      position: absolute;
+      top: -10%;
+      right: 5%;
+      width: 750px;
+      height: 750px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0.16) 35%, rgba(56, 189, 248, 0.04) 60%, transparent 72%);
+    }
+    .mesh-orb-sc2 {
+      position: absolute;
+      top: 45%;
+      left: -10%;
+      width: 700px;
+      height: 700px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at center, rgba(45, 212, 191, 0.3) 0%, rgba(45, 212, 191, 0.14) 35%, rgba(45, 212, 191, 0.03) 60%, transparent 72%);
+    }
+    .mesh-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at center, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.65;
+    }
+
+    /* Tactile Glass Panels */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 
+        0 10px 28px -10px rgba(15, 23, 42, 0.05),
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-panel:hover {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: 
+        0 16px 36px -10px rgba(15, 23, 42, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.95) inset;
+      transform: translateY(-2px);
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    }
+
+    .title-display {
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    /* Mobile Touch Feedback & GPU Optimization */
+    .pill-button:active {
+      transform: scale(0.97) !important;
+    }
+
+    @media (max-width: 640px) {
+      .mesh-orb-sc1, .mesh-orb-sc2 {
+        width: 380px !important;
+        height: 380px !important;
+      }
+      .title-display {
+        letter-spacing: -0.025em;
+      }
+    }
+
+    .pill-button {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 9999px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .pill-button:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Native disclosure FAQ — keyboard and crawler friendly, no JS */
+    .faq summary { list-style: none; cursor: pointer; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .faq-sign { transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+    .faq[open] summary .faq-sign { transform: rotate(45deg); }
+
+    /* === Shared type roles (kept identical on every page) === */
+    .card-title {
+      font-weight: 600;
+      letter-spacing: -0.014em;
+      line-height: 1.25;
+    }
+    .lede {
+      max-width: 62ch;
+      text-wrap: pretty;
+    }
+    .label-eyebrow {
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* === Shared browser surfaces === */
+    ::selection {
+      background: rgba(236, 72, 153, 0.18);
+      color: #0f172a;
+    }
+    html {
+      scrollbar-color: #cbd5e1 transparent;
+      caret-color: #ec4899;
+    }
+    ::-webkit-scrollbar { width: 11px; height: 11px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border: 3px solid #faf8fa;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    :focus-visible {
+      outline: 2px solid #ec4899;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+    a { text-underline-offset: 0.22em; }
+    .skip-link {
+      position: absolute;
+      left: 50%;
+      top: 0.5rem;
+      transform: translate(-50%, -200%);
+      z-index: 100;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+    .skip-link:focus-visible { transform: translate(-50%, 0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen relative">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Ambient Light Mesh Background -->
+  <div class="ambient-mesh">
+    <div class="mesh-orb-sc1"></div>
+    <div class="mesh-orb-sc2"></div>
+    <div class="mesh-grid"></div>
+  </div>
+
+  <!-- Redesigned Minimalist 64px Header with Mobile Drawer -->
+  <header class="sticky top-4 z-50 px-4 sm:px-6 max-w-5xl mx-auto">
+    <nav aria-label="Main" class="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-full pl-5 pr-2 py-2 flex items-center justify-between">
+
+      <a href="index.html" aria-label="FlowCraft Studio, home" class="flex items-center gap-2.5 shrink-0">
+        <span class="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center p-1.5">
+          <svg viewBox="0 0 512 512" class="w-full h-full" fill="none" aria-hidden="true">
+            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
+            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
+            <circle cx="410" cy="350" r="28" fill="#ec4899"/>
+          </svg>
+        </span>
+        <span class="font-semibold text-[15px] tracking-tight text-slate-950">flowcraft<span class="text-pink-500">.</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600">
+        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">Websites</a>
+        <a href="index.html#reviews" class="hover:text-slate-950 transition-colors">Smart Reviews</a>
+        <a href="index.html#ranking" class="hover:text-slate-950 transition-colors">Local SEO</a>
+        <a href="about.html" class="hover:text-slate-950 transition-colors">About</a>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="pill-button hidden sm:inline-flex px-5 py-2.5 text-[13px] font-semibold items-center gap-1.5">
+          <span>Open SiteMaker</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+
+        <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
+                class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-slate-800 hover:bg-slate-100 transition-colors">
+          <span class="sr-only">Menu</span>
+          <svg id="hamburger-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden mt-2 rounded-3xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg p-2">
+      <a href="sitemaker.html" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Websites</a>
+      <a href="index.html#reviews" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Smart Reviews</a>
+      <a href="index.html#ranking" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Local SEO</a>
+      <a href="about.html" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">About</a>
+      <a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="pill-button block mt-1 px-4 py-3 text-center text-sm font-semibold">Open SiteMaker</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="main" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-12 sm:pt-16 pb-16 sm:pb-24">
+    
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 mb-6 text-xs text-slate-400 font-medium">
+      <a href="index.html" class="hover:text-slate-900 transition-colors">FlowCraft Studio</a>
+      <span>/</span>
+      <span class="text-cyan-600 font-semibold">StarScanner</span>
+    </div>
+
+    <!-- Title & Eyebrow -->
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-xs font-semibold mb-5">
+        <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+        [COMING SOON] · Active Research &amp; Development
+      </div>
+      <h1 class="title-display text-3xl sm:text-5xl lg:text-6xl text-slate-950 mb-6 ">
+        Automated intelligence &amp; security scanner. <span class="text-cyan-600">In 10 seconds.</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal mb-8">
+        StarScanner is the upcoming automated audit and digital footprint scanner built by FlowCraft Studio. Designed to scan any website URL, pinpoint critical performance bottlenecks, detect missing SEO schema, expose broken assets, and grade security posture.
+      </p>
+      
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+        <a href="#waitlist" class="pill-button px-7 py-3 text-xs font-semibold inline-flex items-center justify-center gap-2">
+          <span>Join Early Access Waitlist</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#features" class="px-6 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-semibold text-xs transition-all inline-flex items-center justify-center gap-2">
+          <span>Learn What It Does</span><svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scanner Radar Mockup (Clean Vector SVG Icons, Zero Emojis) -->
+    <div id="what" class="mt-14 glass-panel rounded-3xl p-6 sm:p-12 relative overflow-hidden text-center">
+      <div class="w-16 h-16 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mx-auto mb-6 relative">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/><path d="M12 3v18M3 12h18"/></svg>
+      </div>
+      <div class="title-display text-2xl  text-slate-950">Full-Stack Digital Diagnostics</div>
+      <p class="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto mt-2 font-normal">
+        Enter any client website URL and generate a shareable, client-ready PDF report highlighting exactly what is broken and why they need your help to fix it.
+      </p>
+    </div>
+
+    <!-- Planned Capabilities Grid (Clean Vector SVG Icons, Zero Emojis) -->
+    <section id="features" class="mt-24">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="title-display text-3xl sm:text-4xl text-slate-950 mt-1 ">What StarScanner Analyzes</h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-2 font-normal">Comprehensive auditing across four critical digital vectors.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Feature 1 -->
+        <div class="glass-panel p-7 rounded-2xl">
+          <div class="w-11 h-11 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 mb-2">Security &amp; SSL Hygiene</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            Inspects SSL/TLS certificates, missing HTTP security headers (HSTS, CSP, X-Frame-Options), exposed admin endpoints, and mixed-content warnings.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-panel p-7 rounded-2xl">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 mb-2">Core Web Vitals &amp; Speed</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            Measures Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), server response latency (TTFB), and unoptimized image payloads on real mobile networks.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-panel p-7 rounded-2xl">
+          <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 mb-2">Google Local Schema &amp; SEO</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            Verifies JSON-LD structured data, Google Maps integration, OpenGraph social preview tags, and checks if the site is properly formatted for local search discovery.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-panel p-7 rounded-2xl">
+          <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 mb-2">Client Pitch Audit Reports</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            Outputs branded, easy-to-read audit scorecards. Perfect for freelancers paired with LeadsFlowPro to show local clients why their site is losing them money.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How a scan will work -->
+    <section id="how" class="mt-24">
+      <div class="max-w-2xl mb-10">
+        <h2 class="title-display text-2xl sm:text-4xl text-slate-950">How a scan will work.</h2>
+        <p class="lede text-sm sm:text-base text-slate-600 mt-3">
+          The shape is settled even though the build is not finished. Four steps,
+          one URL in, one report out.
+        </p>
+      </div>
+
+      <ol class="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-10">
+        <li class="border-t border-slate-200 pt-5">
+          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 01</span>
+          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Paste a URL</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Any public site. No access to the client's hosting, no plugin to install,
+            no code for them to paste — everything checked is what a visitor's browser
+            can already see.
+          </p>
+        </li>
+        <li class="border-t border-slate-200 pt-5">
+          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 02</span>
+          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Load it like a phone would</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            The page is rendered on a throttled mobile connection rather than a fast
+            desktop one, because that is the connection the customer is actually on
+            when they tap through from Google Maps.
+          </p>
+        </li>
+        <li class="border-t border-slate-200 pt-5">
+          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 03</span>
+          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Check four areas</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Security headers and certificate, Core Web Vitals, structured data and
+            local search signals, and broken or missing assets. Each finding is
+            recorded with the evidence behind it.
+          </p>
+        </li>
+        <li class="border-t border-slate-200 pt-5">
+          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 04</span>
+          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Get a report you can send</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A scorecard written for a shop owner rather than a developer, in language
+            that says what is costing them customers instead of listing audit names
+            they will not recognise.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Honest build status -->
+    <section id="status" class="mt-24">
+      <div class="max-w-2xl mb-8">
+        <h2 class="title-display text-2xl sm:text-4xl text-slate-950">Where the build actually is.</h2>
+        <p class="lede text-sm sm:text-base text-slate-600 mt-3">
+          Plenty of products say "coming soon" and mean "we have a landing page".
+          Here is the honest state of this one.
+        </p>
+      </div>
+
+      <div class="divide-y divide-slate-200 border-y border-slate-200 max-w-3xl">
+        <div class="py-5 flex items-start gap-4">
+          <span class="label-eyebrow text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full shrink-0 mt-0.5">Working</span>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Header and certificate inspection, and the Core Web Vitals capture. These
+            are the checks I already run by hand on every site I build, which is where
+            the idea for the tool came from.
+          </p>
+        </div>
+        <div class="py-5 flex items-start gap-4">
+          <span class="label-eyebrow text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full shrink-0 mt-0.5">In progress</span>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Structured-data and local-search validation, and the asset crawl that finds
+            broken images and dead links.
+          </p>
+        </div>
+        <div class="py-5 flex items-start gap-4">
+          <span class="label-eyebrow text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full shrink-0 mt-0.5">Not started</span>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            The branded PDF report, accounts and billing, and scan history. There is no
+            launch date, because committing to one before this part exists would be a
+            guess.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-24 max-w-3xl">
+      <h2 class="title-display text-2xl sm:text-4xl text-slate-950 mb-10">Questions about StarScanner.</h2>
+
+      <div class="divide-y divide-slate-200 border-y border-slate-200">
+        <details class="faq group py-5">
+          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
+            <span>When does it launch?</span>
+            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
+            There is no announced date. Two of the four check groups work and the
+            reporting layer does not exist yet. Joining the waitlist means you hear
+            when it is real rather than when it is nearly real.
+          </p>
+        </details>
+
+        <details class="faq group py-5">
+          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
+            <span>How is this different from PageSpeed Insights or Lighthouse?</span>
+            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
+            It is not trying to beat them at measurement — Lighthouse is excellent and
+            free, and StarScanner leans on the same vitals. The difference is the
+            output. A Lighthouse report is written for a developer. StarScanner's is
+            written to hand to a restaurant owner who needs to understand why their
+            site is losing them bookings, and it adds the local-search and security
+            checks Lighthouse does not cover.
+          </p>
+        </details>
+
+        <details class="faq group py-5">
+          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
+            <span>Will it work on any website?</span>
+            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
+            Any publicly reachable page. Sites behind a login, on an internal network,
+            or blocking automated traffic cannot be scanned, and the report will say
+            that rather than report a passing grade it could not verify.
+          </p>
+        </details>
+
+        <details class="faq group py-5">
+          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
+            <span>What will it cost?</span>
+            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
+            Not decided. Waitlist members are offered founder pricing when it does
+            launch, but quoting a figure now for a product that is not finished would
+            be a number I could not stand behind later.
+          </p>
+        </details>
+
+        <details class="faq group py-5">
+          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
+            <span>Do you keep my client's data?</span>
+            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
+            A scan reads a public page, so there is nothing private in it to begin with.
+            Scan history is on the "not started" list above; when it is built, the
+            retention rule will be written on this page before the feature ships, not
+            after.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="mt-24 max-w-xl mx-auto text-center">
+      <div class="glass-panel p-8 sm:p-12 rounded-3xl border-2 border-cyan-200 relative">
+        <h3 class="title-display text-3xl  text-slate-950">Be Notified on Launch</h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 max-w-md mx-auto font-normal">
+          Get lifetime founder pricing and early beta testing access when StarScanner goes live.
+        </p>
+
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20please%20add%20me%20to%20the%20StarScanner%20early%20access%20waitlist." target="_blank" rel="noopener noreferrer"
+           class="pill-button mt-8 w-full py-3 text-xs font-semibold block">
+          Reserve Early Access via WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer with Full Watermark -->
+  <footer class="relative z-10 py-12 border-t border-slate-200/60 text-[13px] text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-white/80 flex items-center justify-center p-1">
+          <svg viewBox="0 0 512 512" class="w-full h-full" fill="none">
+            <defs>
+              <linearGradient id="footer-brand-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff2e93"/>
+                <stop offset="100%" stop-color="#ec4899"/>
+              </linearGradient>
+            </defs>
+            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#0f172a" stroke-width="44" stroke-linecap="round"/>
+            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#0f172a" stroke-width="44" stroke-linecap="round"/>
+            <circle cx="410" cy="350" r="28" fill="url(#footer-brand-pink)"/>
+          </svg>
+        </div>
+        <span class="text-slate-950 font-bold tracking-tight text-base font-sans">flowcraft<span class="text-pink-500">.</span></span>
+        <span class="text-slate-300">|</span>
+        <span class="font-medium text-slate-700">FlowCraft Studio by Subhan Balbale</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-6 text-slate-600 font-medium">
+        <a href="index.html" class="hover:text-slate-950 transition-colors">Home</a>
+        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">SiteMaker</a>
+        <a href="leadsflowpro.html" class="hover:text-slate-950 transition-colors">LeadsFlowPro</a>
+        <a href="index.html#reviews" class="hover:text-slate-950 transition-colors">Smart Reviews</a>
+        <a href="https://wa.me/919372407018" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-700 transition-colors">WhatsApp</a>
+      </div>
+      <div>
+        <span>© 2026 FlowCraft Studio by Subhan Balbale. <span class="text-slate-500">Updated <time datetime="2026-10-30">30 October 2026</time>.</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Drawer Toggle Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+          if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          } else {
+            mobileMenu.classList.remove('hidden');
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+          }
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

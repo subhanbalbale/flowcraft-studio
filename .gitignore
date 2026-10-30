@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Local build / cache
+.cache/
+.parcel-cache/
+dist/
+
+# Editor & AI agent directories
+.claude/
+.agents/
+.vscode/
+.idea/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local

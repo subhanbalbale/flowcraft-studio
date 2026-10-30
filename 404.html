@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — FlowCraft Studio</title>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
+
+  <meta name="description" content="That page does not exist. Find FlowCraft Studio's websites, automated review systems and local search work from here, or message Subhan directly.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+
+  <style>
+    /* Metric-matched fallback: holds the exact space the webfont will take,
+       so swapping it in causes no layout shift. */
+    @font-face {
+      font-family: 'Jakarta Fallback';
+      src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+      size-adjust: 106.66%;
+      ascent-override: 97.5%;
+      descent-override: 20.6%;
+      line-gap-override: 0%;
+    }
+
+    :root {
+      --bg-base: #faf8fa;
+    }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: var(--bg-base);
+      color: #0f172a;
+      font-family: 'Plus Jakarta Sans', 'Jakarta Fallback', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      background: #faf8fa;
+    }
+    .mesh-orb {
+      position: absolute;
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+    .orb-1 {
+      top: -10%;
+      left: 5%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.32) 0%, rgba(56, 189, 248, 0.14) 35%, rgba(56, 189, 248, 0.03) 60%, transparent 72%);
+    }
+    .orb-2 {
+      top: 25%;
+      right: 0%;
+      width: 750px;
+      height: 750px;
+      background: radial-gradient(circle at center, rgba(244, 114, 182, 0.3) 0%, rgba(244, 114, 182, 0.13) 35%, rgba(244, 114, 182, 0.03) 60%, transparent 72%);
+    }
+    .mesh-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at center, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.65;
+    }
+
+    .title-display {
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      text-wrap: balance;
+    }
+    h1.title-display { letter-spacing: -0.038em; }
+    .card-title {
+      font-weight: 600;
+      letter-spacing: -0.014em;
+      line-height: 1.25;
+    }
+    .lede {
+      max-width: 62ch;
+      text-wrap: pretty;
+    }
+
+    .pill-button {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 9999px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+    .pill-button:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+    .pill-button:active { transform: scale(0.97) !important; }
+
+    ::selection {
+      background: rgba(236, 72, 153, 0.18);
+      color: #0f172a;
+    }
+    html {
+      scrollbar-color: #cbd5e1 transparent;
+      caret-color: #ec4899;
+    }
+    :focus-visible {
+      outline: 2px solid #ec4899;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+    a { text-underline-offset: 0.22em; }
+
+    .skip-link {
+      position: absolute;
+      left: 50%;
+      top: 0.5rem;
+      transform: translate(-50%, -200%);
+      z-index: 100;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+    .skip-link:focus-visible { transform: translate(-50%, 0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen relative">
+
+  <div class="ambient-mesh">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+    <div class="mesh-grid-overlay"></div>
+  </div>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="sticky top-4 z-50 px-4 sm:px-6 max-w-5xl mx-auto">
+    <nav aria-label="Main" class="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-full pl-5 pr-2 py-2 flex items-center justify-between shadow-xs">
+
+      <a href="index.html" aria-label="FlowCraft Studio, home" class="flex items-center gap-2.5 shrink-0">
+        <span class="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center p-1.5">
+          <svg viewBox="0 0 512 512" class="w-full h-full" fill="none" aria-hidden="true">
+            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
+            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
+            <circle cx="410" cy="350" r="28" fill="#ec4899"/>
+          </svg>
+        </span>
+        <span class="font-semibold text-[15px] tracking-tight text-slate-950">flowcraft<span class="text-pink-500">.</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600">
+        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">Websites</a>
+        <a href="index.html#reviews" class="hover:text-slate-950 transition-colors">Smart Reviews</a>
+        <a href="index.html#ranking" class="hover:text-slate-950 transition-colors">Local SEO</a>
+        <a href="about.html" class="hover:text-slate-950 transition-colors">About</a>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <a href="https://mysitemaker.in"
+           target="_blank" rel="noopener noreferrer"
+           class="pill-button hidden sm:inline-flex px-5 py-2.5 text-[13px] font-semibold items-center gap-1.5">
+          <span>Open SiteMaker</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="relative z-10 px-4 sm:px-6 max-w-3xl mx-auto pt-20 pb-24 md:pt-28">
+
+    <p class="text-sm font-semibold text-pink-700 mb-3 numeric-tabular">Error 404</p>
+
+    <h1 class="title-display text-3xl sm:text-5xl text-slate-950 mb-5">
+      That page isn't here.
+    </h1>
+
+    <p class="lede text-base sm:text-lg text-slate-600 leading-relaxed mb-10">
+      The link may be old, or I may have moved something. Everything FlowCraft
+      makes is one of the four below — or message me and I'll point you at it.
+    </p>
+
+    <div class="divide-y divide-slate-200 border-y border-slate-200 mb-10">
+
+      <a href="sitemaker.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
+        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">SiteMaker websites</h2>
+        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">A mobile-first business website for ₹5,999 once, live in 24 hours.</p>
+      </a>
+
+      <a href="index.html#reviews" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
+        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">Smart Reviews</h2>
+        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">Automated WhatsApp and QR workflows that generate 5-star Google reviews on autopilot.</p>
+      </a>
+
+      <a href="leadsflowpro.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
+        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">LeadsFlowPro</h2>
+        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">Find local businesses on Google Maps that have no website yet.</p>
+      </a>
+
+      <a href="starscanner.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
+        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">StarScanner</h2>
+        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">Scan a site for broken links, security gaps and search problems.</p>
+      </a>
+
+    </div>
+
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <a href="index.html" class="pill-button px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span>Back to the homepage</span>
+      </a>
+      <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20hit%20a%20broken%20link%20on%20your%20site."
+         target="_blank" rel="noopener noreferrer"
+         class="text-sm font-semibold text-slate-700 hover:text-slate-950 underline decoration-slate-300 hover:decoration-slate-500">
+        Tell me the link was broken
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="relative z-10 mt-8 border-t border-slate-200/80 bg-white/70 py-8 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto text-xs text-slate-500">
+      &copy; 2026 FlowCraft Studio by Subhan Balbale. Mumbai, Maharashtra, India.
+    </div>
+  </footer>
+
+</body>
+</html>

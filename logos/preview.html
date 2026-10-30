@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowCraft — Logo Design Concepts &amp; Profile Icons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 2.5rem;
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.5;
+  }
+  body.light { background: #faf8f9; color: #0f172a; }
+  body.dark { background: #0b0f19; color: #f8fafc; }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  }
+  .title-group h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; }
+  .title-group p { font-size: 0.9rem; color: #64748b; margin-top: 0.25rem; }
+  
+  .toggle {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 9999px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .toggle:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    background: rgba(236, 72, 153, 0.12);
+    color: #ec4899;
+    font-weight: 600;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .card {
+    border: 1.5px solid rgba(128, 128, 128, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(236, 72, 153, 0.4);
+    box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.15);
+  }
+
+  .card-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    min-height: 260px;
+  }
+  body.light .card-img { background: #ffffff; }
+  body.dark .card-img { background: #131b2e; }
+
+  .card-img img {
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+  }
+
+  .card-label {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.15);
+  }
+  body.light .card-label { background: #ffffff; }
+  body.dark .card-label { background: #0f172a; }
+
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-desc {
+    font-size: 0.825rem;
+    color: #64748b;
+    line-height: 1.45;
+  }
+
+  /* Favicon Size Check Section */
+  .favicon-box {
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1.5px solid rgba(128, 128, 128, 0.2);
+    margin-top: 2rem;
+  }
+  body.light .favicon-box { background: #ffffff; }
+  body.dark .favicon-box { background: #131b2e; }
+
+  .favicon-strip {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-top: 1.5rem;
+  }
+  .favicon-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .favicon-sizes {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-end;
+  }
+  .size-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .size-label {
+    font-size: 0.75rem;
+    font-family: monospace;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body class="light">
+  
+  <div class="header">
+    <div class="title-group">
+      <h1>FlowCraft Brand Identity Concepts</h1>
+      <p>Precision Vector SVGs for Studio Navigation &amp; Social Profile Icons (Subhan Balbale)</p>
+    </div>
+    <button id="theme-toggle" class="toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+  </div>
+
+  <!-- Section 1: Website Combination Marks -->
+  <div class="section-title">
+    <span>1. Website Combination Marks (For Header Navigation &amp; Hero)</span>
+    <span class="badge">960 × 240 Vector</span>
+  </div>
+  <div class="grid">
+    
+    <!-- Concept 1 Web -->
+    <div class="card">
+      <div class="card-img">
+        <img class="web-logo-img" data-base="concept-1-web" src="concepts/concept-1-web.svg" alt="Concept 1 Website Logo">
+      </div>
+      <div class="card-label">
+        <div class="card-title">
+          <span>Concept 1: The Kinetic Möbius Ribbon</span>
+          <span style="color:#ec4899;font-size:0.8rem;">Modern Tech</span>
+        </div>
+        <p class="card-desc">
+          Interlocking fluid Mobius loops weaving software flow (slate) with precision hardware craft (electric pink), terminating in the signature pink dot.
+        </p>
+      </div>
+    </div>
+
+    <!-- Concept 2 Web -->
+    <div class="card">
+      <div class="card-img">
+        <img class="web-logo-img" data-base="concept-2-web" src="concepts/concept-2-web.svg" alt="Concept 2 Website Logo">
+      </div>
+      <div class="card-label">
+        <div class="card-title">
+          <span>Concept 2: Precision Hex-Prism</span>
+          <span style="color:#ec4899;font-size:0.8rem;">Hardware + Web</span>
+        </div>
+        <p class="card-desc">
+          Isometric architectural hexagon fusing NFC contactless wave pulses with carved 'F' and 'C' facets. Bold, technical, physical computing.
+        </p>
+      </div>
+    </div>
+
+    <!-- Concept 3 Web -->
+    <div class="card">
+      <div class="card-img">
+        <img class="web-logo-img" data-base="concept-3-web" src="concepts/concept-3-web.svg" alt="Concept 3 Website Logo">
+      </div>
+      <div class="card-label">
+        <div class="card-title">
+          <span>Concept 3: Swiss Minimalist Monogram</span>
+          <span style="color:#ec4899;font-size:0.8rem;">Ultra-Clean</span>
+        </div>
+        <p class="card-desc">
+          Single continuous geometric line creating an iconic lowercase 'fc.' ligature with the tactile pink dot. Ultra-sharp, timeless, anti-slop.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Section 2: Profile Icons -->
+  <div class="section-title">
+    <span>2. Social Profile Icons &amp; App Avatars (Instagram, WhatsApp, Favicon)</span>
+    <span class="badge">512 × 512 Squircle</span>
+  </div>
+  <div class="grid">
+    
+    <!-- Concept 1 Profile -->
+    <div class="card">
+      <div class="card-img">
+        <img src="concepts/concept-1-profile.svg" alt="Concept 1 Profile Icon">
+      </div>
+      <div class="card-label">
+        <div class="card-title">
+          <span>Concept 1: Kinetic Ribbon Avatar</span>
+        </div>
+        <p class="card-desc">
+          Frosted squircle backdrop with floating ambient shadow. Striking presence as an Instagram profile picture or WhatsApp avatar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Concept 2 Profile -->
+    <div class="card">
+      <div class="card-img">
+        <img src="concepts/concept-2-profile.svg" alt="Concept 2 Profile Icon">
+      </div>
+      <div class="card-label">
+        <div class="card-title">
+          <span>Concept 2: Hex-Prism &amp; NFC Pulse</span>
+        </div>
+        <p class="card-desc">
+          Dimensional isometric chip with high-contrast dual-plane lighting and radiant contactless waves emitting from the apex dot.
+        </p>
+      </div>
+    </div>
+
+    <!-- Concept 3 Profile -->
+    <div class="card">
+      <div class="card-img">
+        <img src="concepts/concept-3-profile.svg" alt="Concept 3 Profile Icon">
+      </div>
+      <div class="card-label">
+        <div class="card-title">
+          <span>Concept 3: Minimalist fc. Ligature</span>
+        </div>
+        <p class="card-desc">
+          Maximum legibility and optical weight. Clean 34px calibrated line weight ensures it pops even at 16px in browser tabs.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Section 3: Favicon Size Check -->
+  <div class="section-title">
+    <span>3. Favicon &amp; Small-Scale Legibility Check</span>
+    <span class="badge">64px / 32px / 16px</span>
+  </div>
+  <div class="favicon-box">
+    <p style="font-size:0.85rem;color:#64748b;margin-bottom:1.5rem;">
+      Checking how each profile mark performs when scaled down to browser tab and notification sizes:
+    </p>
+    <div class="favicon-strip">
+      
+      <!-- C1 Favicons -->
+      <div class="favicon-col">
+        <div style="font-size:0.85rem;font-weight:600;">Concept 1: Ribbon</div>
+        <div class="favicon-sizes">
+          <div class="size-item">
+            <img src="concepts/concept-1-profile.svg" width="64" height="64" style="border-radius:14px;box-shadow:0 4px 10px rgba(0,0,0,0.06);">
+            <span class="size-label">64px</span>
+          </div>
+          <div class="size-item">
+            <img src="concepts/concept-1-profile.svg" width="32" height="32" style="border-radius:7px;">
+            <span class="size-label">32px</span>
+          </div>
+          <div class="size-item">
+            <img src="concepts/concept-1-profile.svg" width="16" height="16" style="border-radius:3px;">
+            <span class="size-label">16px</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- C2 Favicons -->
+      <div class="favicon-col">
+        <div style="font-size:0.85rem;font-weight:600;">Concept 2: Hex-Prism</div>
+        <div class="favicon-sizes">
+          <div class="size-item">
+            <img src="concepts/concept-2-profile.svg" width="64" height="64" style="border-radius:14px;box-shadow:0 4px 10px rgba(0,0,0,0.06);">
+            <span class="size-label">64px</span>
+          </div>
+          <div class="size-item">
+            <img src="concepts/concept-2-profile.svg" width="32" height="32" style="border-radius:7px;">
+            <span class="size-label">32px</span>
+          </div>
+          <div class="size-item">
+            <img src="concepts/concept-2-profile.svg" width="16" height="16" style="border-radius:3px;">
+            <span class="size-label">16px</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- C3 Favicons -->
+      <div class="favicon-col">
+        <div style="font-size:0.85rem;font-weight:600;">Concept 3: Swiss fc.</div>
+        <div class="favicon-sizes">
+          <div class="size-item">
+            <img src="concepts/concept-3-profile.svg" width="64" height="64" style="border-radius:14px;box-shadow:0 4px 10px rgba(0,0,0,0.06);">
+            <span class="size-label">64px</span>
+          </div>
+          <div class="size-item">
+            <img src="concepts/concept-3-profile.svg" width="32" height="32" style="border-radius:7px;">
+            <span class="size-label">32px</span>
+          </div>
+          <div class="size-item">
+            <img src="concepts/concept-3-profile.svg" width="16" height="16" style="border-radius:3px;">
+            <span class="size-label">16px</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark');
+      document.body.classList.toggle('light', !isDark);
+      document.getElementById('theme-toggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+      
+      document.querySelectorAll('.web-logo-img').forEach(img => {
+        const base = img.getAttribute('data-base');
+        img.src = isDark ? `concepts/${base}-dark.svg` : `concepts/${base}.svg`;
+      });
+    }
+  </script>
+</body>
+</html>

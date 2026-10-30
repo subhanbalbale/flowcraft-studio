@@ -1,0 +1,42 @@
+# FlowCraft Studio
+
+> FlowCraft Studio is an independent software engineering studio run by Subhan Balbale in Mumbai, Maharashtra, India. It builds fast mobile websites for local businesses (SiteMaker, available at https://mysitemaker.in), smart automated 5-star Google review collection systems, Google Maps lead generation software (LeadsFlowPro), and website diagnostics (StarScanner). Work is done directly by the founder: no agency, no monthly retainers.
+
+## Quick facts
+
+- Founder and sole engineer: Subhan Balbale
+- Location: Mumbai, Maharashtra, India
+- Contact: +91 93724 07018 (phone and WhatsApp), subhanilyasbalbale@gmail.com
+- Availability: online service, reachable 24/7 on WhatsApp
+- SiteMaker website: ₹5,999 one time, no monthly hosting fee, live in 24 to 48 hours
+- SiteMaker WebApp: https://mysitemaker.in
+- Smart Automated Review System: automated WhatsApp & QR triggers with 5-star Google review routing and private negative feedback shielding
+- Typical delivery: 24 to 48 hours for websites and review automations
+- The client owns the source code and the domain
+
+## Products
+
+- [SiteMaker WebApp](https://mysitemaker.in): Ready-made, high-speed mobile website builder for local trades such as salons, dentists, clinics, cafes, and contractors. Imports photos and reviews from the business's Google Maps listing and adds one-tap WhatsApp inquiry buttons. ₹5,999 once, no monthly hosting fee, live in 24 hours.
+- [Smart Automated Review System](https://flowcraft-studio.netlify.app/#reviews): Automated post-service review workflows via WhatsApp and smart QR triggers. Happy customers (4–5 stars) are routed directly to the business's Google review box with 5 stars pre-selected; unhappy customers (1–3 stars) are routed to a private WhatsApp form so issues can be resolved before public reviews are posted. Automatically synchronizes new Google reviews with SiteMaker websites.
+- [LeadsFlowPro](https://flowcraft-studio.netlify.app/leadsflowpro.html): B2B lead generation tool that finds businesses on Google Maps with no website, sorts them into a calling pipeline, and launches one-click WhatsApp outreach.
+- [StarScanner](https://flowcraft-studio.netlify.app/starscanner.html): Diagnostic scanner that audits a local business website for broken links, missing security headers, Core Web Vitals problems, and search visibility gaps.
+
+## Services
+
+- Local search: Google Business Profile optimization, category and citation cleanup, geotagged photos, aiming at the Google Maps top 3-pack.
+- Measurement: Google Search Console verification, sitemap submission, and GA4 event tracking for calls, direction taps, and WhatsApp clicks.
+- Answer and AI engine optimization: entity schema, llms.txt, and structured content so ChatGPT, Perplexity, and Gemini can cite the business.
+- Custom web development: client portals, internal tools, and automated business workflows.
+
+## Common questions
+
+- Are there monthly hosting fees for a SiteMaker website? No. Hosting is serverless; the client pays ₹5,999 once and owns the code and the domain.
+- How does the SiteMaker webapp work? Visit https://mysitemaker.in, search for your business or trade, and preview your live website in seconds before purchase.
+- How fast is delivery? Usually 24 to 48 hours once the Google Maps listing and details are confirmed.
+- Can a custom domain be used? Yes, any .in, .com, .store, or .co domain, with an SSL certificate included at no extra cost.
+- How does the Smart Automated Review System work? It triggers automated WhatsApp invitations or displays counter QR codes after customer interactions. High ratings go directly to Google Maps; low ratings open a private WhatsApp conversation with the business owner.
+
+## More
+
+- [About Subhan Balbale](https://flowcraft-studio.netlify.app/about.html): background, technical philosophy, and portfolio.
+- Instagram: https://www.instagram.com/_flowcraft.studio/
