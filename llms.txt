@@ -10,14 +10,14 @@
 - Availability: online service, reachable 24/7 on WhatsApp
 - SiteMaker website: ₹5,999 one time, no monthly hosting fee, live in 24 to 48 hours
 - SiteMaker WebApp: https://mysitemaker.in
-- Smart Automated Review System: automated WhatsApp & QR triggers with 5-star Google review routing and private negative feedback shielding
+- Smart Automated Review System: https://flowcraft-studio.netlify.app/reviews.html (automated WhatsApp & QR triggers with 5-star Google review routing and private negative feedback shielding)
 - Typical delivery: 24 to 48 hours for websites and review automations
 - The client owns the source code and the domain
 
 ## Products
 
 - [SiteMaker WebApp](https://mysitemaker.in): Ready-made, high-speed mobile website builder for local trades such as salons, dentists, clinics, cafes, and contractors. Imports photos and reviews from the business's Google Maps listing and adds one-tap WhatsApp inquiry buttons. ₹5,999 once, no monthly hosting fee, live in 24 hours.
-- [Smart Automated Review System](https://flowcraft-studio.netlify.app/#reviews): Automated post-service review workflows via WhatsApp and smart QR triggers. Happy customers (4–5 stars) are routed directly to the business's Google review box with 5 stars pre-selected; unhappy customers (1–3 stars) are routed to a private WhatsApp form so issues can be resolved before public reviews are posted. Automatically synchronizes new Google reviews with SiteMaker websites.
+- [Smart Automated Review System](https://flowcraft-studio.netlify.app/reviews.html): Automated post-service review workflows via WhatsApp and smart QR triggers. Happy customers (4–5 stars) are routed directly to the business's Google review box with 5 stars pre-selected; unhappy customers (1–3 stars) are routed to a private WhatsApp form so issues can be resolved before public reviews are posted. Automatically synchronizes new Google reviews with SiteMaker websites. Setup is ₹2,999 once, or bundled free with SiteMaker.
 - [LeadsFlowPro](https://flowcraft-studio.netlify.app/leadsflowpro.html): B2B lead generation tool that finds businesses on Google Maps with no website, sorts them into a calling pipeline, and launches one-click WhatsApp outreach.
 - [StarScanner](https://flowcraft-studio.netlify.app/starscanner.html): Diagnostic scanner that audits a local business website for broken links, missing security headers, Core Web Vitals problems, and search visibility gaps.
 
@@ -34,7 +34,7 @@
 - How does the SiteMaker webapp work? Visit https://mysitemaker.in, search for your business or trade, and preview your live website in seconds before purchase.
 - How fast is delivery? Usually 24 to 48 hours once the Google Maps listing and details are confirmed.
 - Can a custom domain be used? Yes, any .in, .com, .store, or .co domain, with an SSL certificate included at no extra cost.
-- How does the Smart Automated Review System work? It triggers automated WhatsApp invitations or displays counter QR codes after customer interactions. High ratings go directly to Google Maps; low ratings open a private WhatsApp conversation with the business owner.
+- How does the Smart Automated Review System work? It triggers automated WhatsApp invitations or displays counter QR codes after customer interactions. High ratings go directly to Google Maps; low ratings open a private WhatsApp conversation with the business owner. Dedicated page at https://flowcraft-studio.netlify.app/reviews.html.
 
 ## More
 
