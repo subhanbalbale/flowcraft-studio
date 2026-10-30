@@ -3,6 +3,7 @@
   "private": true,
   "description": "FlowCraft Studio marketing site. Static HTML; Tailwind is compiled ahead of time, not at runtime.",
   "scripts": {
+    "build": "npm run css",
     "css": "tailwindcss -c build/tailwind.config.js -i build/tw-input.css -o assets/css/tailwind.css --minify",
     "css:watch": "tailwindcss -c build/tailwind.config.js -i build/tw-input.css -o assets/css/tailwind.css --watch",
     "serve": "python -m http.server 4173"
