@@ -35,4 +35,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://flowcraft-studio.netlify.app/sitemap.xml
+Sitemap: https://flowcraftstudio.netlify.app/sitemap.xml
