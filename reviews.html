@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Automated Google Review System — WhatsApp & QR Workflows | FlowCraft</title>
+  <title>Smart Google Review System, WhatsApp & QR | FlowCraft</title>
   
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48x48.png">
@@ -12,14 +12,14 @@
   <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
 
   <!-- SEO Metadata -->
-  <meta name="description" content="Automate 5-star Google reviews via WhatsApp triggers and QR codes. 4–5 star ratings route to Google Maps; 1–3 star complaints open a private chat with the owner. Zero monthly retainers.">
+  <meta name="description" content="Get more Google reviews from the customers already at your counter. WhatsApp and QR prompts draft the wording for them. No review gating. ₹2,999 once.">
   <meta name="author" content="Subhan Balbale">
   <meta name="application-name" content="Smart Reviews by FlowCraft Studio">
   <link rel="canonical" href="https://flowcraftstudio.netlify.app/reviews.html">
   <meta property="og:site_name" content="FlowCraft Studio by Subhan Balbale">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Smart Automated Google Review System — WhatsApp & QR Workflows">
-  <meta property="og:description" content="Turn customer interactions into 5-star Google reviews on WhatsApp. Happy customers route to Google; negative feedback routes to a private owner chat.">
+  <meta property="og:description" content="Ask every customer for a Google review at the moment it is easiest to give one. No review gating: everyone gets the same public link, and unhappy customers also reach the owner directly.">
   <meta property="og:url" content="https://flowcraftstudio.netlify.app/reviews.html">
   <meta property="og:image" content="https://flowcraftstudio.netlify.app/logos/flowcraft-og-banner.png">
   <meta property="og:image:alt" content="Smart Automated Google Review System by FlowCraft Studio">
@@ -38,18 +38,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How does the Smart Review System route 5-star reviews to Google?",
+        "name": "How does the Smart Review System get more Google reviews?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When a customer taps 4 or 5 stars on your review landing page or WhatsApp invite, they are immediately redirected to your Google Business Profile review box with 5 stars pre-selected. It takes them one tap to publish."
+          "text": "Customers are asked at the moment it is easiest to answer: an automated WhatsApp message after the visit, or a QR card at the counter. They tap a rating, pick the parts of the visit worth mentioning, and the system drafts the review for them to edit. The blank review box is what stops most happy customers, and removing it is what lifts the count."
         }
       },
       {
         "@type": "Question",
-        "name": "How does the negative feedback shield work?",
+        "name": "What happens when a customer is unhappy?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If a customer taps 1, 2, or 3 stars, instead of taking them to public Google Maps, the system opens a private WhatsApp chat directly with the business owner or clinic manager. This allows you to resolve customer grievances privately before public damage occurs."
+          "text": "They get the same Google review link as everyone else, and alongside it a direct WhatsApp line to the owner or manager. Nothing is withheld and no rating is filtered. The point is that the problem reaches someone who can fix it while the customer is still in front of you, rather than being discovered later in a public review."
         }
       },
       {
@@ -57,7 +57,7 @@
         "name": "Is this compliant with Google Review policies?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Every customer has the option to leave public feedback, and no false reviews or automated bot reviews are generated. The system streamlines customer support so unsatisfied visitors reach management directly."
+          "text": "Yes. There is no review gating: customers are never filtered or routed by star rating, which is what Google review policy and the FTC review rule prohibit. Every customer receives the same public Google link, no incentive is offered, and no review is generated artificially."
         }
       },
       {
@@ -98,7 +98,7 @@
         "name": "FlowCraft Smart Automated Review System",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All Web & Mobile Browsers, WhatsApp",
-        "description": "WhatsApp-first Google review collection automation with 5-star sentiment filtering and private feedback resolution for Indian local businesses.",
+        "description": "WhatsApp-first Google review collection for Indian local businesses. Asks every customer at the right moment and drafts the review for them, with no review gating.",
         "offers": {
           "@type": "Offer",
           "priceCurrency": "INR",
@@ -145,585 +145,758 @@
   <!-- Tailwind CSS -->
   <link rel="stylesheet" href="assets/css/tailwind.css">
 
-  <!-- Plus Jakarta Sans Font -->
+  <!-- shell:head -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
-  <style>
-    @font-face {
-      font-family: 'Jakarta Fallback';
-      src: local('Arial'), local('Helvetica'), local('Liberation Sans');
-      size-adjust: 106.66%;
-      ascent-override: 97.5%;
-      descent-override: 20.6%;
-      line-gap-override: 0%;
-    }
+  <!-- Tailwind plus the FlowCraft design system, compiled ahead of time -->
+  <link rel="stylesheet" href="assets/css/tailwind.css">
 
-    :root {
-      --bg-base: #faf8fa;
-    }
-    body {
-      background-color: var(--bg-base);
-      color: #0f172a;
-      font-family: 'Plus Jakarta Sans', 'Jakarta Fallback', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .ambient-mesh {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-      background: #faf8fa;
-    }
-    .mesh-orb-s1 {
-      position: absolute;
-      top: -10%;
-      right: 5%;
-      width: 750px;
-      height: 750px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at center, rgba(236, 72, 153, 0.28) 0%, rgba(236, 72, 153, 0.12) 35%, rgba(236, 72, 153, 0.03) 60%, transparent 72%);
-    }
-    .mesh-orb-s2 {
-      position: absolute;
-      top: 45%;
-      left: -10%;
-      width: 700px;
-      height: 700px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.24) 0%, rgba(168, 85, 247, 0.10) 35%, rgba(168, 85, 247, 0.02) 60%, transparent 72%);
-    }
-    .mesh-grid {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at center, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.65;
-    }
-
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.84);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 10px 28px -10px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-panel:hover {
-      background: rgba(255, 255, 255, 0.94);
-      border-color: rgba(255, 255, 255, 1);
-      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.95) inset;
-      transform: translateY(-2px);
-    }
-
-    .title-display {
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-
-    .pill-button {
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: 9999px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .pill-button:hover {
-      background: #1e293b;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    }
-    .pill-button:active {
-      transform: scale(0.97) !important;
-    }
-
-    .faq summary { list-style: none; cursor: pointer; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary .faq-sign { transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
-    .faq[open] summary .faq-sign { transform: rotate(45deg); }
-
-    .skip-link {
-      position: absolute;
-      left: 50%;
-      top: 0.5rem;
-      transform: translate(-50%, -200%);
-      z-index: 100;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      background: #0f172a;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: transform 0.2s ease;
-    }
-    .skip-link:focus-visible { transform: translate(-50%, 0); }
-  </style>
+  <!-- Gate the scroll-reveal start state on JS actually running, so a parse
+       error or a blocked script can never leave a page blank. -->
+  <script>document.documentElement.classList.add('js')</script>
+<!-- /shell:head -->
 </head>
-<body class="min-h-screen relative">
+<body class="min-h-screen bg-ground text-mint">
 
+  <!-- shell:header -->
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Ambient Light Mesh Background -->
-  <div class="ambient-mesh">
-    <div class="mesh-orb-s1"></div>
-    <div class="mesh-orb-s2"></div>
-    <div class="mesh-grid"></div>
-  </div>
+  <header class="sticky top-0 z-50 bg-ground/90 backdrop-blur-sm">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-4">
 
-  <!-- Header Navigation -->
-  <header class="sticky top-4 z-50 px-4 sm:px-6 max-w-5xl mx-auto">
-    <nav aria-label="Main" class="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-full pl-5 pr-2 py-2 flex items-center justify-between">
-
-      <a href="index.html" aria-label="FlowCraft Studio, home" class="flex items-center gap-2.5 shrink-0">
-        <span class="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center p-1.5">
+      <a href="index.html" aria-label="FlowCraft Studio, home"
+         class="flex items-center gap-2 bg-mint text-navy pl-2 pr-3.5 py-1.5 shrink-0">
+        <span class="w-6 h-6 bg-ground flex items-center justify-center p-1">
           <svg viewBox="0 0 512 512" class="w-full h-full" fill="none" aria-hidden="true">
-            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <circle cx="410" cy="350" r="28" fill="#ec4899"/>
+            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ddf5ec" stroke-width="46" stroke-linecap="square"/>
+            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ddf5ec" stroke-width="46" stroke-linecap="square"/>
+            <rect x="382" y="322" width="56" height="56" fill="#fa7d13"/>
           </svg>
         </span>
-        <span class="font-semibold text-[15px] tracking-tight text-slate-950">flowcraft<span class="text-pink-500">.</span></span>
+        <span class="font-bold text-[14px] tracking-tight">FlowCraft</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600">
-        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">Websites</a>
-        <a href="reviews.html" class="text-slate-950 font-semibold transition-colors">Smart Reviews</a>
-        <a href="leadsflowpro.html" class="hover:text-slate-950 transition-colors">Lead Gen</a>
-        <a href="starscanner.html" class="hover:text-slate-950 transition-colors">Diagnostics</a>
-        <a href="about.html" class="hover:text-slate-950 transition-colors">About</a>
-      </div>
+      <nav aria-label="Main" class="nav-pill hidden md:flex">
+        <a href="index.html#build">Apps</a>
+        <a href="reviews.html" aria-current="page">Smart Reviews</a>
+        <a href="index.html#ranking">Ranking</a>
+        <a href="about.html">About</a>
+      </nav>
 
-      <div class="flex items-center gap-1.5">
-        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Automated%20Review%20System%20for%20my%20business." target="_blank" rel="noopener noreferrer" class="pill-button hidden sm:inline-flex px-5 py-2.5 text-[13px] font-semibold items-center gap-1.5">
-          <span>Get Review Setup</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-mint hover:text-flame transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          <span>WhatsApp</span>
         </a>
 
-        <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
-                class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-slate-800 hover:bg-slate-100 transition-colors">
+        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                class="md:hidden w-10 h-10 bg-flame text-navy flex items-center justify-center">
           <span class="sr-only">Menu</span>
-          <svg id="hamburger-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
-          <svg id="close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg id="nav-open-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+          <svg id="nav-close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
-    </nav>
+    </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden mt-2 rounded-3xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg p-2">
-      <a href="sitemaker.html" class="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Websites (SiteMaker)</a>
-      <a href="reviews.html" class="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-950 font-semibold bg-slate-50">Smart Reviews</a>
-      <a href="leadsflowpro.html" class="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Lead Gen (LeadsFlowPro)</a>
-      <a href="starscanner.html" class="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Diagnostics (StarScanner)</a>
-      <a href="about.html" class="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">About</a>
-      <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Review%20System." target="_blank" rel="noopener noreferrer" class="pill-button block mt-1 px-4 py-3 text-center text-sm font-semibold">Get Review Setup</a>
+    <div id="nav-menu" hidden class="md:hidden border-t border-mint/25 bg-ground">
+      <div class="max-w-[1320px] mx-auto px-5 py-3 grid gap-1">
+        <a href="index.html#build" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Apps</a>
+        <a href="reviews.html" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10" aria-current="page">Smart Reviews</a>
+        <a href="index.html#ranking" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Ranking</a>
+        <a href="about.html" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">About</a>
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer"
+           class="btn mt-2 w-full">Message on WhatsApp</a>
+      </div>
     </div>
   </header>
+<!-- /shell:header -->
 
-  <!-- Main Hero -->
-  <main id="main" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-10 sm:pt-14 pb-16 sm:pb-24">
+  <main id="main">
 
-    <!-- Breadcrumb -->
-    <div class="flex items-center gap-2 mb-6 text-xs text-slate-400 font-medium">
-      <a href="index.html" class="hover:text-slate-900 transition-colors">FlowCraft Studio</a>
-      <span>/</span>
-      <span class="text-pink-600 font-semibold">Smart Reviews</span>
+  <!-- HERO -->
+  <section class="relative bg-paper overflow-hidden">
+    <div class="hero-grid parallax absolute -inset-y-[12%] inset-x-0" data-parallax="0.2" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1320px] mx-auto px-5 sm:px-8 pt-14 sm:pt-20">
+      <nav aria-label="Breadcrumb" class="body-s text-navy/70 mb-6 text-center">
+        <a href="index.html" class="underline decoration-navy/30 hover:decoration-navy">FlowCraft Studio</a>
+        <span class="mx-2">/</span><span>Smart Reviews</span>
+      </nav>
+      <h1 class="d1 text-ground text-center max-w-[15ch] mx-auto" data-reveal>Turn every visit into a 5-star review</h1>
+      <p class="lede text-navy text-center mx-auto mt-6 sm:mt-8" data-reveal="wipe">
+        The FlowCraft Smart Review System is a WhatsApp and QR workflow that asks
+        every customer for a Google review at the moment it is easiest to give
+        one. Happy customers rarely get round to writing a review, because a
+        blank review box at the end of a shift is work nobody does. This drafts
+        the wording and hands it to Google in one tap.
+      </p>
+      <p class="body-s text-navy/70 text-center mt-4" data-reveal="wipe">
+        Automated WhatsApp review workflows &middot; zero monthly fees
+      </p>
     </div>
 
-    <!-- Hero Content -->
-    <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-pink-700 text-xs font-semibold mb-5">
-        <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
-        Automated WhatsApp Review Workflows • Zero Monthly Fees
+    <div class="relative z-20 max-w-[1320px] mx-auto px-5 sm:px-8 mt-10 sm:mt-12 -mb-20 sm:-mb-28 flex justify-center">
+      <div class="card-mint w-full max-w-[360px] p-5" data-reveal>
+        <div class="bg-ground px-6 pt-6 pb-5 mb-5">
+          <div class="flex items-center gap-1 text-flame mb-4" aria-hidden="true">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 16 16" shape-rendering="crispEdges"><path d="M7 1h2v3H7zM6 4h4v2H6zM1 6h14v2H1zM3 8h10v2H3zM2 10h4v2H2zM10 10h4v2h-4zM1 12h4v3H1zM11 12h4v3h-4z"/></svg>
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 16 16" shape-rendering="crispEdges"><path d="M7 1h2v3H7zM6 4h4v2H6zM1 6h14v2H1zM3 8h10v2H3zM2 10h4v2H2zM10 10h4v2h-4zM1 12h4v3H1zM11 12h4v3h-4z"/></svg>
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 16 16" shape-rendering="crispEdges"><path d="M7 1h2v3H7zM6 4h4v2H6zM1 6h14v2H1zM3 8h10v2H3zM2 10h4v2H2zM10 10h4v2h-4zM1 12h4v3H1zM11 12h4v3h-4z"/></svg>
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 16 16" shape-rendering="crispEdges"><path d="M7 1h2v3H7zM6 4h4v2H6zM1 6h14v2H1zM3 8h10v2H3zM2 10h4v2H2zM10 10h4v2h-4zM1 12h4v3H1zM11 12h4v3h-4z"/></svg>
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 16 16" shape-rendering="crispEdges"><path d="M7 1h2v3H7zM6 4h4v2H6zM1 6h14v2H1zM3 8h10v2H3zM2 10h4v2H2zM10 10h4v2h-4zM1 12h4v3H1zM11 12h4v3h-4z"/></svg>
+          </div>
+          <p class="serif serif-lg text-mint">Asked for<br>automatically.</p>
+        </div>
+        <a href="#simulator" class="arrow-link text-navy">
+          <span>See what the customer sees</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
       </div>
-      <h1 class="title-display text-3xl sm:text-5xl lg:text-6xl text-slate-950 mb-6">
-        Turn everyday customer interactions into <span class="text-pink-600">5-star Google reviews</span>.
-      </h1>
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal mb-8 max-w-2xl">
-        Satisfied customers rarely take the time to post reviews, while unhappy customers go straight to Google. Our automated system flips that ratio: automated WhatsApp messages and counter QR standees route 4–5 star ratings to Google Maps in one tap, and send 1–3 star feedback directly to the owner in a private chat.
+    </div>
+
+    <!-- pixelfield:hero --><svg class="dissolve" viewBox="0 0 104 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="#0350c4" d="M55 0h1v1h-1zM61 0h1v1h-1zM46 1h1v1h-1zM51 1h1v1h-1zM66 1h1v1h-1zM33 2h1v1h-1zM45 2h2v1h-2zM48 2h1v1h-1zM56 2h1v1h-1zM58 2h1v1h-1zM61 2h1v1h-1zM34 3h1v1h-1zM38 3h1v1h-1zM46 3h3v1h-3zM53 3h1v1h-1zM55 3h1v1h-1zM58 3h1v1h-1zM68 3h1v1h-1zM93 3h1v1h-1zM23 4h1v1h-1zM42 4h1v1h-1zM44 4h1v1h-1zM52 4h1v1h-1zM57 4h1v1h-1zM60 4h1v1h-1zM63 4h1v1h-1zM65 4h1v1h-1zM77 4h1v1h-1zM8 5h1v1h-1zM14 5h1v1h-1zM22 5h1v1h-1zM37 5h1v1h-1zM47 5h1v1h-1zM54 5h1v1h-1zM58 5h1v1h-1zM62 5h1v1h-1zM64 5h1v1h-1zM32 6h1v1h-1zM41 6h1v1h-1zM43 6h1v1h-1zM46 6h2v1h-2zM50 6h1v1h-1zM52 6h1v1h-1zM57 6h2v1h-2zM61 6h3v1h-3zM65 6h1v1h-1zM67 6h1v1h-1zM93 6h1v1h-1zM101 6h1v1h-1zM1 7h1v1h-1zM12 7h2v1h-2zM23 7h2v1h-2zM42 7h1v1h-1zM48 7h2v1h-2zM51 7h4v1h-4zM57 7h2v1h-2zM60 7h2v1h-2zM63 7h1v1h-1zM66 7h2v1h-2zM70 7h1v1h-1zM75 7h1v1h-1zM78 7h1v1h-1zM95 7h1v1h-1zM100 7h1v1h-1zM22 8h1v1h-1zM26 8h1v1h-1zM29 8h2v1h-2zM34 8h1v1h-1zM36 8h2v1h-2zM40 8h1v1h-1zM42 8h1v1h-1zM45 8h2v1h-2zM48 8h2v1h-2zM54 8h1v1h-1zM56 8h2v1h-2zM62 8h2v1h-2zM66 8h1v1h-1zM68 8h2v1h-2zM72 8h1v1h-1zM74 8h1v1h-1zM95 8h1v1h-1zM4 9h2v1h-2zM17 9h1v1h-1zM22 9h1v1h-1zM28 9h1v1h-1zM30 9h1v1h-1zM35 9h2v1h-2zM39 9h1v1h-1zM41 9h1v1h-1zM49 9h4v1h-4zM56 9h2v1h-2zM59 9h1v1h-1zM61 9h1v1h-1zM64 9h1v1h-1zM67 9h1v1h-1zM69 9h1v1h-1zM76 9h1v1h-1zM83 9h1v1h-1zM99 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM11 10h1v1h-1zM19 10h2v1h-2zM23 10h1v1h-1zM26 10h1v1h-1zM28 10h2v1h-2zM38 10h1v1h-1zM43 10h1v1h-1zM45 10h3v1h-3zM49 10h2v1h-2zM52 10h1v1h-1zM54 10h6v1h-6zM62 10h1v1h-1zM64 10h1v1h-1zM66 10h3v1h-3zM70 10h1v1h-1zM77 10h2v1h-2zM84 10h3v1h-3zM93 10h1v1h-1zM95 10h1v1h-1zM99 10h1v1h-1zM102 10h1v1h-1zM7 11h1v1h-1zM19 11h1v1h-1zM25 11h1v1h-1zM30 11h1v1h-1zM33 11h1v1h-1zM35 11h1v1h-1zM37 11h1v1h-1zM40 11h4v1h-4zM47 11h6v1h-6zM54 11h4v1h-4zM60 11h4v1h-4zM65 11h1v1h-1zM67 11h1v1h-1zM71 11h1v1h-1zM75 11h1v1h-1zM91 11h1v1h-1zM94 11h1v1h-1zM97 11h4v1h-4zM103 11h1v1h-1zM2 12h2v1h-2zM12 12h1v1h-1zM17 12h1v1h-1zM23 12h2v1h-2zM27 12h1v1h-1zM29 12h1v1h-1zM32 12h1v1h-1zM37 12h2v1h-2zM42 12h1v1h-1zM44 12h1v1h-1zM49 12h2v1h-2zM52 12h1v1h-1zM56 12h2v1h-2zM59 12h6v1h-6zM66 12h1v1h-1zM68 12h2v1h-2zM73 12h1v1h-1zM75 12h1v1h-1zM77 12h2v1h-2zM83 12h1v1h-1zM85 12h1v1h-1zM95 12h2v1h-2zM100 12h1v1h-1zM103 12h1v1h-1zM2 13h2v1h-2zM7 13h2v1h-2zM10 13h1v1h-1zM13 13h1v1h-1zM17 13h4v1h-4zM24 13h1v1h-1zM26 13h2v1h-2zM32 13h2v1h-2zM36 13h2v1h-2zM39 13h1v1h-1zM42 13h4v1h-4zM47 13h4v1h-4zM52 13h12v1h-12zM65 13h2v1h-2zM69 13h4v1h-4zM75 13h2v1h-2zM78 13h3v1h-3zM85 13h2v1h-2zM88 13h1v1h-1zM90 13h1v1h-1zM92 13h1v1h-1zM95 13h1v1h-1zM98 13h1v1h-1zM100 13h1v1h-1zM103 13h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM11 14h1v1h-1zM18 14h1v1h-1zM20 14h2v1h-2zM28 14h4v1h-4zM33 14h1v1h-1zM35 14h2v1h-2zM40 14h1v1h-1zM44 14h4v1h-4zM49 14h1v1h-1zM51 14h2v1h-2zM55 14h4v1h-4zM60 14h4v1h-4zM65 14h2v1h-2zM68 14h1v1h-1zM70 14h1v1h-1zM73 14h1v1h-1zM75 14h4v1h-4zM81 14h1v1h-1zM84 14h1v1h-1zM86 14h1v1h-1zM88 14h1v1h-1zM95 14h3v1h-3zM1 15h2v1h-2zM9 15h2v1h-2zM12 15h2v1h-2zM19 15h2v1h-2zM22 15h3v1h-3zM30 15h1v1h-1zM32 15h1v1h-1zM36 15h2v1h-2zM39 15h1v1h-1zM41 15h2v1h-2zM45 15h6v1h-6zM52 15h18v1h-18zM71 15h3v1h-3zM76 15h2v1h-2zM84 15h1v1h-1zM86 15h1v1h-1zM89 15h2v1h-2zM93 15h2v1h-2zM96 15h1v1h-1zM100 15h1v1h-1zM2 16h1v1h-1zM5 16h2v1h-2zM12 16h5v1h-5zM18 16h3v1h-3zM22 16h1v1h-1zM31 16h1v1h-1zM34 16h4v1h-4zM39 16h32v1h-32zM73 16h2v1h-2zM76 16h1v1h-1zM80 16h1v1h-1zM82 16h1v1h-1zM84 16h1v1h-1zM87 16h1v1h-1zM91 16h2v1h-2zM96 16h3v1h-3zM102 16h1v1h-1zM1 17h2v1h-2zM4 17h2v1h-2zM7 17h4v1h-4zM13 17h2v1h-2zM16 17h2v1h-2zM19 17h1v1h-1zM21 17h2v1h-2zM24 17h1v1h-1zM26 17h2v1h-2zM30 17h2v1h-2zM33 17h1v1h-1zM35 17h4v1h-4zM40 17h1v1h-1zM42 17h2v1h-2zM45 17h16v1h-16zM62 17h14v1h-14zM78 17h1v1h-1zM80 17h1v1h-1zM83 17h2v1h-2zM87 17h3v1h-3zM91 17h1v1h-1zM93 17h1v1h-1zM97 17h2v1h-2zM100 17h4v1h-4zM1 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h2v1h-2zM13 18h6v1h-6zM21 18h1v1h-1zM25 18h3v1h-3zM30 18h1v1h-1zM32 18h3v1h-3zM36 18h3v1h-3zM41 18h36v1h-36zM78 18h1v1h-1zM80 18h1v1h-1zM82 18h2v1h-2zM86 18h1v1h-1zM88 18h2v1h-2zM92 18h1v1h-1zM94 18h1v1h-1zM96 18h2v1h-2zM99 18h5v1h-5zM1 19h1v1h-1zM3 19h2v1h-2zM6 19h1v1h-1zM8 19h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM14 19h2v1h-2zM17 19h2v1h-2zM22 19h3v1h-3zM26 19h1v1h-1zM29 19h3v1h-3zM33 19h2v1h-2zM36 19h3v1h-3zM40 19h1v1h-1zM42 19h26v1h-26zM69 19h2v1h-2zM72 19h1v1h-1zM74 19h5v1h-5zM81 19h2v1h-2zM85 19h2v1h-2zM88 19h2v1h-2zM92 19h4v1h-4zM98 19h2v1h-2zM101 19h3v1h-3zM1 20h1v1h-1zM3 20h1v1h-1zM6 20h3v1h-3zM10 20h8v1h-8zM19 20h1v1h-1zM21 20h3v1h-3zM25 20h3v1h-3zM30 20h4v1h-4zM36 20h42v1h-42zM79 20h2v1h-2zM82 20h1v1h-1zM84 20h2v1h-2zM88 20h3v1h-3zM92 20h5v1h-5zM98 20h5v1h-5zM1 21h1v1h-1zM3 21h1v1h-1zM5 21h4v1h-4zM11 21h7v1h-7zM19 21h2v1h-2zM22 21h2v1h-2zM25 21h4v1h-4zM30 21h6v1h-6zM38 21h36v1h-36zM75 21h3v1h-3zM79 21h4v1h-4zM84 21h4v1h-4zM89 21h2v1h-2zM92 21h4v1h-4zM97 21h7v1h-7zM0 22h1v1h-1zM2 22h6v1h-6zM10 22h18v1h-18zM29 22h16v1h-16zM46 22h31v1h-31zM78 22h1v1h-1zM82 22h2v1h-2zM85 22h1v1h-1zM87 22h5v1h-5zM93 22h8v1h-8zM102 22h2v1h-2zM0 23h82v1h-82zM83 23h21v1h-21zM1 24h1v1h-1zM4 24h100v1h-100zM0 25h11v1h-11zM12 25h80v1h-80zM93 25h11v1h-11z"/><path fill="#fa7d13" d="M74 6h1v1h-1zM53 8h1v1h-1zM62 9h1v1h-1zM66 11h1v1h-1zM16 12h1v1h-1zM54 12h1v1h-1zM65 12h1v1h-1zM26 14h1v1h-1zM39 14h1v1h-1zM50 14h1v1h-1zM59 14h1v1h-1zM27 15h1v1h-1zM40 15h1v1h-1zM51 15h1v1h-1zM74 15h1v1h-1zM12 17h1v1h-1zM25 17h1v1h-1zM44 17h1v1h-1zM61 17h1v1h-1zM11 19h1v1h-1zM20 19h1v1h-1zM68 19h1v1h-1zM29 20h1v1h-1zM37 21h1v1h-1zM74 21h1v1h-1zM78 21h1v1h-1zM28 22h1v1h-1zM45 22h1v1h-1zM84 22h1v1h-1zM86 22h1v1h-1zM101 22h1v1h-1zM11 25h1v1h-1zM92 25h1v1h-1z"/></svg><!-- /pixelfield:hero -->
+  </section>
+
+  <!-- 01 SIMULATOR -->
+  <section id="simulator" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24">
+    <div class="flex items-start gap-4 sm:gap-7">
+      <span class="num pt-2 sm:pt-4 text-aqua">01</span>
+      <h2 class="d2 text-mint max-w-[13ch]" data-reveal>What the customer sees</h2>
+    </div>
+    <hr class="rule-dash mt-7 sm:mt-10">
+
+    <p class="lede text-aqua mt-8 md:ml-[41.666%]" data-reveal="wipe">
+      Tap any star to see what that customer gets next.
+    </p>
+
+    <div class="card-paper p-6 sm:p-10 mt-8 sm:mt-12" data-reveal>
+      <p class="serif serif-lg text-navy mb-6">How was your service today?</p>
+
+      <div class="flex flex-wrap gap-2 sm:gap-3" role="group" aria-label="Pick a star rating to simulate">
+        <button type="button" class="star-btn" data-stars="1" aria-pressed="false"><span class="star-face" aria-hidden="true"></span><span class="star-num tnum">1</span></button>
+        <button type="button" class="star-btn" data-stars="2" aria-pressed="false"><span class="star-face" aria-hidden="true"></span><span class="star-num tnum">2</span></button>
+        <button type="button" class="star-btn" data-stars="3" aria-pressed="false"><span class="star-face" aria-hidden="true"></span><span class="star-num tnum">3</span></button>
+        <button type="button" class="star-btn" data-stars="4" aria-pressed="false"><span class="star-face" aria-hidden="true"></span><span class="star-num tnum">4</span></button>
+        <button type="button" class="star-btn" data-stars="5" aria-pressed="false"><span class="star-face" aria-hidden="true"></span><span class="star-num tnum">5</span></button>
+      </div>
+
+      <div id="sim-result" class="mt-8 p-6 bg-ground text-mint" role="status" aria-live="polite">
+        <p id="sim-title" class="serif serif-lg mb-2">Select a star rating above</p>
+        <p id="sim-desc" class="body-s text-aqua">
+          Every rating opens the same public Google review screen. What changes
+          is the wording it drafts, and who else hears about it.
+        </p>
+        <p id="sim-badge" class="body-s mt-4"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 THE WORKFLOW -->
+  <section id="workflow" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-20 sm:pt-32">
+    <div class="flex items-start justify-center gap-4 sm:gap-7">
+      <span class="num pt-2 sm:pt-4 text-aqua">02</span>
+      <h2 class="d2 text-mint text-center max-w-[16ch]" data-reveal>How it works in practice</h2>
+    </div>
+    <p class="lede text-aqua mx-auto text-center mt-6 sm:mt-8" data-reveal="wipe">
+      Nothing technical to set up on your side. The workflows get configured for
+      you and your QR assets are generated.
+    </p>
+
+    <ol class="grid sm:grid-cols-3 gap-px bg-ground mt-10 sm:mt-14">
+
+      <li class="card-mint p-6 sm:p-7 pt-12">
+        <span class="num text-ground block mb-6 text-right">01</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">The trigger</h3>
+        <p class="body-s mb-4">
+          Customers get an automated follow-up WhatsApp message shortly after
+          their appointment, or scan a desk QR card while paying at the counter.
+        </p>
+        <p class="body-s text-navy/70 mt-auto">Works on all smartphones &middot; no apps to download</p>
+      </li>
+
+      <li class="card-mint p-6 sm:p-7 pt-12">
+        <span class="num text-ground block mb-6 text-right">02</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">The draft does the work</h3>
+        <p class="body-s mb-4">
+          Whatever they tap, the customer lands on your official Google review
+          screen with their rating carried over and wording already drafted from
+          the parts of the visit they picked.
+        </p>
+        <p class="body-s text-navy/70 mt-auto">No gating &middot; same link for every customer</p>
+      </li>
+
+      <li class="card-mint p-6 sm:p-7 pt-12">
+        <span class="num text-ground block mb-6 text-right">03</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">SiteMaker auto-sync</h3>
+        <p class="body-s mb-4">
+          Every newly earned 5-star Google review is pulled onto your SiteMaker
+          testimonial section in real time, so trust compounds for the next
+          visitor.
+        </p>
+        <p class="body-s text-navy/70 mt-auto">Live verified badges &middot; helps the Maps 3-Pack</p>
+      </li>
+
+    </ol>
+
+    <div class="grid lg:grid-cols-12 gap-px bg-ground mt-px">
+      <figure class="card-paper p-5 sm:p-7 lg:col-span-5" data-reveal>
+        <div class="bg-navy h-[340px] flex justify-center overflow-hidden">
+          <img src="assets/showcase/derby-review.webp" width="390" height="844" loading="lazy" decoding="async"
+               class="h-full w-auto object-contain" alt="The review screen built for B&amp;B Hotel Derby, branded in the hotel's own colours">
+        </div>
+        <figcaption class="body-s text-navy/70 mt-4">
+          The screen a guest sees at B&amp;B Hotel Derby, on Pride Park.
+        </figcaption>
+      </figure>
+
+      <div class="card-mint p-5 sm:p-7 lg:col-span-7 flex flex-col justify-center" data-reveal>
+        <p class="label-mark mb-2">In production</p>
+        <h3 class="h-card mb-3">B&amp;B Hotel Derby, UK</h3>
+        <p class="body-s mb-4">
+          A hotel chain property running the system in its own colours rather
+          than ours. A guest taps a star, picks the parts of the stay worth
+          mentioning, and gets a review written for them to edit and post.
+        </p>
+        <p class="body-s">
+          It was set up remotely from Navi Mumbai, which is the point: the
+          system does not need anyone on site to run it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 BUILT FOR -->
+  <section id="trades" class="relative overflow-hidden pt-20 sm:pt-32 pb-16 sm:pb-24">
+    <div class="pixel-texture parallax absolute -inset-y-[10%] inset-x-0" data-parallax="0.2" aria-hidden="true"></div>
+    <div class="pixel-texture pixel-texture-b parallax absolute -inset-y-[10%] inset-x-0" data-parallax="0.12" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1320px] mx-auto px-5 sm:px-8">
+      <div class="flex items-start gap-4 sm:gap-7">
+        <span class="num pt-2 sm:pt-4 text-aqua">03</span>
+        <h2 class="d2 text-mint max-w-[14ch]" data-reveal>Built for local trades</h2>
+      </div>
+      <p class="lede text-aqua mt-7 md:ml-[41.666%]" data-reveal="wipe">
+        High-volume service businesses, where one negative public review can
+        cost tens of thousands in lost customer trust.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-14">
-        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Automated%20Review%20System%20for%20my%20business." target="_blank" rel="noopener noreferrer"
-           class="pill-button px-7 py-3.5 text-xs font-semibold inline-flex items-center justify-center gap-2">
-          <span>Get Review Setup on WhatsApp</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#simulator" class="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-semibold text-xs transition-all inline-flex items-center justify-center gap-2">
-          <span>Try Interactive Star Shield</span>
-          <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
-        </a>
+      <div class="grid sm:grid-cols-2 gap-px bg-mint/25 mt-10 sm:mt-16" data-reveal="wipe">
+        <div class="card-paper p-6 sm:p-8">
+          <h3 class="serif serif-lg mb-2">Dentists and clinics</h3>
+          <p class="body-s">Patient discharge triggers over WhatsApp reach happy patients right after a pain-free treatment.</p>
+        </div>
+        <div class="card-paper p-6 sm:p-8">
+          <h3 class="serif serif-lg mb-2">Salons and spas</h3>
+          <p class="body-s">Counter QR desk displays turn a compliment at the billing counter into an official 5-star Google review.</p>
+        </div>
+        <div class="card-paper p-6 sm:p-8">
+          <h3 class="serif serif-lg mb-2">Cafes and restaurants</h3>
+          <p class="body-s">Printed QR inserts on the bill book prompt diners while the meal is still fresh.</p>
+        </div>
+        <div class="card-paper p-6 sm:p-8">
+          <h3 class="serif serif-lg mb-2">Garages and detailers</h3>
+          <p class="body-s">Vehicle handover WhatsApp alerts reach owners as they pick up a freshly serviced car.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Interactive Sentiment Shield Simulator -->
-    <section id="simulator" class="mb-20">
-      <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-sm max-w-4xl mx-auto">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-pink-600">Live Simulator</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-950 mt-1">Experience How the Sentiment Shield Works</h2>
-          </div>
-          <span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full self-start sm:self-auto">Tap any star below to test</span>
+  <!-- 04 PRICING -->
+  <section id="pricing" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-8 sm:pt-16">
+    <div class="flex items-start gap-4 sm:gap-7">
+      <span class="num pt-2 sm:pt-4 text-aqua">04</span>
+      <h2 class="d2 text-mint max-w-[15ch]" data-reveal>Paid once, not monthly</h2>
+    </div>
+    <hr class="rule-dash mt-7 sm:mt-10">
+
+    <p class="lede text-aqua mt-8 md:ml-[41.666%]" data-reveal="wipe">
+      Tools like Birdeye and Podium charge &#8377;3,000 to &#8377;7,000 every
+      month for basic review routing. You should pay once and own the workflow.
+    </p>
+
+    <div class="grid lg:grid-cols-2 gap-8 mt-10 sm:mt-16 items-start">
+
+      <article class="card-paper p-6 sm:p-8" data-reveal>
+        <div class="bg-flame p-5 mb-6">
+          <p class="body-s text-navy mb-1">FlowCraft Smart Reviews</p>
+          <p class="serif serif-lg text-navy">Zero retainers</p>
         </div>
+        <p class="d2 text-ground mb-1 tnum">&#8377;2,999</p>
+        <p class="serif serif-md mb-5">one time</p>
+        <p class="body-s mb-5">
+          Or bundled free with the &#8377;5,999 SiteMaker website package.
+        </p>
+        <ul class="body-s space-y-2.5 mb-7">
+          <li>Automated WhatsApp review funnel</li>
+          <li>Direct WhatsApp line to the owner for complaints</li>
+          <li>Custom high-resolution desk QR standee assets</li>
+          <li>Live SiteMaker testimonial sync</li>
+          <li>No monthly subscription, ever</li>
+        </ul>
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Automated%20Review%20System."
+           target="_blank" rel="noopener noreferrer" class="btn w-full">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          <span>Get started on WhatsApp</span>
+        </a>
+      </article>
 
-        <div class="py-8 text-center">
-          <p class="text-sm font-medium text-slate-700 mb-4">How was your service today?</p>
-          
-          <!-- Star Buttons -->
-          <div class="flex justify-center items-center gap-2 sm:gap-3" id="star-container">
-            <button type="button" class="star-btn w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 flex flex-col items-center justify-center text-xl sm:text-2xl transition-all" data-stars="1" aria-label="1 star">
-              <span>⭐</span>
-              <span class="text-[10px] font-semibold text-slate-500">1</span>
-            </button>
-            <button type="button" class="star-btn w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 flex flex-col items-center justify-center text-xl sm:text-2xl transition-all" data-stars="2" aria-label="2 stars">
-              <span>⭐</span>
-              <span class="text-[10px] font-semibold text-slate-500">2</span>
-            </button>
-            <button type="button" class="star-btn w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 flex flex-col items-center justify-center text-xl sm:text-2xl transition-all" data-stars="3" aria-label="3 stars">
-              <span>⭐</span>
-              <span class="text-[10px] font-semibold text-slate-500">3</span>
-            </button>
-            <button type="button" class="star-btn w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 flex flex-col items-center justify-center text-xl sm:text-2xl transition-all" data-stars="4" aria-label="4 stars">
-              <span>⭐</span>
-              <span class="text-[10px] font-semibold text-slate-500">4</span>
-            </button>
-            <button type="button" class="star-btn w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 flex flex-col items-center justify-center text-xl sm:text-2xl transition-all" data-stars="5" aria-label="5 stars">
-              <span>⭐</span>
-              <span class="text-[10px] font-semibold text-slate-500">5</span>
-            </button>
-          </div>
-
-          <!-- Dynamic Simulator Output Box -->
-          <div id="sim-result" class="mt-6 p-5 rounded-2xl bg-slate-50 border border-slate-200 text-left max-w-lg mx-auto">
-            <div class="flex items-start gap-3.5">
-              <span class="text-2xl" id="sim-icon">👆</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900" id="sim-title">Select a star rating above</h3>
-                <p class="text-xs text-slate-600 mt-1 leading-relaxed" id="sim-desc">
-                  See how the system routes high ratings straight to Google Maps while intercepting low ratings to protect your reputation.
-                </p>
-                <div id="sim-badge" class="mt-3 inline-block"></div>
-              </div>
-            </div>
-          </div>
+      <article class="card-paper p-6 sm:p-8" data-reveal>
+        <div class="bg-navy p-5 mb-6">
+          <p class="body-s text-aqua mb-1">Typical software platforms</p>
+          <p class="serif serif-lg text-mint">Recurring SaaS</p>
         </div>
+        <p class="d2 text-navy mb-1 tnum">&#8377;3,500&ndash;7,000</p>
+        <p class="serif serif-md mb-5">per month</p>
+        <p class="body-s mb-5">
+          Between &#8377;42,000 and &#8377;84,000 every year.
+        </p>
+        <ul class="body-s space-y-2.5 mb-7 text-navy/75">
+          <li>Recurring monthly invoices</li>
+          <li>Expensive enterprise SMS credits required</li>
+          <li>Complicated software dashboards to manage</li>
+          <li>Review links stop working if you cancel</li>
+        </ul>
+        <p class="body-s text-navy/70">
+          FlowCraft replaces the dashboard with a WhatsApp workflow you own.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee mt-20 sm:mt-28">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span class="marquee__item serif serif-md">Smart Reviews<span class="text-ground">&#9642;</span>&#8377;2,999 once<span class="text-ground">&#9642;</span>Live in 48 hours<span class="text-ground">&#9642;</span>No monthly SaaS<span class="text-ground">&#9642;</span></span>
+        <span class="marquee__item serif serif-md">Smart Reviews<span class="text-ground">&#9642;</span>&#8377;2,999 once<span class="text-ground">&#9642;</span>Live in 48 hours<span class="text-ground">&#9642;</span>No monthly SaaS<span class="text-ground">&#9642;</span></span>
+      </div>
+      <div class="marquee__group" aria-hidden="true">
+        <span class="marquee__item serif serif-md">Smart Reviews<span class="text-ground">&#9642;</span>&#8377;2,999 once<span class="text-ground">&#9642;</span>Live in 48 hours<span class="text-ground">&#9642;</span>No monthly SaaS<span class="text-ground">&#9642;</span></span>
+        <span class="marquee__item serif serif-md">Smart Reviews<span class="text-ground">&#9642;</span>&#8377;2,999 once<span class="text-ground">&#9642;</span>Live in 48 hours<span class="text-ground">&#9642;</span>No monthly SaaS<span class="text-ground">&#9642;</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 FAQ + CTA -->
+  <div class="bg-paper text-navy">
+
+    <section id="faq" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24">
+      <div class="flex items-start gap-4 sm:gap-7">
+        <span class="num pt-2 sm:pt-4 text-ground/70">05</span>
+        <h2 class="d2 text-ground max-w-[13ch]" data-reveal>Common questions</h2>
+      </div>
+      <hr class="rule-ink mt-7 sm:mt-10">
+
+      <div class="md:ml-[41.666%]">
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>How does the 4 to 5 star Google redirect work?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            When a customer taps 4 or 5 stars on your review landing page or
+            WhatsApp message, they go straight to your official Google Maps
+            review dialog with 5 stars already selected. All they do is tap
+            "Post".
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>What happens if an unhappy customer gives 1, 2 or 3 stars?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            They get the same Google review link as everyone else, and next to
+            it a direct WhatsApp line to you: "Sorry that was not right. Tell us
+            what went wrong and we will sort it." Nothing is hidden and no
+            rating is filtered. You simply hear about the problem while the
+            customer is still in front of you instead of reading about it a week
+            later.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>Is this compliant with Google review guidelines?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            Yes. Review gating is a way of filtering customers by their
+            star rating before deciding whether to show them a public review
+            link, and it is what Google's review policy and the FTC's review
+            rule prohibit. This system does not do it. Everyone gets the same
+            public link, nothing is offered in exchange for a review, and no
+            review is written by a bot.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>Do customers have to install an app?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            No. The whole system runs in mobile browsers and in regular
+            WhatsApp. Your customers install nothing and log in to nothing.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>How fast can you set this up for my business?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            Usually 24 to 48 hours, once you provide your Google Business
+            Profile URL and your manager's WhatsApp number.
+          </p>
+        </details>
+
       </div>
     </section>
 
-    <!-- The 3-Step Mechanics -->
-    <section class="mb-20">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-semibold uppercase tracking-wider text-pink-600">The Workflow</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 mt-1.5">How It Works in Practice</h2>
-        <p class="text-sm sm:text-base text-slate-600 mt-2">Zero technical setup required on your part. We configure the workflows and generate your custom QR assets.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Step 1 -->
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl">
-          <div class="w-10 h-10 rounded-2xl bg-pink-100 text-pink-700 font-bold flex items-center justify-center mb-5 text-sm">01</div>
-          <h3 class="text-lg font-bold text-slate-950 mb-2">The Trigger</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Customers receive an automated follow-up WhatsApp message shortly after their appointment, or scan a dedicated desk QR card while paying their bill at the counter.
+    <section class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-16 sm:pb-24">
+      <div class="grid md:grid-cols-12 gap-8 items-start">
+        <h2 class="md:col-span-7 d2 text-ground" data-reveal>Earn more reviews</h2>
+        <div class="md:col-span-5">
+          <p class="lede mb-6" data-reveal="wipe">
+            More 5-star Google reviews push your ranking up in the Google Maps
+            local 3-Pack. The automated WhatsApp workflow is live within 48
+            hours.
           </p>
-          <ul class="mt-4 space-y-2 text-xs text-slate-500 font-medium">
-            <li class="flex items-center gap-1.5">✓ Works on all smartphones</li>
-            <li class="flex items-center gap-1.5">✓ Zero apps to download</li>
-          </ul>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl border-pink-200/80 bg-pink-50/20">
-          <div class="w-10 h-10 rounded-2xl bg-slate-950 text-white font-bold flex items-center justify-center mb-5 text-sm">02</div>
-          <h3 class="text-lg font-bold text-slate-950 mb-2">The Sentiment Shield</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            4–5 star ratings immediately open your official Google Maps review screen with 5 stars pre-selected. 1–3 star ratings open a direct WhatsApp issue resolver with management.
-          </p>
-          <ul class="mt-4 space-y-2 text-xs text-slate-500 font-medium">
-            <li class="flex items-center gap-1.5">✓ Public rating goes up</li>
-            <li class="flex items-center gap-1.5">✓ Negative reviews handled privately</li>
-          </ul>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl">
-          <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 font-bold flex items-center justify-center mb-5 text-sm">03</div>
-          <h3 class="text-lg font-bold text-slate-950 mb-2">SiteMaker Auto-Sync</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Every newly earned 5-star Google review is pulled directly onto your SiteMaker website’s testimonial section in real-time, building compounding trust for website visitors.
-          </p>
-          <ul class="mt-4 space-y-2 text-xs text-slate-500 font-medium">
-            <li class="flex items-center gap-1.5">✓ Live verified review badges</li>
-            <li class="flex items-center gap-1.5">✓ Boosts Google Maps 3-Pack rank</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Target Industries in India -->
-    <section class="mb-20">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-semibold uppercase tracking-wider text-pink-600">Built for Local Trades</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 mt-1.5">Designed for High-Volume Service Businesses</h2>
-        <p class="text-sm text-slate-600 mt-2">Where one negative public review can cost tens of thousands in lost customer trust.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="glass-panel p-5 rounded-2xl">
-          <span class="text-2xl mb-2 block">🦷</span>
-          <h3 class="text-sm font-bold text-slate-900">Dentists & Clinics</h3>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">Patient discharge triggers via WhatsApp ensure happy patients post right after pain-free treatments.</p>
-        </div>
-        <div class="glass-panel p-5 rounded-2xl">
-          <span class="text-2xl mb-2 block">💇‍♀️</span>
-          <h3 class="text-sm font-bold text-slate-900">Salons & Spas</h3>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">Counter QR desk displays turn compliments at the billing counter into official 5-star Google reviews.</p>
-        </div>
-        <div class="glass-panel p-5 rounded-2xl">
-          <span class="text-2xl mb-2 block">☕</span>
-          <h3 class="text-sm font-bold text-slate-900">Cafes & Restaurants</h3>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">Printed QR inserts on the bill book prompt diners while their dining experience is fresh.</p>
-        </div>
-        <div class="glass-panel p-5 rounded-2xl">
-          <span class="text-2xl mb-2 block">🚗</span>
-          <h3 class="text-sm font-bold text-slate-900">Garages & Detailers</h3>
-          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">Vehicle handover WhatsApp alerts prompt car owners when they pick up their freshly serviced vehicle.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing Comparison: FlowCraft vs Typical SaaS Retainers -->
-    <section class="mb-20">
-      <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-200/80">
-        <div class="max-w-2xl mb-8">
-          <span class="text-xs font-semibold uppercase tracking-wider text-pink-600">Fair Pricing</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 mt-1">One-Time Setup vs. The Monthly SaaS Tax</h2>
-          <p class="text-sm text-slate-600 mt-2">Tools like Birdeye and Podium charge ₹3,000 to ₹7,000 every single month for basic review routing. We believe you should pay once and own your workflow.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- FlowCraft Plan -->
-          <div class="p-6 rounded-3xl bg-slate-950 text-white flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-pink-400">FlowCraft Smart Reviews</span>
-                <span class="text-xs px-2.5 py-1 rounded-full bg-pink-500/20 text-pink-300 font-semibold">Zero Retainers</span>
-              </div>
-              <div class="text-3xl sm:text-4xl font-extrabold mb-1">₹2,999 <span class="text-xs font-medium text-slate-400">one time</span></div>
-              <p class="text-xs text-slate-400 mb-6">Or bundled completely free with your ₹5,999 SiteMaker website package.</p>
-              
-              <ul class="space-y-3 text-xs text-slate-200">
-                <li class="flex items-center gap-2">✓ Automated WhatsApp Review Funnel</li>
-                <li class="flex items-center gap-2">✓ Negative Feedback Interceptor Shield</li>
-                <li class="flex items-center gap-2">✓ Custom High-Resolution Desk QR Standee Assets</li>
-                <li class="flex items-center gap-2">✓ Live SiteMaker Website Testimonial Sync</li>
-                <li class="flex items-center gap-2">✓ No monthly subscription, ever</li>
-              </ul>
-            </div>
-
-            <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Review%20System." target="_blank" rel="noopener noreferrer"
-               class="mt-8 block text-center py-3 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-semibold text-xs transition-colors">
-              Get Started via WhatsApp
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Automated%20Review%20System."
+               target="_blank" rel="noopener noreferrer" class="btn">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+              <span>Message Subhan</span>
+            </a>
+            <a href="sitemaker.html" class="btn btn-ink">
+              <span>Need a website too?</span>
             </a>
           </div>
-
-          <!-- Agency/SaaS Comparison -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200 text-slate-800 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Typical Software Platforms</span>
-                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-semibold">Recurring SaaS</span>
-              </div>
-              <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1">₹3,500 – ₹7,000 <span class="text-xs font-medium text-slate-500">per month</span></div>
-              <p class="text-xs text-slate-500 mb-6">Costing between ₹42,000 and ₹84,000 every year.</p>
-
-              <ul class="space-y-3 text-xs text-slate-600">
-                <li class="flex items-center gap-2 text-slate-400">✕ Recurring monthly invoices</li>
-                <li class="flex items-center gap-2 text-slate-400">✕ Expensive enterprise SMS credits required</li>
-                <li class="flex items-center gap-2 text-slate-400">✕ Complicated software dashboards to manage</li>
-                <li class="flex items-center gap-2 text-slate-400">✕ Review links stop working if you cancel</li>
-              </ul>
-            </div>
-
-            <div class="mt-8 p-3 rounded-2xl bg-slate-50 text-center text-xs text-slate-500 border border-slate-100">
-              FlowCraft replaces complicated dashboards with simple WhatsApp workflows you own.
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="mb-20">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-xs font-semibold uppercase tracking-wider text-pink-600">Common Questions</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 mt-1.5">Frequently Asked Questions</h2>
-      </div>
-
-      <div class="space-y-3 max-w-3xl mx-auto">
-        <details class="faq glass-panel rounded-2xl p-5 border border-slate-200/80">
-          <summary class="flex items-center justify-between text-sm font-bold text-slate-900 select-none">
-            <span>How does the 4–5 star Google redirect work?</span>
-            <span class="faq-sign text-lg font-light text-slate-400 ml-4">+</span>
-          </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-            When a customer taps 4 or 5 stars on your review landing page or WhatsApp message, they are immediately redirected to your official Google Maps business review modal with 5 stars already selected. All they have to do is tap "Post".
-          </p>
-        </details>
-
-        <details class="faq glass-panel rounded-2xl p-5 border border-slate-200/80">
-          <summary class="flex items-center justify-between text-sm font-bold text-slate-900 select-none">
-            <span>What happens if an unhappy customer gives 1, 2, or 3 stars?</span>
-            <span class="faq-sign text-lg font-light text-slate-400 ml-4">+</span>
-          </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-            The Sentiment Shield triggers immediately: instead of directing them to Google Maps, it opens a prefilled WhatsApp conversation with the business owner or clinic manager saying: <em>"I noticed your recent visit wasn't ideal. Please tell us what went wrong so we can resolve this right away."</em> This allows you to fix complaints privately before they hurt your public rating.
-          </p>
-        </details>
-
-        <details class="faq glass-panel rounded-2xl p-5 border border-slate-200/80">
-          <summary class="flex items-center justify-between text-sm font-bold text-slate-900 select-none">
-            <span>Is this compliant with Google Review guidelines?</span>
-            <span class="faq-sign text-lg font-light text-slate-400 ml-4">+</span>
-          </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-            Yes. We do not generate artificial bot reviews or block customers from searching Google independently. The system provides a convenient direct customer service routing channel for unhappy customers to resolve issues with management.
-          </p>
-        </details>
-
-        <details class="faq glass-panel rounded-2xl p-5 border border-slate-200/80">
-          <summary class="flex items-center justify-between text-sm font-bold text-slate-900 select-none">
-            <span>Do customers have to install an app?</span>
-            <span class="faq-sign text-lg font-light text-slate-400 ml-4">+</span>
-          </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-            No. The entire system operates in mobile browsers and through regular WhatsApp. It requires zero installations, logins, or passwords for your customers.
-          </p>
-        </details>
-
-        <details class="faq glass-panel rounded-2xl p-5 border border-slate-200/80">
-          <summary class="flex items-center justify-between text-sm font-bold text-slate-900 select-none">
-            <span>How fast can you set this up for my business?</span>
-            <span class="faq-sign text-lg font-light text-slate-400 ml-4">+</span>
-          </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-            Setup typically takes 24 to 48 hours once you provide your Google Business Profile URL and your manager's WhatsApp number.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Final Call to Action -->
-    <section class="glass-panel p-8 sm:p-12 rounded-3xl text-center max-w-3xl mx-auto border border-pink-200/80 bg-gradient-to-b from-white to-pink-50/40">
-      <span class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 inline-flex items-center justify-center text-lg mb-4">⭐</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mb-3">Shield Your Reputation & Dominate Google Maps</h2>
-      <p class="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">
-        More 5-star Google reviews directly increases your ranking in the Google Maps Local 3-Pack. Get your automated WhatsApp workflow set up within 48 hours.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20set%20up%20the%20Smart%20Automated%20Review%20System." target="_blank" rel="noopener noreferrer"
-           class="pill-button px-8 py-3.5 text-xs font-semibold inline-flex items-center justify-center gap-2 w-full sm:w-auto">
-          <span>Message Subhan on WhatsApp</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="sitemaker.html" class="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-semibold text-xs transition-all w-full sm:w-auto inline-flex items-center justify-center">
-          <span>Need a Website Too? Explore SiteMaker (₹5,999)</span>
-        </a>
-      </div>
-    </section>
+    <!-- pixelfield:footer --><svg class="dissolve" viewBox="0 0 104 11" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="#0350c4" d="M57 0h1v1h-1zM68 0h1v1h-1zM54 1h1v1h-1zM43 2h1v1h-1zM45 2h1v1h-1zM47 2h2v1h-2zM53 2h1v1h-1zM55 2h1v1h-1zM57 2h1v1h-1zM12 3h1v1h-1zM39 3h1v1h-1zM47 3h1v1h-1zM52 3h5v1h-5zM58 3h4v1h-4zM72 3h1v1h-1zM76 3h1v1h-1zM102 3h1v1h-1zM2 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM34 4h1v1h-1zM37 4h1v1h-1zM39 4h2v1h-2zM42 4h3v1h-3zM46 4h3v1h-3zM50 4h10v1h-10zM61 4h3v1h-3zM65 4h1v1h-1zM67 4h2v1h-2zM70 4h1v1h-1zM75 4h1v1h-1zM79 4h1v1h-1zM83 4h1v1h-1zM86 4h1v1h-1zM93 4h1v1h-1zM100 4h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM23 5h1v1h-1zM25 5h4v1h-4zM32 5h3v1h-3zM38 5h2v1h-2zM42 5h3v1h-3zM46 5h4v1h-4zM51 5h11v1h-11zM63 5h3v1h-3zM67 5h3v1h-3zM72 5h2v1h-2zM77 5h2v1h-2zM83 5h2v1h-2zM89 5h1v1h-1zM91 5h1v1h-1zM93 5h3v1h-3zM98 5h1v1h-1zM100 5h3v1h-3zM7 6h3v1h-3zM15 6h3v1h-3zM19 6h3v1h-3zM23 6h1v1h-1zM26 6h1v1h-1zM32 6h1v1h-1zM34 6h1v1h-1zM37 6h1v1h-1zM40 6h4v1h-4zM46 6h30v1h-30zM77 6h1v1h-1zM81 6h1v1h-1zM84 6h1v1h-1zM86 6h2v1h-2zM89 6h2v1h-2zM95 6h2v1h-2zM101 6h1v1h-1zM1 7h9v1h-9zM11 7h1v1h-1zM14 7h1v1h-1zM16 7h4v1h-4zM22 7h2v1h-2zM25 7h4v1h-4zM31 7h1v1h-1zM33 7h4v1h-4zM38 7h12v1h-12zM51 7h26v1h-26zM78 7h2v1h-2zM81 7h3v1h-3zM88 7h4v1h-4zM93 7h2v1h-2zM96 7h2v1h-2zM100 7h2v1h-2zM0 8h3v1h-3zM5 8h3v1h-3zM9 8h4v1h-4zM14 8h3v1h-3zM18 8h4v1h-4zM23 8h5v1h-5zM29 8h52v1h-52zM82 8h3v1h-3zM86 8h4v1h-4zM91 8h5v1h-5zM97 8h7v1h-7zM0 9h2v1h-2zM3 9h59v1h-59zM63 9h41v1h-41zM0 10h50v1h-50zM51 10h53v1h-53z"/><path fill="#fa7d13" d="M103 4h1v1h-1zM16 5h1v1h-1zM66 5h1v1h-1zM35 6h1v1h-1zM13 7h1v1h-1zM50 7h1v1h-1zM22 8h1v1h-1zM28 8h1v1h-1zM62 9h1v1h-1zM50 10h1v1h-1z"/></svg><!-- /pixelfield:footer -->
+  </div>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200/80 bg-white/60 backdrop-blur-md py-12 px-4 sm:px-6 relative z-10">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-500">
-      <div class="flex items-center gap-2.5">
-        <span class="w-6 h-6 rounded-full bg-slate-950 flex items-center justify-center p-1">
-          <svg viewBox="0 0 512 512" class="w-full h-full" fill="none" aria-hidden="true">
-            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <circle cx="410" cy="350" r="28" fill="#ec4899"/>
-          </svg>
-        </span>
-        <span>FlowCraft Studio • Engineered by Subhan Balbale in Mumbai, India</span>
+  <!-- shell:footer -->
+  <footer class="bg-ground pt-14 sm:pt-20 pb-10">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
+
+      <a href="index.html" class="d2 text-mint inline-block mb-10 sm:mb-14">Flowcraft</a>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+
+        <div class="col-span-2 md:col-span-1">
+          <p class="body-s text-aqua max-w-xs">
+            Independent software engineering studio run by Subhan Balbale.
+            Based in Navi Mumbai, Maharashtra. Online service, reachable across
+            India on WhatsApp.
+          </p>
+        </div>
+
+        <div class="body-s tnum">
+          <h2 class="serif serif-md text-mint mb-3">Contact</h2>
+          <p><a href="tel:+919372407018" class="text-aqua hover:text-mint">+91 93724 07018</a></p>
+          <p class="mt-1"><a href="mailto:subhanilyasbalbale@gmail.com" class="text-aqua hover:text-mint">subhanilyasbalbale@gmail.com</a></p>
+        </div>
+
+        <nav aria-label="Products" class="body-s">
+          <h2 class="serif serif-md text-mint mb-3">Products</h2>
+          <ul class="space-y-1.5 text-aqua">
+            <li><a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="hover:text-mint inline-flex items-center gap-1"><span>SiteMaker WebApp</span><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></li>
+            <li><a href="sitemaker.html" class="hover:text-mint">SiteMaker overview</a></li>
+            <li><a href="reviews.html" class="hover:text-mint">Smart Review System</a></li>
+            <li><a href="leadsflowpro.html" class="hover:text-mint">LeadsFlowPro</a></li>
+            <li><a href="starscanner.html" class="hover:text-mint">StarScanner</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Studio" class="body-s">
+          <h2 class="serif serif-md text-mint mb-3">Studio</h2>
+          <ul class="space-y-1.5 text-aqua">
+            <li><a href="about.html" class="hover:text-mint">About Subhan</a></li>
+            <li><a href="index.html#faq" class="hover:text-mint">FAQ</a></li>
+            <li><a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer" class="hover:text-mint">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/_flowcraft.studio/" target="_blank" rel="noopener noreferrer" class="hover:text-mint">Instagram</a></li>
+          </ul>
+        </nav>
+
       </div>
 
-      <div class="flex items-center gap-6">
-        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">SiteMaker</a>
-        <a href="reviews.html" class="text-slate-950 font-semibold transition-colors">Smart Reviews</a>
-        <a href="leadsflowpro.html" class="hover:text-slate-950 transition-colors">LeadsFlowPro</a>
-        <a href="starscanner.html" class="hover:text-slate-950 transition-colors">StarScanner</a>
-        <a href="about.html" class="hover:text-slate-950 transition-colors">About</a>
-        <a href="https://wa.me/919372407018" target="_blank" rel="noopener noreferrer" class="hover:text-slate-950 transition-colors font-medium">WhatsApp</a>
-      </div>
+      <hr class="rule mt-12 mb-6">
+      <p class="body-s text-aqua">
+        &copy; 2026 FlowCraft Studio by Subhan Balbale. Updated
+        <time datetime="2026-10-31">31 October 2026</time>.
+      </p>
     </div>
   </footer>
+<!-- /shell:footer -->
 
-  <!-- Client-side Interactive Simulator & Mobile Menu Scripts -->
+  <!-- shell:script -->
   <script>
-    // Mobile Drawer Toggle
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const closeIcon = document.getElementById('close-icon');
+    /* ------------------------------------------------------------------
+       Scroll reveal. One observer at threshold 0.15, a 1200ms masked
+       slide-up, no stagger. The extra top check catches blocks taller than
+       0.15 of the viewport can ever cover, which would never fire.
+       ------------------------------------------------------------------ */
+    (function setupReveal() {
+      var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+      if (!els.length) return;
 
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden');
-        hamburgerIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-        menuBtn.setAttribute('aria-expanded', !isOpen);
-      });
-    }
+      function show(el, instant) {
+        if (instant) el.classList.add('no-anim');
+        el.classList.add('is-in');
+      }
 
-    // Star Sentiment Simulator
-    const starBtns = document.querySelectorAll('.star-btn');
-    const simResult = document.getElementById('sim-result');
-    const simIcon = document.getElementById('sim-icon');
-    const simTitle = document.getElementById('sim-title');
-    const simDesc = document.getElementById('sim-desc');
-    const simBadge = document.getElementById('sim-badge');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+          !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { show(el, true); });
+        return;
+      }
 
-    starBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const rating = parseInt(btn.dataset.stars, 10);
-        
-        // Reset active styles
-        starBtns.forEach(b => {
-          b.classList.remove('border-pink-500', 'bg-pink-100', 'scale-110');
+      // threshold 0 with a small bottom inset: an element reveals as soon as
+      // it genuinely enters the viewport, whichever way you are scrolling.
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          show(e.target);
+          io.unobserve(e.target);
         });
-        btn.classList.add('border-pink-500', 'bg-pink-100', 'scale-110');
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
 
-        if (rating >= 4) {
-          // Happy routing
-          simResult.className = 'mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-left max-w-lg mx-auto transition-all';
-          simIcon.textContent = '🚀';
-          simTitle.className = 'text-sm font-bold text-emerald-950';
-          simTitle.textContent = `${rating} Stars Selected: Instant Google 5-Star Redirect`;
-          simDesc.className = 'text-xs text-emerald-800 mt-1 leading-relaxed';
-          simDesc.textContent = 'The customer is redirected straight to your Google Maps review dialog with 5 stars pre-selected. It takes them one tap to publish their public rating.';
-          simBadge.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-emerald-200/80 text-emerald-900 text-[11px] font-bold">Public Rating Boosted ⭐⭐⭐⭐⭐</span>';
+      // A reload can restore a scroll position mid-page. Anything already
+      // scrolled past is shown straight away rather than left blank until the
+      // visitor scrolls back down over it again.
+      var restored = (window.scrollY || window.pageYOffset) > 0;
+      els.forEach(function (el) {
+        if (restored && el.getBoundingClientRect().bottom < 0) {
+          show(el, true);
         } else {
-          // Negative shield routing
-          simResult.className = 'mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-left max-w-lg mx-auto transition-all';
-          simIcon.textContent = '🛡️';
-          simTitle.className = 'text-sm font-bold text-amber-950';
-          simTitle.textContent = `${rating} Star(s) Selected: Private Sentiment Shield Activated`;
-          simDesc.className = 'text-xs text-amber-800 mt-1 leading-relaxed';
-          simDesc.textContent = 'Instead of going to public Google Maps, the customer is routed to a private WhatsApp chat with the manager: "We apologize your experience was not 5-star. Tell us what happened so we can fix it today."';
-          simBadge.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-amber-200/80 text-amber-900 text-[11px] font-bold">Public Review Blocked • Issue Handled Privately</span>';
+          io.observe(el);
         }
       });
-    });
+
+      // Safety net. A suspended or throttled page can withhold observer
+      // callbacks indefinitely, and content that never reveals is content the
+      // visitor never reads. After load, show anything already on screen.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          els.forEach(function (el) {
+            if (el.classList.contains('is-in')) return;
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              show(el);
+              io.unobserve(el);
+            }
+          });
+        }, 400);
+      });
+    })();
+
+    /* ------------------------------------------------------------------
+       Background parallax at speed 0.2, the figure the reference uses.
+       Layers are inset past their section on both sides, so the translate
+       never exposes an edge.
+       ------------------------------------------------------------------ */
+    (function setupParallax() {
+      var layers = document.querySelectorAll('[data-parallax]');
+      if (!layers.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var queued = false;
+      var geom = [];
+
+      /* Geometry is measured once per layout, not once per frame. Reading
+         getBoundingClientRect inside the scroll frame interleaves reads with
+         the transform writes below it, which is how a parallax ends up
+         forcing a synchronous layout on every single frame. Only scrollY
+         changes while scrolling, so that is the only thing worth reading. */
+      function measure() {
+        var y = window.pageYOffset;
+        geom = [];
+        for (var i = 0; i < layers.length; i++) {
+          var r = layers[i].getBoundingClientRect();
+          geom.push({
+            top: r.top + y - (layers[i]._shift || 0),
+            height: r.height,
+            speed: parseFloat(layers[i].getAttribute('data-parallax')) || 0.2
+          });
+        }
+      }
+
+      function frame() {
+        queued = false;
+        var y = window.pageYOffset;
+        var vh = window.innerHeight;
+        for (var i = 0; i < layers.length; i++) {
+          var g = geom[i];
+          if (!g) continue;
+          var p = (vh - (g.top - y)) / (vh + g.height);
+          var shift = (p - 0.5) * g.speed * g.height;
+          layers[i]._shift = shift;
+          layers[i].style.transform =
+            'translate3d(0,' + shift.toFixed(2) + 'px,0)';
+        }
+      }
+
+      function onScroll() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(frame);
+      }
+
+      function onResize() { measure(); onScroll(); }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize, { passive: true });
+      window.addEventListener('load', onResize);
+      measure();
+      frame();
+    })();
+
+    /* ------------------------------------------------------------------
+       Mobile navigation drawer
+       ------------------------------------------------------------------ */
+    (function setupNav() {
+      var btn = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!btn || !menu) return;
+
+      var openIcon = document.getElementById('nav-open-icon');
+      var closeIcon = document.getElementById('nav-close-icon');
+
+      function setOpen(open) {
+        menu.hidden = !open;
+        btn.setAttribute('aria-expanded', String(open));
+        openIcon.classList.toggle('hidden', open);
+        closeIcon.classList.toggle('hidden', !open);
+      }
+
+      btn.addEventListener('click', function () { setOpen(menu.hidden); });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
+      });
+    })();
+
+    /* ------------------------------------------------------------------
+       Mascot: pointer tracking across a 3x3 sprite sheet, click to boop.
+       Only present on pages that render #hero-mascot.
+       ------------------------------------------------------------------ */
+    (function setupMascot() {
+      var box = document.getElementById('hero-mascot');
+      if (!box) return;
+
+      var DIR = {
+        'up-left': '0% 0%',     'up': '50% 0%',      'up-right': '100% 0%',
+        'left': '0% 50%',       'center': '50% 50%', 'right': '100% 50%',
+        'down-left': '0% 100%', 'down': '50% 100%',  'down-right': '100% 100%'
+      };
+      var CLOCKWISE = ['right', 'down-right', 'down', 'down-left',
+                       'left', 'up-left', 'up', 'up-right'];
+      var REACTIONS = ['0% 0%', '50% 0%', '100% 0%',
+                       '0% 50%', '50% 50%', '100% 50%',
+                       '0% 100%', '50% 100%', '100% 100%'];
+      var SECTOR = (Math.PI * 2) / 8;
+      var DEAD_ZONE = 55; // px
+
+      var isBooped = false, boopTimer = null, reactionIdx = 0;
+
+      window.addEventListener('pointermove', function (e) {
+        if (isBooped) return;
+        var rect = box.getBoundingClientRect();
+        var dx = e.clientX - (rect.left + rect.width / 2);
+        var dy = e.clientY - (rect.top + rect.height / 2);
+        var dir = 'center';
+        if (Math.hypot(dx, dy) >= DEAD_ZONE) {
+          var angle = Math.atan2(dy, dx);
+          if (angle < 0) angle += Math.PI * 2;
+          dir = CLOCKWISE[Math.round(angle / SECTOR) % 8];
+        }
+        box.style.backgroundImage = "url('assets/mascot/subhan-directions.webp')";
+        box.style.backgroundPosition = DIR[dir];
+      }, { passive: true });
+
+      box.addEventListener('click', function () {
+        isBooped = true;
+        clearTimeout(boopTimer);
+        reactionIdx = (reactionIdx + 1) % REACTIONS.length;
+        box.style.backgroundImage = "url('assets/mascot/subhan-reactions.webp')";
+        box.style.backgroundPosition = REACTIONS[reactionIdx];
+        box.classList.remove('boop-animation');
+        void box.offsetWidth; // reflow
+        box.classList.add('boop-animation');
+        boopTimer = setTimeout(function () {
+          isBooped = false;
+          box.style.backgroundImage = "url('assets/mascot/subhan-directions.webp')";
+          box.classList.remove('boop-animation');
+        }, 550);
+      });
+    })();
+  </script>
+<!-- /shell:script -->
+
+  <script>
+    /* Shows what a customer gets after tapping a rating. Every rating reaches
+       the same public Google screen -- no gating -- so only the drafted wording
+       and the follow-up change. Buttons only, so it works without a pointer. */
+    (function setupSimulator() {
+      var btns = document.querySelectorAll('.star-btn');
+      var box = document.getElementById('sim-result');
+      var title = document.getElementById('sim-title');
+      var desc = document.getElementById('sim-desc');
+      var badge = document.getElementById('sim-badge');
+      if (!btns.length || !box) return;
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var rating = parseInt(btn.getAttribute('data-stars'), 10);
+
+          btns.forEach(function (b) {
+            b.classList.toggle('is-picked', b === btn);
+            b.setAttribute('aria-pressed', String(b === btn));
+          });
+
+          var word = rating === 1 ? ' star' : ' stars';
+          desc.className = 'body-s text-aqua';
+
+          if (rating >= 4) {
+            box.className = 'mt-8 p-6 bg-ground text-mint';
+            title.textContent = rating + word + ': Google, with the words ready';
+            desc.textContent = 'Your Google review screen opens with ' + rating +
+              ' stars carried over and a review drafted from the parts of the ' +
+              'visit they picked. They edit it if they want to, then post.';
+            badge.className = 'body-s mt-4 inline-block bg-flame text-navy px-3 py-1.5 font-semibold';
+            badge.textContent = 'One tap to publish';
+          } else {
+            box.className = 'mt-8 p-6 bg-navy text-mint';
+            title.textContent = rating + word + ': Google, and a word with you';
+            desc.textContent = 'The same Google review screen opens, with ' +
+              'nothing filtered or held back. Alongside it they get a direct ' +
+              'WhatsApp line to you, so you hear about the problem while they ' +
+              'are still in front of you.';
+            badge.className = 'body-s mt-4 inline-block bg-mint text-navy px-3 py-1.5 font-semibold';
+            badge.textContent = 'No gating, ever';
+          }
+        });
+      });
+    })();
   </script>
 </body>
 </html>

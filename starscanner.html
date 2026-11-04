@@ -145,601 +145,681 @@
   <!-- Tailwind CSS & GSAP -->
   <link rel="stylesheet" href="assets/css/tailwind.css">
 
-  <!-- Plus Jakarta Sans Font -->
+  <!-- shell:head -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
-  <style>
-    /* Metric-matched fallback: holds the exact space the webfont will take,
-       so swapping it in causes no layout shift. */
-    @font-face {
-      font-family: 'Jakarta Fallback';
-      src: local('Arial'), local('Helvetica'), local('Liberation Sans');
-      size-adjust: 106.66%;
-      ascent-override: 97.5%;
-      descent-override: 20.6%;
-      line-gap-override: 0%;
-    }
+  <!-- Tailwind plus the FlowCraft design system, compiled ahead of time -->
+  <link rel="stylesheet" href="assets/css/tailwind.css">
 
-    :root {
-      --bg-base: #faf8fa;
-    }
-    body {
-      background-color: var(--bg-base);
-      color: #0f172a;
-      font-family: 'Plus Jakarta Sans', 'Jakarta Fallback', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Ambient Soft Radial Gradient Mesh */
-    .ambient-mesh {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-      background: #faf8fa;
-    }
-    .mesh-orb-sc1 {
-      position: absolute;
-      top: -10%;
-      right: 5%;
-      width: 750px;
-      height: 750px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0.16) 35%, rgba(56, 189, 248, 0.04) 60%, transparent 72%);
-    }
-    .mesh-orb-sc2 {
-      position: absolute;
-      top: 45%;
-      left: -10%;
-      width: 700px;
-      height: 700px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at center, rgba(45, 212, 191, 0.3) 0%, rgba(45, 212, 191, 0.14) 35%, rgba(45, 212, 191, 0.03) 60%, transparent 72%);
-    }
-    .mesh-grid {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at center, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.65;
-    }
-
-    /* Tactile Glass Panels */
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 
-        0 10px 28px -10px rgba(15, 23, 42, 0.05),
-        0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-panel:hover {
-      background: rgba(255, 255, 255, 0.92);
-      border-color: rgba(255, 255, 255, 1);
-      box-shadow: 
-        0 16px 36px -10px rgba(15, 23, 42, 0.08),
-        0 0 0 1px rgba(255, 255, 255, 0.95) inset;
-      transform: translateY(-2px);
-    }
-
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-    }
-
-    .title-display {
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-
-    /* Mobile Touch Feedback & GPU Optimization */
-    .pill-button:active {
-      transform: scale(0.97) !important;
-    }
-
-    @media (max-width: 640px) {
-      .mesh-orb-sc1, .mesh-orb-sc2 {
-        width: 380px !important;
-        height: 380px !important;
-      }
-      .title-display {
-        letter-spacing: -0.025em;
-      }
-    }
-
-    .pill-button {
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: 9999px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .pill-button:hover {
-      background: #1e293b;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Native disclosure FAQ — keyboard and crawler friendly, no JS */
-    .faq summary { list-style: none; cursor: pointer; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary .faq-sign { transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
-    .faq[open] summary .faq-sign { transform: rotate(45deg); }
-
-    /* === Shared type roles (kept identical on every page) === */
-    .card-title {
-      font-weight: 600;
-      letter-spacing: -0.014em;
-      line-height: 1.25;
-    }
-    .lede {
-      max-width: 62ch;
-      text-wrap: pretty;
-    }
-    .label-eyebrow {
-      font-weight: 600;
-      font-size: 0.6875rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* === Shared browser surfaces === */
-    ::selection {
-      background: rgba(236, 72, 153, 0.18);
-      color: #0f172a;
-    }
-    html {
-      scrollbar-color: #cbd5e1 transparent;
-      caret-color: #ec4899;
-    }
-    ::-webkit-scrollbar { width: 11px; height: 11px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border: 3px solid #faf8fa;
-      border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-    :focus-visible {
-      outline: 2px solid #ec4899;
-      outline-offset: 3px;
-      border-radius: 6px;
-    }
-    a { text-underline-offset: 0.22em; }
-    .skip-link {
-      position: absolute;
-      left: 50%;
-      top: 0.5rem;
-      transform: translate(-50%, -200%);
-      z-index: 100;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      background: #0f172a;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: transform 0.2s ease;
-    }
-    .skip-link:focus-visible { transform: translate(-50%, 0); }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+  <!-- Gate the scroll-reveal start state on JS actually running, so a parse
+       error or a blocked script can never leave a page blank. -->
+  <script>document.documentElement.classList.add('js')</script>
+<!-- /shell:head -->
 </head>
-<body class="min-h-screen relative">
+<body class="min-h-screen bg-ground text-mint">
 
+  <!-- shell:header -->
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Ambient Light Mesh Background -->
-  <div class="ambient-mesh">
-    <div class="mesh-orb-sc1"></div>
-    <div class="mesh-orb-sc2"></div>
-    <div class="mesh-grid"></div>
-  </div>
+  <header class="sticky top-0 z-50 bg-ground/90 backdrop-blur-sm">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-4">
 
-  <!-- Redesigned Minimalist 64px Header with Mobile Drawer -->
-  <header class="sticky top-4 z-50 px-4 sm:px-6 max-w-5xl mx-auto">
-    <nav aria-label="Main" class="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-full pl-5 pr-2 py-2 flex items-center justify-between">
-
-      <a href="index.html" aria-label="FlowCraft Studio, home" class="flex items-center gap-2.5 shrink-0">
-        <span class="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center p-1.5">
+      <a href="index.html" aria-label="FlowCraft Studio, home"
+         class="flex items-center gap-2 bg-mint text-navy pl-2 pr-3.5 py-1.5 shrink-0">
+        <span class="w-6 h-6 bg-ground flex items-center justify-center p-1">
           <svg viewBox="0 0 512 512" class="w-full h-full" fill="none" aria-hidden="true">
-            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <circle cx="410" cy="350" r="28" fill="#ec4899"/>
+            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ddf5ec" stroke-width="46" stroke-linecap="square"/>
+            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ddf5ec" stroke-width="46" stroke-linecap="square"/>
+            <rect x="382" y="322" width="56" height="56" fill="#fa7d13"/>
           </svg>
         </span>
-        <span class="font-semibold text-[15px] tracking-tight text-slate-950">flowcraft<span class="text-pink-500">.</span></span>
+        <span class="font-bold text-[14px] tracking-tight">FlowCraft</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600">
-        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">Websites</a>
-        <a href="reviews.html" class="hover:text-slate-950 transition-colors">Smart Reviews</a>
-        <a href="index.html#ranking" class="hover:text-slate-950 transition-colors">Local SEO</a>
-        <a href="about.html" class="hover:text-slate-950 transition-colors">About</a>
-      </div>
+      <nav aria-label="Main" class="nav-pill hidden md:flex">
+        <a href="index.html#build" aria-current="page">Apps</a>
+        <a href="reviews.html">Smart Reviews</a>
+        <a href="index.html#ranking">Ranking</a>
+        <a href="about.html">About</a>
+      </nav>
 
-      <div class="flex items-center gap-1.5">
-        <a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="pill-button hidden sm:inline-flex px-5 py-2.5 text-[13px] font-semibold items-center gap-1.5">
-          <span>Open SiteMaker</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-mint hover:text-flame transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          <span>WhatsApp</span>
         </a>
 
-        <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
-                class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-slate-800 hover:bg-slate-100 transition-colors">
+        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                class="md:hidden w-10 h-10 bg-flame text-navy flex items-center justify-center">
           <span class="sr-only">Menu</span>
-          <svg id="hamburger-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
-          <svg id="close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg id="nav-open-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+          <svg id="nav-close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
-    </nav>
+    </div>
 
-    <div id="mobile-menu" class="hidden md:hidden mt-2 rounded-3xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg p-2">
-      <a href="sitemaker.html" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Websites</a>
-      <a href="reviews.html" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Smart Reviews</a>
-      <a href="index.html#ranking" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">Local SEO</a>
-      <a href="about.html" class="mobile-nav-link block px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 hover:bg-slate-50">About</a>
-      <a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="pill-button block mt-1 px-4 py-3 text-center text-sm font-semibold">Open SiteMaker</a>
+    <div id="nav-menu" hidden class="md:hidden border-t border-mint/25 bg-ground">
+      <div class="max-w-[1320px] mx-auto px-5 py-3 grid gap-1">
+        <a href="index.html#build" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10" aria-current="page">Apps</a>
+        <a href="reviews.html" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Smart Reviews</a>
+        <a href="index.html#ranking" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Ranking</a>
+        <a href="about.html" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">About</a>
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer"
+           class="btn mt-2 w-full">Message on WhatsApp</a>
+      </div>
     </div>
   </header>
+<!-- /shell:header -->
 
-  <!-- Hero Section -->
-  <main id="main" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-12 sm:pt-16 pb-16 sm:pb-24">
-    
-    <!-- Breadcrumb -->
-    <div class="flex items-center gap-2 mb-6 text-xs text-slate-400 font-medium">
-      <a href="index.html" class="hover:text-slate-900 transition-colors">FlowCraft Studio</a>
-      <span>/</span>
-      <span class="text-cyan-600 font-semibold">StarScanner</span>
-    </div>
+  <main id="main">
 
-    <!-- Title & Eyebrow -->
-    <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-xs font-semibold mb-5">
-        <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-        [COMING SOON] · Active Research &amp; Development
-      </div>
-      <h1 class="title-display text-3xl sm:text-5xl lg:text-6xl text-slate-950 mb-6 ">
-        Automated intelligence &amp; security scanner. <span class="text-cyan-600">In 10 seconds.</span>
-      </h1>
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal mb-8">
-        StarScanner is the upcoming automated audit and digital footprint scanner built by FlowCraft Studio. Designed to scan any website URL, pinpoint critical performance bottlenecks, detect missing SEO schema, expose broken assets, and grade security posture.
+  <!-- HERO -->
+  <section class="relative bg-paper overflow-hidden">
+    <div class="hero-grid parallax absolute -inset-y-[12%] inset-x-0" data-parallax="0.2" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1320px] mx-auto px-5 sm:px-8 pt-14 sm:pt-20">
+      <nav aria-label="Breadcrumb" class="body-s text-navy/70 mb-6 text-center">
+        <a href="index.html" class="underline decoration-navy/30 hover:decoration-navy">FlowCraft Studio</a>
+        <span class="mx-2">/</span><span>StarScanner</span>
+      </nav>
+      <h1 class="d1 text-ground text-center max-w-[14ch] mx-auto" data-reveal>Scan any site in 10 seconds</h1>
+      <p class="lede text-navy text-center mx-auto mt-6 sm:mt-8" data-reveal="wipe">
+        StarScanner is an audit and digital footprint scanner being built at
+        FlowCraft. Point it at any website URL and it finds performance
+        bottlenecks, missing SEO schema, broken assets and a weak security
+        posture, then writes a report you can hand to a client.
       </p>
-      
-      <!-- Action Buttons -->
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-        <a href="#waitlist" class="pill-button px-7 py-3 text-xs font-semibold inline-flex items-center justify-center gap-2">
-          <span>Join Early Access Waitlist</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#features" class="px-6 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-semibold text-xs transition-all inline-flex items-center justify-center gap-2">
-          <span>Learn What It Does</span><svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Scanner Radar Mockup (Clean Vector SVG Icons, Zero Emojis) -->
-    <div id="what" class="mt-14 glass-panel rounded-3xl p-6 sm:p-12 relative overflow-hidden text-center">
-      <div class="w-16 h-16 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mx-auto mb-6 relative">
-        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/><path d="M12 3v18M3 12h18"/></svg>
-      </div>
-      <div class="title-display text-2xl  text-slate-950">Full-Stack Digital Diagnostics</div>
-      <p class="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto mt-2 font-normal">
-        Enter any client website URL and generate a shareable, client-ready PDF report highlighting exactly what is broken and why they need your help to fix it.
+      <p class="body-s text-navy/70 text-center mt-4" data-reveal="wipe">
+        Coming soon &middot; active research and development
       </p>
     </div>
 
-    <!-- Planned Capabilities Grid (Clean Vector SVG Icons, Zero Emojis) -->
-    <section id="features" class="mt-24">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="title-display text-3xl sm:text-4xl text-slate-950 mt-1 ">What StarScanner Analyzes</h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2 font-normal">Comprehensive auditing across four critical digital vectors.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Feature 1 -->
-        <div class="glass-panel p-7 rounded-2xl">
-          <div class="w-11 h-11 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="text-base font-semibold text-slate-900 mb-2">Security &amp; SSL Hygiene</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            Inspects SSL/TLS certificates, missing HTTP security headers (HSTS, CSP, X-Frame-Options), exposed admin endpoints, and mixed-content warnings.
-          </p>
+    <div class="relative z-20 max-w-[1320px] mx-auto px-5 sm:px-8 mt-10 sm:mt-12 -mb-20 sm:-mb-28 flex justify-center">
+      <div class="card-mint w-full max-w-[380px] p-5" data-reveal>
+        <div class="bg-navy p-5 mb-5 text-mint" aria-hidden="true">
+          <p class="body-s text-aqua mb-4 tnum">clientsite.in</p>
+          <dl class="space-y-3 body-s tnum">
+            <div class="flex items-center justify-between gap-4">
+              <dt>Security headers</dt>
+              <dd class="bg-flame text-navy px-2 py-0.5 font-bold">2 / 6</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt>Core Web Vitals</dt>
+              <dd class="bg-flame text-navy px-2 py-0.5 font-bold">LCP 4.1s</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt>Local schema</dt>
+              <dd class="bg-mint text-navy px-2 py-0.5 font-bold">Missing</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt>Broken assets</dt>
+              <dd class="bg-mint text-navy px-2 py-0.5 font-bold">7 found</dd>
+            </div>
+          </dl>
         </div>
-
-        <!-- Feature 2 -->
-        <div class="glass-panel p-7 rounded-2xl">
-          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3 class="text-base font-semibold text-slate-900 mb-2">Core Web Vitals &amp; Speed</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            Measures Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), server response latency (TTFB), and unoptimized image payloads on real mobile networks.
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="glass-panel p-7 rounded-2xl">
-          <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          </div>
-          <h3 class="text-base font-semibold text-slate-900 mb-2">Google Local Schema &amp; SEO</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            Verifies JSON-LD structured data, Google Maps integration, OpenGraph social preview tags, and checks if the site is properly formatted for local search discovery.
-          </p>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="glass-panel p-7 rounded-2xl">
-          <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <h3 class="text-base font-semibold text-slate-900 mb-2">Client Pitch Audit Reports</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            Outputs branded, easy-to-read audit scorecards. Perfect for freelancers paired with LeadsFlowPro to show local clients why their site is losing them money.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- How a scan will work -->
-    <section id="how" class="mt-24">
-      <div class="max-w-2xl mb-10">
-        <h2 class="title-display text-2xl sm:text-4xl text-slate-950">How a scan will work.</h2>
-        <p class="lede text-sm sm:text-base text-slate-600 mt-3">
-          The shape is settled even though the build is not finished. Four steps,
-          one URL in, one report out.
-        </p>
-      </div>
-
-      <ol class="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-10">
-        <li class="border-t border-slate-200 pt-5">
-          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 01</span>
-          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Paste a URL</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Any public site. No access to the client's hosting, no plugin to install,
-            no code for them to paste — everything checked is what a visitor's browser
-            can already see.
-          </p>
-        </li>
-        <li class="border-t border-slate-200 pt-5">
-          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 02</span>
-          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Load it like a phone would</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            The page is rendered on a throttled mobile connection rather than a fast
-            desktop one, because that is the connection the customer is actually on
-            when they tap through from Google Maps.
-          </p>
-        </li>
-        <li class="border-t border-slate-200 pt-5">
-          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 03</span>
-          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Check four areas</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Security headers and certificate, Core Web Vitals, structured data and
-            local search signals, and broken or missing assets. Each finding is
-            recorded with the evidence behind it.
-          </p>
-        </li>
-        <li class="border-t border-slate-200 pt-5">
-          <span class="label-eyebrow text-slate-500 numeric-tabular">Step 04</span>
-          <h3 class="card-title text-base text-slate-950 mt-2 mb-2">Get a report you can send</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A scorecard written for a shop owner rather than a developer, in language
-            that says what is costing them customers instead of listing audit names
-            they will not recognise.
-          </p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Honest build status -->
-    <section id="status" class="mt-24">
-      <div class="max-w-2xl mb-8">
-        <h2 class="title-display text-2xl sm:text-4xl text-slate-950">Where the build actually is.</h2>
-        <p class="lede text-sm sm:text-base text-slate-600 mt-3">
-          Plenty of products say "coming soon" and mean "we have a landing page".
-          Here is the honest state of this one.
-        </p>
-      </div>
-
-      <div class="divide-y divide-slate-200 border-y border-slate-200 max-w-3xl">
-        <div class="py-5 flex items-start gap-4">
-          <span class="label-eyebrow text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full shrink-0 mt-0.5">Working</span>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Header and certificate inspection, and the Core Web Vitals capture. These
-            are the checks I already run by hand on every site I build, which is where
-            the idea for the tool came from.
-          </p>
-        </div>
-        <div class="py-5 flex items-start gap-4">
-          <span class="label-eyebrow text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full shrink-0 mt-0.5">In progress</span>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Structured-data and local-search validation, and the asset crawl that finds
-            broken images and dead links.
-          </p>
-        </div>
-        <div class="py-5 flex items-start gap-4">
-          <span class="label-eyebrow text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full shrink-0 mt-0.5">Not started</span>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            The branded PDF report, accounts and billing, and scan history. There is no
-            launch date, because committing to one before this part exists would be a
-            guess.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="mt-24 max-w-3xl">
-      <h2 class="title-display text-2xl sm:text-4xl text-slate-950 mb-10">Questions about StarScanner.</h2>
-
-      <div class="divide-y divide-slate-200 border-y border-slate-200">
-        <details class="faq group py-5">
-          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
-            <span>When does it launch?</span>
-            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
-            There is no announced date. Two of the four check groups work and the
-            reporting layer does not exist yet. Joining the waitlist means you hear
-            when it is real rather than when it is nearly real.
-          </p>
-        </details>
-
-        <details class="faq group py-5">
-          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
-            <span>How is this different from PageSpeed Insights or Lighthouse?</span>
-            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
-            It is not trying to beat them at measurement — Lighthouse is excellent and
-            free, and StarScanner leans on the same vitals. The difference is the
-            output. A Lighthouse report is written for a developer. StarScanner's is
-            written to hand to a restaurant owner who needs to understand why their
-            site is losing them bookings, and it adds the local-search and security
-            checks Lighthouse does not cover.
-          </p>
-        </details>
-
-        <details class="faq group py-5">
-          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
-            <span>Will it work on any website?</span>
-            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
-            Any publicly reachable page. Sites behind a login, on an internal network,
-            or blocking automated traffic cannot be scanned, and the report will say
-            that rather than report a passing grade it could not verify.
-          </p>
-        </details>
-
-        <details class="faq group py-5">
-          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
-            <span>What will it cost?</span>
-            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
-            Not decided. Waitlist members are offered founder pricing when it does
-            launch, but quoting a figure now for a product that is not finished would
-            be a number I could not stand behind later.
-          </p>
-        </details>
-
-        <details class="faq group py-5">
-          <summary class="flex items-start justify-between gap-6 text-[15px] sm:text-base font-semibold text-slate-900">
-            <span>Do you keep my client's data?</span>
-            <svg class="faq-sign w-4 h-4 text-slate-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed pr-10">
-            A scan reads a public page, so there is nothing private in it to begin with.
-            Scan history is on the "not started" list above; when it is built, the
-            retention rule will be written on this page before the feature ships, not
-            after.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Waitlist Section -->
-    <section id="waitlist" class="mt-24 max-w-xl mx-auto text-center">
-      <div class="glass-panel p-8 sm:p-12 rounded-3xl border-2 border-cyan-200 relative">
-        <h3 class="title-display text-3xl  text-slate-950">Be Notified on Launch</h3>
-        <p class="text-xs sm:text-sm text-slate-600 mt-2 max-w-md mx-auto font-normal">
-          Get lifetime founder pricing and early beta testing access when StarScanner goes live.
-        </p>
-
-        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20please%20add%20me%20to%20the%20StarScanner%20early%20access%20waitlist." target="_blank" rel="noopener noreferrer"
-           class="pill-button mt-8 w-full py-3 text-xs font-semibold block">
-          Reserve Early Access via WhatsApp
+        <p class="label-mark mb-2">StarScanner by Subhan Balbale</p>
+        <p class="serif serif-md mb-5">Client-ready scorecard</p>
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20add%20me%20to%20the%20StarScanner%20waitlist."
+           target="_blank" rel="noopener noreferrer" class="arrow-link text-navy">
+          <span>Join the waitlist</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
         </a>
       </div>
+    </div>
+
+    <!-- pixelfield:hero --><svg class="dissolve" viewBox="0 0 104 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="#0350c4" d="M55 0h1v1h-1zM61 0h1v1h-1zM46 1h1v1h-1zM51 1h1v1h-1zM66 1h1v1h-1zM33 2h1v1h-1zM45 2h2v1h-2zM48 2h1v1h-1zM56 2h1v1h-1zM58 2h1v1h-1zM61 2h1v1h-1zM34 3h1v1h-1zM38 3h1v1h-1zM46 3h3v1h-3zM53 3h1v1h-1zM55 3h1v1h-1zM58 3h1v1h-1zM68 3h1v1h-1zM93 3h1v1h-1zM23 4h1v1h-1zM42 4h1v1h-1zM44 4h1v1h-1zM52 4h1v1h-1zM57 4h1v1h-1zM60 4h1v1h-1zM63 4h1v1h-1zM65 4h1v1h-1zM77 4h1v1h-1zM8 5h1v1h-1zM14 5h1v1h-1zM22 5h1v1h-1zM37 5h1v1h-1zM47 5h1v1h-1zM54 5h1v1h-1zM58 5h1v1h-1zM62 5h1v1h-1zM64 5h1v1h-1zM32 6h1v1h-1zM41 6h1v1h-1zM43 6h1v1h-1zM46 6h2v1h-2zM50 6h1v1h-1zM52 6h1v1h-1zM57 6h2v1h-2zM61 6h3v1h-3zM65 6h1v1h-1zM67 6h1v1h-1zM93 6h1v1h-1zM101 6h1v1h-1zM1 7h1v1h-1zM12 7h2v1h-2zM23 7h2v1h-2zM42 7h1v1h-1zM48 7h2v1h-2zM51 7h4v1h-4zM57 7h2v1h-2zM60 7h2v1h-2zM63 7h1v1h-1zM66 7h2v1h-2zM70 7h1v1h-1zM75 7h1v1h-1zM78 7h1v1h-1zM95 7h1v1h-1zM100 7h1v1h-1zM22 8h1v1h-1zM26 8h1v1h-1zM29 8h2v1h-2zM34 8h1v1h-1zM36 8h2v1h-2zM40 8h1v1h-1zM42 8h1v1h-1zM45 8h2v1h-2zM48 8h2v1h-2zM54 8h1v1h-1zM56 8h2v1h-2zM62 8h2v1h-2zM66 8h1v1h-1zM68 8h2v1h-2zM72 8h1v1h-1zM74 8h1v1h-1zM95 8h1v1h-1zM4 9h2v1h-2zM17 9h1v1h-1zM22 9h1v1h-1zM28 9h1v1h-1zM30 9h1v1h-1zM35 9h2v1h-2zM39 9h1v1h-1zM41 9h1v1h-1zM49 9h4v1h-4zM56 9h2v1h-2zM59 9h1v1h-1zM61 9h1v1h-1zM64 9h1v1h-1zM67 9h1v1h-1zM69 9h1v1h-1zM76 9h1v1h-1zM83 9h1v1h-1zM99 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM11 10h1v1h-1zM19 10h2v1h-2zM23 10h1v1h-1zM26 10h1v1h-1zM28 10h2v1h-2zM38 10h1v1h-1zM43 10h1v1h-1zM45 10h3v1h-3zM49 10h2v1h-2zM52 10h1v1h-1zM54 10h6v1h-6zM62 10h1v1h-1zM64 10h1v1h-1zM66 10h3v1h-3zM70 10h1v1h-1zM77 10h2v1h-2zM84 10h3v1h-3zM93 10h1v1h-1zM95 10h1v1h-1zM99 10h1v1h-1zM102 10h1v1h-1zM7 11h1v1h-1zM19 11h1v1h-1zM25 11h1v1h-1zM30 11h1v1h-1zM33 11h1v1h-1zM35 11h1v1h-1zM37 11h1v1h-1zM40 11h4v1h-4zM47 11h6v1h-6zM54 11h4v1h-4zM60 11h4v1h-4zM65 11h1v1h-1zM67 11h1v1h-1zM71 11h1v1h-1zM75 11h1v1h-1zM91 11h1v1h-1zM94 11h1v1h-1zM97 11h4v1h-4zM103 11h1v1h-1zM2 12h2v1h-2zM12 12h1v1h-1zM17 12h1v1h-1zM23 12h2v1h-2zM27 12h1v1h-1zM29 12h1v1h-1zM32 12h1v1h-1zM37 12h2v1h-2zM42 12h1v1h-1zM44 12h1v1h-1zM49 12h2v1h-2zM52 12h1v1h-1zM56 12h2v1h-2zM59 12h6v1h-6zM66 12h1v1h-1zM68 12h2v1h-2zM73 12h1v1h-1zM75 12h1v1h-1zM77 12h2v1h-2zM83 12h1v1h-1zM85 12h1v1h-1zM95 12h2v1h-2zM100 12h1v1h-1zM103 12h1v1h-1zM2 13h2v1h-2zM7 13h2v1h-2zM10 13h1v1h-1zM13 13h1v1h-1zM17 13h4v1h-4zM24 13h1v1h-1zM26 13h2v1h-2zM32 13h2v1h-2zM36 13h2v1h-2zM39 13h1v1h-1zM42 13h4v1h-4zM47 13h4v1h-4zM52 13h12v1h-12zM65 13h2v1h-2zM69 13h4v1h-4zM75 13h2v1h-2zM78 13h3v1h-3zM85 13h2v1h-2zM88 13h1v1h-1zM90 13h1v1h-1zM92 13h1v1h-1zM95 13h1v1h-1zM98 13h1v1h-1zM100 13h1v1h-1zM103 13h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM11 14h1v1h-1zM18 14h1v1h-1zM20 14h2v1h-2zM28 14h4v1h-4zM33 14h1v1h-1zM35 14h2v1h-2zM40 14h1v1h-1zM44 14h4v1h-4zM49 14h1v1h-1zM51 14h2v1h-2zM55 14h4v1h-4zM60 14h4v1h-4zM65 14h2v1h-2zM68 14h1v1h-1zM70 14h1v1h-1zM73 14h1v1h-1zM75 14h4v1h-4zM81 14h1v1h-1zM84 14h1v1h-1zM86 14h1v1h-1zM88 14h1v1h-1zM95 14h3v1h-3zM1 15h2v1h-2zM9 15h2v1h-2zM12 15h2v1h-2zM19 15h2v1h-2zM22 15h3v1h-3zM30 15h1v1h-1zM32 15h1v1h-1zM36 15h2v1h-2zM39 15h1v1h-1zM41 15h2v1h-2zM45 15h6v1h-6zM52 15h18v1h-18zM71 15h3v1h-3zM76 15h2v1h-2zM84 15h1v1h-1zM86 15h1v1h-1zM89 15h2v1h-2zM93 15h2v1h-2zM96 15h1v1h-1zM100 15h1v1h-1zM2 16h1v1h-1zM5 16h2v1h-2zM12 16h5v1h-5zM18 16h3v1h-3zM22 16h1v1h-1zM31 16h1v1h-1zM34 16h4v1h-4zM39 16h32v1h-32zM73 16h2v1h-2zM76 16h1v1h-1zM80 16h1v1h-1zM82 16h1v1h-1zM84 16h1v1h-1zM87 16h1v1h-1zM91 16h2v1h-2zM96 16h3v1h-3zM102 16h1v1h-1zM1 17h2v1h-2zM4 17h2v1h-2zM7 17h4v1h-4zM13 17h2v1h-2zM16 17h2v1h-2zM19 17h1v1h-1zM21 17h2v1h-2zM24 17h1v1h-1zM26 17h2v1h-2zM30 17h2v1h-2zM33 17h1v1h-1zM35 17h4v1h-4zM40 17h1v1h-1zM42 17h2v1h-2zM45 17h16v1h-16zM62 17h14v1h-14zM78 17h1v1h-1zM80 17h1v1h-1zM83 17h2v1h-2zM87 17h3v1h-3zM91 17h1v1h-1zM93 17h1v1h-1zM97 17h2v1h-2zM100 17h4v1h-4zM1 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h2v1h-2zM13 18h6v1h-6zM21 18h1v1h-1zM25 18h3v1h-3zM30 18h1v1h-1zM32 18h3v1h-3zM36 18h3v1h-3zM41 18h36v1h-36zM78 18h1v1h-1zM80 18h1v1h-1zM82 18h2v1h-2zM86 18h1v1h-1zM88 18h2v1h-2zM92 18h1v1h-1zM94 18h1v1h-1zM96 18h2v1h-2zM99 18h5v1h-5zM1 19h1v1h-1zM3 19h2v1h-2zM6 19h1v1h-1zM8 19h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM14 19h2v1h-2zM17 19h2v1h-2zM22 19h3v1h-3zM26 19h1v1h-1zM29 19h3v1h-3zM33 19h2v1h-2zM36 19h3v1h-3zM40 19h1v1h-1zM42 19h26v1h-26zM69 19h2v1h-2zM72 19h1v1h-1zM74 19h5v1h-5zM81 19h2v1h-2zM85 19h2v1h-2zM88 19h2v1h-2zM92 19h4v1h-4zM98 19h2v1h-2zM101 19h3v1h-3zM1 20h1v1h-1zM3 20h1v1h-1zM6 20h3v1h-3zM10 20h8v1h-8zM19 20h1v1h-1zM21 20h3v1h-3zM25 20h3v1h-3zM30 20h4v1h-4zM36 20h42v1h-42zM79 20h2v1h-2zM82 20h1v1h-1zM84 20h2v1h-2zM88 20h3v1h-3zM92 20h5v1h-5zM98 20h5v1h-5zM1 21h1v1h-1zM3 21h1v1h-1zM5 21h4v1h-4zM11 21h7v1h-7zM19 21h2v1h-2zM22 21h2v1h-2zM25 21h4v1h-4zM30 21h6v1h-6zM38 21h36v1h-36zM75 21h3v1h-3zM79 21h4v1h-4zM84 21h4v1h-4zM89 21h2v1h-2zM92 21h4v1h-4zM97 21h7v1h-7zM0 22h1v1h-1zM2 22h6v1h-6zM10 22h18v1h-18zM29 22h16v1h-16zM46 22h31v1h-31zM78 22h1v1h-1zM82 22h2v1h-2zM85 22h1v1h-1zM87 22h5v1h-5zM93 22h8v1h-8zM102 22h2v1h-2zM0 23h82v1h-82zM83 23h21v1h-21zM1 24h1v1h-1zM4 24h100v1h-100zM0 25h11v1h-11zM12 25h80v1h-80zM93 25h11v1h-11z"/><path fill="#fa7d13" d="M74 6h1v1h-1zM53 8h1v1h-1zM62 9h1v1h-1zM66 11h1v1h-1zM16 12h1v1h-1zM54 12h1v1h-1zM65 12h1v1h-1zM26 14h1v1h-1zM39 14h1v1h-1zM50 14h1v1h-1zM59 14h1v1h-1zM27 15h1v1h-1zM40 15h1v1h-1zM51 15h1v1h-1zM74 15h1v1h-1zM12 17h1v1h-1zM25 17h1v1h-1zM44 17h1v1h-1zM61 17h1v1h-1zM11 19h1v1h-1zM20 19h1v1h-1zM68 19h1v1h-1zM29 20h1v1h-1zM37 21h1v1h-1zM74 21h1v1h-1zM78 21h1v1h-1zM28 22h1v1h-1zM45 22h1v1h-1zM84 22h1v1h-1zM86 22h1v1h-1zM101 22h1v1h-1zM11 25h1v1h-1zM92 25h1v1h-1z"/></svg><!-- /pixelfield:hero -->
+  </section>
+
+  <!-- 01 WHAT IT ANALYSES -->
+  <section id="features" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24">
+    <div class="flex items-start justify-center gap-4 sm:gap-7">
+      <span class="num pt-2 sm:pt-4 text-aqua">01</span>
+      <h2 class="d2 text-mint text-center max-w-[15ch]" data-reveal>What it analyses</h2>
+    </div>
+    <p class="lede text-aqua mx-auto text-center mt-6 sm:mt-8" data-reveal="wipe">
+      A digital footprint audit is a single pass over the four things that
+      decide whether a site can be trusted, found and used. StarScanner checks
+      all four on every scan.
+    </p>
+
+    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ground mt-10 sm:mt-14">
+
+      <li class="card-mint p-6 pt-12">
+        <span class="num text-ground block mb-6 text-right">01</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">Security and SSL</h3>
+        <p class="body-s">
+          SSL and TLS certificates, missing HTTP security headers such as HSTS,
+          CSP and X-Frame-Options, exposed admin endpoints, and mixed-content
+          warnings.
+        </p>
+      </li>
+
+      <li class="card-mint p-6 pt-12">
+        <span class="num text-ground block mb-6 text-right">02</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">Core Web Vitals</h3>
+        <p class="body-s">
+          Largest Contentful Paint, Cumulative Layout Shift, server response
+          latency and unoptimised image payloads, measured on real mobile
+          networks.
+        </p>
+      </li>
+
+      <li class="card-mint p-6 pt-12">
+        <span class="num text-ground block mb-6 text-right">03</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">Local schema and SEO</h3>
+        <p class="body-s">
+          JSON-LD structured data, Google Maps integration, OpenGraph preview
+          tags, and whether the site is formatted for local search discovery at
+          all.
+        </p>
+      </li>
+
+      <li class="card-mint p-6 pt-12">
+        <span class="num text-ground block mb-6 text-right">04</span>
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">Client pitch reports</h3>
+        <p class="body-s">
+          Branded audit scorecards that read easily. Pair it with LeadsFlowPro
+          to show a local client why their site is losing them money.
+        </p>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- 02 HOW A SCAN WORKS -->
+  <section id="how" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-20 sm:pt-32">
+    <div class="flex items-start gap-4 sm:gap-7">
+      <span class="num pt-2 sm:pt-4 text-aqua">02</span>
+      <h2 class="d2 text-mint max-w-[14ch]" data-reveal>How a scan works</h2>
+    </div>
+    <hr class="rule-dash mt-7 sm:mt-10">
+
+    <p class="lede text-aqua mt-8 md:ml-[41.666%]" data-reveal="wipe">
+      The shape is settled even though the build is not finished. Four steps,
+      one URL in, one report out.
+    </p>
+
+    <div class="mt-10 sm:mt-16 space-y-10 sm:space-y-14">
+
+      <div class="grid md:grid-cols-12 gap-3 md:gap-8" data-reveal="wipe">
+        <h3 class="serif serif-lg md:col-start-6 md:col-span-3">Paste a URL</h3>
+        <p class="body-s text-aqua md:col-span-4">
+          Any public site. No access to the client's hosting, no plugin to
+          install, no code for them to paste. Everything checked is what a
+          visitor's browser can already see.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-3 md:gap-8" data-reveal="wipe">
+        <h3 class="serif serif-lg md:col-start-6 md:col-span-3">Load it like a phone would</h3>
+        <p class="body-s text-aqua md:col-span-4">
+          The page renders on a throttled mobile connection rather than a fast
+          desktop one, because that is the connection the customer is on when
+          they tap through from Google Maps.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-3 md:gap-8" data-reveal="wipe">
+        <h3 class="serif serif-lg md:col-start-6 md:col-span-3">Check four areas</h3>
+        <p class="body-s text-aqua md:col-span-4">
+          Security headers and certificate, Core Web Vitals, structured data and
+          local search signals, and broken or missing assets. Each finding is
+          recorded with the evidence behind it.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-3 md:gap-8" data-reveal="wipe">
+        <h3 class="serif serif-lg md:col-start-6 md:col-span-3">Get a report you can send</h3>
+        <p class="body-s text-aqua md:col-span-4">
+          A scorecard written for a shop owner rather than a developer, saying
+          what is costing them customers instead of listing audit names they
+          will not recognise.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 03 BUILD STATUS -->
+  <section id="status" class="relative overflow-hidden pt-20 sm:pt-32 pb-16 sm:pb-24">
+    <div class="pixel-texture parallax absolute -inset-y-[10%] inset-x-0" data-parallax="0.2" aria-hidden="true"></div>
+    <div class="pixel-texture pixel-texture-b parallax absolute -inset-y-[10%] inset-x-0" data-parallax="0.12" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1320px] mx-auto px-5 sm:px-8">
+      <div class="flex items-start gap-4 sm:gap-7">
+        <span class="num pt-2 sm:pt-4 text-aqua">03</span>
+        <h2 class="d2 text-mint max-w-[14ch]" data-reveal>Where the build is</h2>
+      </div>
+      <p class="lede text-aqua mt-7 md:ml-[41.666%]" data-reveal="wipe">
+        Plenty of products say "coming soon" and mean "we have a landing page".
+        Here is the honest state of this one.
+      </p>
+
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-x-8 lg:items-start mt-10 sm:mt-16">
+
+        <article class="card-paper p-6 sm:p-8 lg:col-start-1 lg:col-span-5 lg:row-start-1 lg:mt-24" data-reveal>
+          <div class="bg-flame p-4 mb-5">
+            <p class="serif serif-lg text-navy">Working</p>
+          </div>
+          <p class="body-s">
+            Header and certificate inspection, and the Core Web Vitals capture.
+            These are the checks I already run by hand on every site I build,
+            which is where the idea for the tool came from.
+          </p>
+        </article>
+
+        <article class="card-paper p-6 sm:p-8 lg:col-start-8 lg:col-span-5 lg:row-start-1" data-reveal>
+          <div class="bg-ground p-4 mb-5">
+            <p class="serif serif-lg text-mint">In progress</p>
+          </div>
+          <p class="body-s">
+            Structured-data and local-search validation, and the asset crawl
+            that finds broken images and dead links.
+          </p>
+        </article>
+
+        <article class="card-paper p-6 sm:p-8 lg:col-start-6 lg:col-span-6 lg:row-start-2 lg:mt-12" data-reveal>
+          <div class="bg-navy p-4 mb-5">
+            <p class="serif serif-lg text-mint">Not started</p>
+          </div>
+          <p class="body-s">
+            The branded PDF report, accounts and billing, and scan history.
+            There is no launch date, because committing to one before this part
+            exists would be a guess.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee mt-8 sm:mt-16">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span class="marquee__item serif serif-md">Security headers<span class="text-ground">&#9642;</span>Core Web Vitals<span class="text-ground">&#9642;</span>Local schema<span class="text-ground">&#9642;</span>Broken assets<span class="text-ground">&#9642;</span></span>
+        <span class="marquee__item serif serif-md">Security headers<span class="text-ground">&#9642;</span>Core Web Vitals<span class="text-ground">&#9642;</span>Local schema<span class="text-ground">&#9642;</span>Broken assets<span class="text-ground">&#9642;</span></span>
+      </div>
+      <div class="marquee__group" aria-hidden="true">
+        <span class="marquee__item serif serif-md">Security headers<span class="text-ground">&#9642;</span>Core Web Vitals<span class="text-ground">&#9642;</span>Local schema<span class="text-ground">&#9642;</span>Broken assets<span class="text-ground">&#9642;</span></span>
+        <span class="marquee__item serif serif-md">Security headers<span class="text-ground">&#9642;</span>Core Web Vitals<span class="text-ground">&#9642;</span>Local schema<span class="text-ground">&#9642;</span>Broken assets<span class="text-ground">&#9642;</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 FAQ + WAITLIST -->
+  <div class="bg-paper text-navy">
+
+    <section id="faq" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24">
+      <div class="flex items-start gap-4 sm:gap-7">
+        <span class="num pt-2 sm:pt-4 text-ground/70">04</span>
+        <h2 class="d2 text-ground max-w-[14ch]" data-reveal>Questions</h2>
+      </div>
+      <hr class="rule-ink mt-7 sm:mt-10">
+
+      <div class="md:ml-[41.666%]">
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>When does it launch?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            There is no announced date. Two of the four check groups work and
+            the reporting layer does not exist yet. Joining the waitlist means
+            you hear when it is real rather than when it is nearly real.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>How is this different from PageSpeed Insights or Lighthouse?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            It is not trying to beat them at measurement. Lighthouse is
+            excellent and free, and StarScanner leans on the same vitals. The
+            difference is the output. A Lighthouse report is written for a
+            developer. StarScanner's is written to hand to a restaurant owner
+            who needs to understand why their site is losing them bookings, and
+            it adds the local-search and security checks Lighthouse does not
+            cover.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>Will it work on any website?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            Any publicly reachable page. Sites behind a login, on an internal
+            network, or blocking automated traffic cannot be scanned, and the
+            report will say that rather than report a passing grade it could not
+            verify.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>What will it cost?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            Not decided. Waitlist members are offered founder pricing when it
+            does launch, but quoting a figure now for a product that is not
+            finished would be a number I could not stand behind later.
+          </p>
+        </details>
+
+        <details class="faq group py-6 border-b border-navy/20">
+          <summary class="flex items-start justify-between gap-6 serif serif-md">
+            <h3>Do you keep my client's data?</h3>
+            <svg class="sign w-4 h-4 shrink-0 mt-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="body-s mt-4 pr-6">
+            A scan reads a public page, so there is nothing private in it to
+            begin with. Scan history is on the "not started" list above. When it
+            is built, the retention rule will be written on this page before the
+            feature ships, not after.
+          </p>
+        </details>
+
+      </div>
     </section>
+
+    <section id="waitlist" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-16 sm:pb-24">
+      <div class="grid md:grid-cols-12 gap-8 items-start">
+        <h2 class="md:col-span-7 d2 text-ground max-w-[13ch]" data-reveal>Be notified on launch</h2>
+        <div class="md:col-span-5">
+          <p class="lede mb-6" data-reveal="wipe">
+            Waitlist members get founder pricing and early beta access when
+            StarScanner goes live.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20add%20me%20to%20the%20StarScanner%20waitlist."
+               target="_blank" rel="noopener noreferrer" class="btn">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+              <span>Reserve early access</span>
+            </a>
+            <a href="leadsflowpro.html" class="btn btn-ink">
+              <span>See LeadsFlowPro</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- pixelfield:footer --><svg class="dissolve" viewBox="0 0 104 11" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="#0350c4" d="M57 0h1v1h-1zM68 0h1v1h-1zM54 1h1v1h-1zM43 2h1v1h-1zM45 2h1v1h-1zM47 2h2v1h-2zM53 2h1v1h-1zM55 2h1v1h-1zM57 2h1v1h-1zM12 3h1v1h-1zM39 3h1v1h-1zM47 3h1v1h-1zM52 3h5v1h-5zM58 3h4v1h-4zM72 3h1v1h-1zM76 3h1v1h-1zM102 3h1v1h-1zM2 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM34 4h1v1h-1zM37 4h1v1h-1zM39 4h2v1h-2zM42 4h3v1h-3zM46 4h3v1h-3zM50 4h10v1h-10zM61 4h3v1h-3zM65 4h1v1h-1zM67 4h2v1h-2zM70 4h1v1h-1zM75 4h1v1h-1zM79 4h1v1h-1zM83 4h1v1h-1zM86 4h1v1h-1zM93 4h1v1h-1zM100 4h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM23 5h1v1h-1zM25 5h4v1h-4zM32 5h3v1h-3zM38 5h2v1h-2zM42 5h3v1h-3zM46 5h4v1h-4zM51 5h11v1h-11zM63 5h3v1h-3zM67 5h3v1h-3zM72 5h2v1h-2zM77 5h2v1h-2zM83 5h2v1h-2zM89 5h1v1h-1zM91 5h1v1h-1zM93 5h3v1h-3zM98 5h1v1h-1zM100 5h3v1h-3zM7 6h3v1h-3zM15 6h3v1h-3zM19 6h3v1h-3zM23 6h1v1h-1zM26 6h1v1h-1zM32 6h1v1h-1zM34 6h1v1h-1zM37 6h1v1h-1zM40 6h4v1h-4zM46 6h30v1h-30zM77 6h1v1h-1zM81 6h1v1h-1zM84 6h1v1h-1zM86 6h2v1h-2zM89 6h2v1h-2zM95 6h2v1h-2zM101 6h1v1h-1zM1 7h9v1h-9zM11 7h1v1h-1zM14 7h1v1h-1zM16 7h4v1h-4zM22 7h2v1h-2zM25 7h4v1h-4zM31 7h1v1h-1zM33 7h4v1h-4zM38 7h12v1h-12zM51 7h26v1h-26zM78 7h2v1h-2zM81 7h3v1h-3zM88 7h4v1h-4zM93 7h2v1h-2zM96 7h2v1h-2zM100 7h2v1h-2zM0 8h3v1h-3zM5 8h3v1h-3zM9 8h4v1h-4zM14 8h3v1h-3zM18 8h4v1h-4zM23 8h5v1h-5zM29 8h52v1h-52zM82 8h3v1h-3zM86 8h4v1h-4zM91 8h5v1h-5zM97 8h7v1h-7zM0 9h2v1h-2zM3 9h59v1h-59zM63 9h41v1h-41zM0 10h50v1h-50zM51 10h53v1h-53z"/><path fill="#fa7d13" d="M103 4h1v1h-1zM16 5h1v1h-1zM66 5h1v1h-1zM35 6h1v1h-1zM13 7h1v1h-1zM50 7h1v1h-1zM22 8h1v1h-1zM28 8h1v1h-1zM62 9h1v1h-1zM50 10h1v1h-1z"/></svg><!-- /pixelfield:footer -->
+  </div>
 
   </main>
 
-  <!-- Footer with Full Watermark -->
-  <footer class="relative z-10 py-12 border-t border-slate-200/60 text-[13px] text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3">
-        <div class="w-7 h-7 rounded-lg bg-white/80 flex items-center justify-center p-1">
-          <svg viewBox="0 0 512 512" class="w-full h-full" fill="none">
-            <defs>
-              <linearGradient id="footer-brand-pink" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ff2e93"/>
-                <stop offset="100%" stop-color="#ec4899"/>
-              </linearGradient>
-            </defs>
-            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#0f172a" stroke-width="44" stroke-linecap="round"/>
-            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#0f172a" stroke-width="44" stroke-linecap="round"/>
-            <circle cx="410" cy="350" r="28" fill="url(#footer-brand-pink)"/>
-          </svg>
+  <!-- shell:footer -->
+  <footer class="bg-ground pt-14 sm:pt-20 pb-10">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
+
+      <a href="index.html" class="d2 text-mint inline-block mb-10 sm:mb-14">Flowcraft</a>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+
+        <div class="col-span-2 md:col-span-1">
+          <p class="body-s text-aqua max-w-xs">
+            Independent software engineering studio run by Subhan Balbale.
+            Based in Navi Mumbai, Maharashtra. Online service, reachable across
+            India on WhatsApp.
+          </p>
         </div>
-        <span class="text-slate-950 font-bold tracking-tight text-base font-sans">flowcraft<span class="text-pink-500">.</span></span>
-        <span class="text-slate-300">|</span>
-        <span class="font-medium text-slate-700">FlowCraft Studio by Subhan Balbale</span>
+
+        <div class="body-s tnum">
+          <h2 class="serif serif-md text-mint mb-3">Contact</h2>
+          <p><a href="tel:+919372407018" class="text-aqua hover:text-mint">+91 93724 07018</a></p>
+          <p class="mt-1"><a href="mailto:subhanilyasbalbale@gmail.com" class="text-aqua hover:text-mint">subhanilyasbalbale@gmail.com</a></p>
+        </div>
+
+        <nav aria-label="Products" class="body-s">
+          <h2 class="serif serif-md text-mint mb-3">Products</h2>
+          <ul class="space-y-1.5 text-aqua">
+            <li><a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="hover:text-mint inline-flex items-center gap-1"><span>SiteMaker WebApp</span><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></li>
+            <li><a href="sitemaker.html" class="hover:text-mint">SiteMaker overview</a></li>
+            <li><a href="reviews.html" class="hover:text-mint">Smart Review System</a></li>
+            <li><a href="leadsflowpro.html" class="hover:text-mint">LeadsFlowPro</a></li>
+            <li><a href="starscanner.html" class="hover:text-mint">StarScanner</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Studio" class="body-s">
+          <h2 class="serif serif-md text-mint mb-3">Studio</h2>
+          <ul class="space-y-1.5 text-aqua">
+            <li><a href="about.html" class="hover:text-mint">About Subhan</a></li>
+            <li><a href="index.html#faq" class="hover:text-mint">FAQ</a></li>
+            <li><a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer" class="hover:text-mint">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/_flowcraft.studio/" target="_blank" rel="noopener noreferrer" class="hover:text-mint">Instagram</a></li>
+          </ul>
+        </nav>
+
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-6 text-slate-600 font-medium">
-        <a href="index.html" class="hover:text-slate-950 transition-colors">Home</a>
-        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">SiteMaker</a>
-        <a href="leadsflowpro.html" class="hover:text-slate-950 transition-colors">LeadsFlowPro</a>
-        <a href="reviews.html" class="hover:text-slate-950 transition-colors">Smart Reviews</a>
-        <a href="https://wa.me/919372407018" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-700 transition-colors">WhatsApp</a>
-      </div>
-      <div>
-        <span>© 2026 FlowCraft Studio by Subhan Balbale. <span class="text-slate-500">Updated <time datetime="2026-10-30">30 October 2026</time>.</span></span>
-      </div>
+
+      <hr class="rule mt-12 mb-6">
+      <p class="body-s text-aqua">
+        &copy; 2026 FlowCraft Studio by Subhan Balbale. Updated
+        <time datetime="2026-10-31">31 October 2026</time>.
+      </p>
     </div>
   </footer>
+<!-- /shell:footer -->
 
-  <!-- Mobile Drawer Toggle Script -->
+  <!-- shell:script -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const hamburgerIcon = document.getElementById('hamburger-icon');
-      const closeIcon = document.getElementById('close-icon');
+    /* ------------------------------------------------------------------
+       Scroll reveal. One observer at threshold 0.15, a 1200ms masked
+       slide-up, no stagger. The extra top check catches blocks taller than
+       0.15 of the viewport can ever cover, which would never fire.
+       ------------------------------------------------------------------ */
+    (function setupReveal() {
+      var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+      if (!els.length) return;
 
-      if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-          const isOpen = !mobileMenu.classList.contains('hidden');
-          mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
-          if (isOpen) {
-            mobileMenu.classList.add('hidden');
-            hamburgerIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-          } else {
-            mobileMenu.classList.remove('hidden');
-            hamburgerIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-          }
-        });
-
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-          link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            hamburgerIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-          });
-        });
+      function show(el, instant) {
+        if (instant) el.classList.add('no-anim');
+        el.classList.add('is-in');
       }
-    });
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+          !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { show(el, true); });
+        return;
+      }
+
+      // threshold 0 with a small bottom inset: an element reveals as soon as
+      // it genuinely enters the viewport, whichever way you are scrolling.
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          show(e.target);
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+      // A reload can restore a scroll position mid-page. Anything already
+      // scrolled past is shown straight away rather than left blank until the
+      // visitor scrolls back down over it again.
+      var restored = (window.scrollY || window.pageYOffset) > 0;
+      els.forEach(function (el) {
+        if (restored && el.getBoundingClientRect().bottom < 0) {
+          show(el, true);
+        } else {
+          io.observe(el);
+        }
+      });
+
+      // Safety net. A suspended or throttled page can withhold observer
+      // callbacks indefinitely, and content that never reveals is content the
+      // visitor never reads. After load, show anything already on screen.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          els.forEach(function (el) {
+            if (el.classList.contains('is-in')) return;
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              show(el);
+              io.unobserve(el);
+            }
+          });
+        }, 400);
+      });
+    })();
+
+    /* ------------------------------------------------------------------
+       Background parallax at speed 0.2, the figure the reference uses.
+       Layers are inset past their section on both sides, so the translate
+       never exposes an edge.
+       ------------------------------------------------------------------ */
+    (function setupParallax() {
+      var layers = document.querySelectorAll('[data-parallax]');
+      if (!layers.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var queued = false;
+      var geom = [];
+
+      /* Geometry is measured once per layout, not once per frame. Reading
+         getBoundingClientRect inside the scroll frame interleaves reads with
+         the transform writes below it, which is how a parallax ends up
+         forcing a synchronous layout on every single frame. Only scrollY
+         changes while scrolling, so that is the only thing worth reading. */
+      function measure() {
+        var y = window.pageYOffset;
+        geom = [];
+        for (var i = 0; i < layers.length; i++) {
+          var r = layers[i].getBoundingClientRect();
+          geom.push({
+            top: r.top + y - (layers[i]._shift || 0),
+            height: r.height,
+            speed: parseFloat(layers[i].getAttribute('data-parallax')) || 0.2
+          });
+        }
+      }
+
+      function frame() {
+        queued = false;
+        var y = window.pageYOffset;
+        var vh = window.innerHeight;
+        for (var i = 0; i < layers.length; i++) {
+          var g = geom[i];
+          if (!g) continue;
+          var p = (vh - (g.top - y)) / (vh + g.height);
+          var shift = (p - 0.5) * g.speed * g.height;
+          layers[i]._shift = shift;
+          layers[i].style.transform =
+            'translate3d(0,' + shift.toFixed(2) + 'px,0)';
+        }
+      }
+
+      function onScroll() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(frame);
+      }
+
+      function onResize() { measure(); onScroll(); }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize, { passive: true });
+      window.addEventListener('load', onResize);
+      measure();
+      frame();
+    })();
+
+    /* ------------------------------------------------------------------
+       Mobile navigation drawer
+       ------------------------------------------------------------------ */
+    (function setupNav() {
+      var btn = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!btn || !menu) return;
+
+      var openIcon = document.getElementById('nav-open-icon');
+      var closeIcon = document.getElementById('nav-close-icon');
+
+      function setOpen(open) {
+        menu.hidden = !open;
+        btn.setAttribute('aria-expanded', String(open));
+        openIcon.classList.toggle('hidden', open);
+        closeIcon.classList.toggle('hidden', !open);
+      }
+
+      btn.addEventListener('click', function () { setOpen(menu.hidden); });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
+      });
+    })();
+
+    /* ------------------------------------------------------------------
+       Mascot: pointer tracking across a 3x3 sprite sheet, click to boop.
+       Only present on pages that render #hero-mascot.
+       ------------------------------------------------------------------ */
+    (function setupMascot() {
+      var box = document.getElementById('hero-mascot');
+      if (!box) return;
+
+      var DIR = {
+        'up-left': '0% 0%',     'up': '50% 0%',      'up-right': '100% 0%',
+        'left': '0% 50%',       'center': '50% 50%', 'right': '100% 50%',
+        'down-left': '0% 100%', 'down': '50% 100%',  'down-right': '100% 100%'
+      };
+      var CLOCKWISE = ['right', 'down-right', 'down', 'down-left',
+                       'left', 'up-left', 'up', 'up-right'];
+      var REACTIONS = ['0% 0%', '50% 0%', '100% 0%',
+                       '0% 50%', '50% 50%', '100% 50%',
+                       '0% 100%', '50% 100%', '100% 100%'];
+      var SECTOR = (Math.PI * 2) / 8;
+      var DEAD_ZONE = 55; // px
+
+      var isBooped = false, boopTimer = null, reactionIdx = 0;
+
+      window.addEventListener('pointermove', function (e) {
+        if (isBooped) return;
+        var rect = box.getBoundingClientRect();
+        var dx = e.clientX - (rect.left + rect.width / 2);
+        var dy = e.clientY - (rect.top + rect.height / 2);
+        var dir = 'center';
+        if (Math.hypot(dx, dy) >= DEAD_ZONE) {
+          var angle = Math.atan2(dy, dx);
+          if (angle < 0) angle += Math.PI * 2;
+          dir = CLOCKWISE[Math.round(angle / SECTOR) % 8];
+        }
+        box.style.backgroundImage = "url('assets/mascot/subhan-directions.webp')";
+        box.style.backgroundPosition = DIR[dir];
+      }, { passive: true });
+
+      box.addEventListener('click', function () {
+        isBooped = true;
+        clearTimeout(boopTimer);
+        reactionIdx = (reactionIdx + 1) % REACTIONS.length;
+        box.style.backgroundImage = "url('assets/mascot/subhan-reactions.webp')";
+        box.style.backgroundPosition = REACTIONS[reactionIdx];
+        box.classList.remove('boop-animation');
+        void box.offsetWidth; // reflow
+        box.classList.add('boop-animation');
+        boopTimer = setTimeout(function () {
+          isBooped = false;
+          box.style.backgroundImage = "url('assets/mascot/subhan-directions.webp')";
+          box.classList.remove('boop-animation');
+        }, 550);
+      });
+    })();
   </script>
+<!-- /shell:script -->
 </body>
 </html>

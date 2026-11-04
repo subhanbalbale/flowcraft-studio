@@ -9,6 +9,7 @@ dist/
 # Editor & AI agent directories
 .claude/
 .agents/
+.omc/
 .vscode/
 .idea/
 

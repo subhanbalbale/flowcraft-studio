@@ -12,243 +12,427 @@
   <meta name="description" content="That page does not exist. Find FlowCraft Studio's websites, automated review systems and local search work from here, or message Subhan directly.">
   <meta name="robots" content="noindex, follow">
 
+  <!-- shell:head -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
+  <!-- Tailwind plus the FlowCraft design system, compiled ahead of time -->
   <link rel="stylesheet" href="assets/css/tailwind.css">
 
-  <style>
-    /* Metric-matched fallback: holds the exact space the webfont will take,
-       so swapping it in causes no layout shift. */
-    @font-face {
-      font-family: 'Jakarta Fallback';
-      src: local('Arial'), local('Helvetica'), local('Liberation Sans');
-      size-adjust: 106.66%;
-      ascent-override: 97.5%;
-      descent-override: 20.6%;
-      line-gap-override: 0%;
-    }
-
-    :root {
-      --bg-base: #faf8fa;
-    }
-    html, body {
-      overflow-x: hidden;
-      width: 100%;
-      -webkit-tap-highlight-color: transparent;
-    }
-    body {
-      background-color: var(--bg-base);
-      color: #0f172a;
-      font-family: 'Plus Jakarta Sans', 'Jakarta Fallback', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .ambient-mesh {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-      background: #faf8fa;
-    }
-    .mesh-orb {
-      position: absolute;
-      border-radius: 9999px;
-      pointer-events: none;
-    }
-    .orb-1 {
-      top: -10%;
-      left: 5%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.32) 0%, rgba(56, 189, 248, 0.14) 35%, rgba(56, 189, 248, 0.03) 60%, transparent 72%);
-    }
-    .orb-2 {
-      top: 25%;
-      right: 0%;
-      width: 750px;
-      height: 750px;
-      background: radial-gradient(circle at center, rgba(244, 114, 182, 0.3) 0%, rgba(244, 114, 182, 0.13) 35%, rgba(244, 114, 182, 0.03) 60%, transparent 72%);
-    }
-    .mesh-grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at center, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.65;
-    }
-
-    .title-display {
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      text-wrap: balance;
-    }
-    h1.title-display { letter-spacing: -0.038em; }
-    .card-title {
-      font-weight: 600;
-      letter-spacing: -0.014em;
-      line-height: 1.25;
-    }
-    .lede {
-      max-width: 62ch;
-      text-wrap: pretty;
-    }
-
-    .pill-button {
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: 9999px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    }
-    .pill-button:hover {
-      background: #1e293b;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    }
-    .pill-button:active { transform: scale(0.97) !important; }
-
-    ::selection {
-      background: rgba(236, 72, 153, 0.18);
-      color: #0f172a;
-    }
-    html {
-      scrollbar-color: #cbd5e1 transparent;
-      caret-color: #ec4899;
-    }
-    :focus-visible {
-      outline: 2px solid #ec4899;
-      outline-offset: 3px;
-      border-radius: 6px;
-    }
-    a { text-underline-offset: 0.22em; }
-
-    .skip-link {
-      position: absolute;
-      left: 50%;
-      top: 0.5rem;
-      transform: translate(-50%, -200%);
-      z-index: 100;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      background: #0f172a;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: transform 0.2s ease;
-    }
-    .skip-link:focus-visible { transform: translate(-50%, 0); }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+  <!-- Gate the scroll-reveal start state on JS actually running, so a parse
+       error or a blocked script can never leave a page blank. -->
+  <script>document.documentElement.classList.add('js')</script>
+<!-- /shell:head -->
 </head>
-<body class="min-h-screen relative">
+<body class="min-h-screen bg-ground text-mint">
 
-  <div class="ambient-mesh">
-    <div class="mesh-orb orb-1"></div>
-    <div class="mesh-orb orb-2"></div>
-    <div class="mesh-grid-overlay"></div>
-  </div>
-
+  <!-- shell:header -->
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <header class="sticky top-4 z-50 px-4 sm:px-6 max-w-5xl mx-auto">
-    <nav aria-label="Main" class="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-full pl-5 pr-2 py-2 flex items-center justify-between shadow-xs">
+  <header class="sticky top-0 z-50 bg-ground/90 backdrop-blur-sm">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-4">
 
-      <a href="index.html" aria-label="FlowCraft Studio, home" class="flex items-center gap-2.5 shrink-0">
-        <span class="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center p-1.5">
+      <a href="index.html" aria-label="FlowCraft Studio, home"
+         class="flex items-center gap-2 bg-mint text-navy pl-2 pr-3.5 py-1.5 shrink-0">
+        <span class="w-6 h-6 bg-ground flex items-center justify-center p-1">
           <svg viewBox="0 0 512 512" class="w-full h-full" fill="none" aria-hidden="true">
-            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
-            <circle cx="410" cy="350" r="28" fill="#ec4899"/>
+            <path d="M 245 150 C 215 150, 185 170, 185 210 V 360" fill="none" stroke="#ddf5ec" stroke-width="46" stroke-linecap="square"/>
+            <path d="M 140 235 H 275 C 335 235, 365 260, 365 300 C 365 342, 325 365, 275 365 C 230 365, 205 340, 205 305" fill="none" stroke="#ddf5ec" stroke-width="46" stroke-linecap="square"/>
+            <rect x="382" y="322" width="56" height="56" fill="#fa7d13"/>
           </svg>
         </span>
-        <span class="font-semibold text-[15px] tracking-tight text-slate-950">flowcraft<span class="text-pink-500">.</span></span>
+        <span class="font-bold text-[14px] tracking-tight">FlowCraft</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600">
-        <a href="sitemaker.html" class="hover:text-slate-950 transition-colors">Websites</a>
-        <a href="reviews.html" class="hover:text-slate-950 transition-colors">Smart Reviews</a>
-        <a href="index.html#ranking" class="hover:text-slate-950 transition-colors">Local SEO</a>
-        <a href="about.html" class="hover:text-slate-950 transition-colors">About</a>
-      </div>
+      <nav aria-label="Main" class="nav-pill hidden md:flex">
+        <a href="index.html#build">Apps</a>
+        <a href="reviews.html">Smart Reviews</a>
+        <a href="index.html#ranking">Ranking</a>
+        <a href="about.html">About</a>
+      </nav>
 
-      <div class="flex items-center gap-1.5">
-        <a href="https://mysitemaker.in"
-           target="_blank" rel="noopener noreferrer"
-           class="pill-button hidden sm:inline-flex px-5 py-2.5 text-[13px] font-semibold items-center gap-1.5">
-          <span>Open SiteMaker</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-mint hover:text-flame transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          <span>WhatsApp</span>
         </a>
+
+        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                class="md:hidden w-10 h-10 bg-flame text-navy flex items-center justify-center">
+          <span class="sr-only">Menu</span>
+          <svg id="nav-open-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+          <svg id="nav-close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
-    </nav>
-  </header>
-
-  <main id="main" class="relative z-10 px-4 sm:px-6 max-w-3xl mx-auto pt-20 pb-24 md:pt-28">
-
-    <p class="text-sm font-semibold text-pink-700 mb-3 numeric-tabular">Error 404</p>
-
-    <h1 class="title-display text-3xl sm:text-5xl text-slate-950 mb-5">
-      That page isn't here.
-    </h1>
-
-    <p class="lede text-base sm:text-lg text-slate-600 leading-relaxed mb-10">
-      The link may be old, or I may have moved something. Everything FlowCraft
-      makes is one of the four below — or message me and I'll point you at it.
-    </p>
-
-    <div class="divide-y divide-slate-200 border-y border-slate-200 mb-10">
-
-      <a href="sitemaker.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
-        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">SiteMaker websites</h2>
-        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">A mobile-first business website for ₹5,999 once, live in 24 hours.</p>
-      </a>
-
-      <a href="reviews.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
-        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">Smart Reviews</h2>
-        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">Automated WhatsApp and QR workflows that generate 5-star Google reviews on autopilot.</p>
-      </a>
-
-      <a href="leadsflowpro.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
-        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">LeadsFlowPro</h2>
-        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">Find local businesses on Google Maps that have no website yet.</p>
-      </a>
-
-      <a href="starscanner.html" class="group block py-5 sm:flex sm:items-baseline sm:gap-8">
-        <h2 class="card-title text-base text-slate-950 group-hover:text-pink-700 transition-colors sm:w-48 sm:shrink-0">StarScanner</h2>
-        <p class="text-sm text-slate-600 leading-relaxed mt-1 sm:mt-0">Scan a site for broken links, security gaps and search problems.</p>
-      </a>
-
     </div>
 
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-      <a href="index.html" class="pill-button px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    <div id="nav-menu" hidden class="md:hidden border-t border-mint/25 bg-ground">
+      <div class="max-w-[1320px] mx-auto px-5 py-3 grid gap-1">
+        <a href="index.html#build" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Apps</a>
+        <a href="reviews.html" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Smart Reviews</a>
+        <a href="index.html#ranking" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">Ranking</a>
+        <a href="about.html" class="px-3 py-3 text-sm font-semibold text-mint hover:bg-mint/10">About</a>
+        <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer"
+           class="btn mt-2 w-full">Message on WhatsApp</a>
+      </div>
+    </div>
+  </header>
+<!-- /shell:header -->
+
+  <main id="main">
+
+  <!-- HERO -->
+  <section class="relative bg-paper overflow-hidden">
+    <div class="hero-grid parallax absolute -inset-y-[12%] inset-x-0" data-parallax="0.2" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-10 sm:pb-16">
+      <p class="num text-ground/70 text-center mb-5">Error 404</p>
+      <h1 class="d1 text-ground text-center max-w-[12ch] mx-auto" data-reveal>That page isn&rsquo;t here</h1>
+      <p class="lede text-navy text-center mx-auto mt-6 sm:mt-8" data-reveal="wipe">
+        The link may be old, or I may have moved something. Everything FlowCraft
+        makes is one of the four below. Message me and I will point you at it.
+      </p>
+    </div>
+
+    <!-- pixelfield:hero --><svg class="dissolve" viewBox="0 0 104 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="#0350c4" d="M55 0h1v1h-1zM61 0h1v1h-1zM46 1h1v1h-1zM51 1h1v1h-1zM66 1h1v1h-1zM33 2h1v1h-1zM45 2h2v1h-2zM48 2h1v1h-1zM56 2h1v1h-1zM58 2h1v1h-1zM61 2h1v1h-1zM34 3h1v1h-1zM38 3h1v1h-1zM46 3h3v1h-3zM53 3h1v1h-1zM55 3h1v1h-1zM58 3h1v1h-1zM68 3h1v1h-1zM93 3h1v1h-1zM23 4h1v1h-1zM42 4h1v1h-1zM44 4h1v1h-1zM52 4h1v1h-1zM57 4h1v1h-1zM60 4h1v1h-1zM63 4h1v1h-1zM65 4h1v1h-1zM77 4h1v1h-1zM8 5h1v1h-1zM14 5h1v1h-1zM22 5h1v1h-1zM37 5h1v1h-1zM47 5h1v1h-1zM54 5h1v1h-1zM58 5h1v1h-1zM62 5h1v1h-1zM64 5h1v1h-1zM32 6h1v1h-1zM41 6h1v1h-1zM43 6h1v1h-1zM46 6h2v1h-2zM50 6h1v1h-1zM52 6h1v1h-1zM57 6h2v1h-2zM61 6h3v1h-3zM65 6h1v1h-1zM67 6h1v1h-1zM93 6h1v1h-1zM101 6h1v1h-1zM1 7h1v1h-1zM12 7h2v1h-2zM23 7h2v1h-2zM42 7h1v1h-1zM48 7h2v1h-2zM51 7h4v1h-4zM57 7h2v1h-2zM60 7h2v1h-2zM63 7h1v1h-1zM66 7h2v1h-2zM70 7h1v1h-1zM75 7h1v1h-1zM78 7h1v1h-1zM95 7h1v1h-1zM100 7h1v1h-1zM22 8h1v1h-1zM26 8h1v1h-1zM29 8h2v1h-2zM34 8h1v1h-1zM36 8h2v1h-2zM40 8h1v1h-1zM42 8h1v1h-1zM45 8h2v1h-2zM48 8h2v1h-2zM54 8h1v1h-1zM56 8h2v1h-2zM62 8h2v1h-2zM66 8h1v1h-1zM68 8h2v1h-2zM72 8h1v1h-1zM74 8h1v1h-1zM95 8h1v1h-1zM4 9h2v1h-2zM17 9h1v1h-1zM22 9h1v1h-1zM28 9h1v1h-1zM30 9h1v1h-1zM35 9h2v1h-2zM39 9h1v1h-1zM41 9h1v1h-1zM49 9h4v1h-4zM56 9h2v1h-2zM59 9h1v1h-1zM61 9h1v1h-1zM64 9h1v1h-1zM67 9h1v1h-1zM69 9h1v1h-1zM76 9h1v1h-1zM83 9h1v1h-1zM99 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM11 10h1v1h-1zM19 10h2v1h-2zM23 10h1v1h-1zM26 10h1v1h-1zM28 10h2v1h-2zM38 10h1v1h-1zM43 10h1v1h-1zM45 10h3v1h-3zM49 10h2v1h-2zM52 10h1v1h-1zM54 10h6v1h-6zM62 10h1v1h-1zM64 10h1v1h-1zM66 10h3v1h-3zM70 10h1v1h-1zM77 10h2v1h-2zM84 10h3v1h-3zM93 10h1v1h-1zM95 10h1v1h-1zM99 10h1v1h-1zM102 10h1v1h-1zM7 11h1v1h-1zM19 11h1v1h-1zM25 11h1v1h-1zM30 11h1v1h-1zM33 11h1v1h-1zM35 11h1v1h-1zM37 11h1v1h-1zM40 11h4v1h-4zM47 11h6v1h-6zM54 11h4v1h-4zM60 11h4v1h-4zM65 11h1v1h-1zM67 11h1v1h-1zM71 11h1v1h-1zM75 11h1v1h-1zM91 11h1v1h-1zM94 11h1v1h-1zM97 11h4v1h-4zM103 11h1v1h-1zM2 12h2v1h-2zM12 12h1v1h-1zM17 12h1v1h-1zM23 12h2v1h-2zM27 12h1v1h-1zM29 12h1v1h-1zM32 12h1v1h-1zM37 12h2v1h-2zM42 12h1v1h-1zM44 12h1v1h-1zM49 12h2v1h-2zM52 12h1v1h-1zM56 12h2v1h-2zM59 12h6v1h-6zM66 12h1v1h-1zM68 12h2v1h-2zM73 12h1v1h-1zM75 12h1v1h-1zM77 12h2v1h-2zM83 12h1v1h-1zM85 12h1v1h-1zM95 12h2v1h-2zM100 12h1v1h-1zM103 12h1v1h-1zM2 13h2v1h-2zM7 13h2v1h-2zM10 13h1v1h-1zM13 13h1v1h-1zM17 13h4v1h-4zM24 13h1v1h-1zM26 13h2v1h-2zM32 13h2v1h-2zM36 13h2v1h-2zM39 13h1v1h-1zM42 13h4v1h-4zM47 13h4v1h-4zM52 13h12v1h-12zM65 13h2v1h-2zM69 13h4v1h-4zM75 13h2v1h-2zM78 13h3v1h-3zM85 13h2v1h-2zM88 13h1v1h-1zM90 13h1v1h-1zM92 13h1v1h-1zM95 13h1v1h-1zM98 13h1v1h-1zM100 13h1v1h-1zM103 13h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM11 14h1v1h-1zM18 14h1v1h-1zM20 14h2v1h-2zM28 14h4v1h-4zM33 14h1v1h-1zM35 14h2v1h-2zM40 14h1v1h-1zM44 14h4v1h-4zM49 14h1v1h-1zM51 14h2v1h-2zM55 14h4v1h-4zM60 14h4v1h-4zM65 14h2v1h-2zM68 14h1v1h-1zM70 14h1v1h-1zM73 14h1v1h-1zM75 14h4v1h-4zM81 14h1v1h-1zM84 14h1v1h-1zM86 14h1v1h-1zM88 14h1v1h-1zM95 14h3v1h-3zM1 15h2v1h-2zM9 15h2v1h-2zM12 15h2v1h-2zM19 15h2v1h-2zM22 15h3v1h-3zM30 15h1v1h-1zM32 15h1v1h-1zM36 15h2v1h-2zM39 15h1v1h-1zM41 15h2v1h-2zM45 15h6v1h-6zM52 15h18v1h-18zM71 15h3v1h-3zM76 15h2v1h-2zM84 15h1v1h-1zM86 15h1v1h-1zM89 15h2v1h-2zM93 15h2v1h-2zM96 15h1v1h-1zM100 15h1v1h-1zM2 16h1v1h-1zM5 16h2v1h-2zM12 16h5v1h-5zM18 16h3v1h-3zM22 16h1v1h-1zM31 16h1v1h-1zM34 16h4v1h-4zM39 16h32v1h-32zM73 16h2v1h-2zM76 16h1v1h-1zM80 16h1v1h-1zM82 16h1v1h-1zM84 16h1v1h-1zM87 16h1v1h-1zM91 16h2v1h-2zM96 16h3v1h-3zM102 16h1v1h-1zM1 17h2v1h-2zM4 17h2v1h-2zM7 17h4v1h-4zM13 17h2v1h-2zM16 17h2v1h-2zM19 17h1v1h-1zM21 17h2v1h-2zM24 17h1v1h-1zM26 17h2v1h-2zM30 17h2v1h-2zM33 17h1v1h-1zM35 17h4v1h-4zM40 17h1v1h-1zM42 17h2v1h-2zM45 17h16v1h-16zM62 17h14v1h-14zM78 17h1v1h-1zM80 17h1v1h-1zM83 17h2v1h-2zM87 17h3v1h-3zM91 17h1v1h-1zM93 17h1v1h-1zM97 17h2v1h-2zM100 17h4v1h-4zM1 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h2v1h-2zM13 18h6v1h-6zM21 18h1v1h-1zM25 18h3v1h-3zM30 18h1v1h-1zM32 18h3v1h-3zM36 18h3v1h-3zM41 18h36v1h-36zM78 18h1v1h-1zM80 18h1v1h-1zM82 18h2v1h-2zM86 18h1v1h-1zM88 18h2v1h-2zM92 18h1v1h-1zM94 18h1v1h-1zM96 18h2v1h-2zM99 18h5v1h-5zM1 19h1v1h-1zM3 19h2v1h-2zM6 19h1v1h-1zM8 19h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM14 19h2v1h-2zM17 19h2v1h-2zM22 19h3v1h-3zM26 19h1v1h-1zM29 19h3v1h-3zM33 19h2v1h-2zM36 19h3v1h-3zM40 19h1v1h-1zM42 19h26v1h-26zM69 19h2v1h-2zM72 19h1v1h-1zM74 19h5v1h-5zM81 19h2v1h-2zM85 19h2v1h-2zM88 19h2v1h-2zM92 19h4v1h-4zM98 19h2v1h-2zM101 19h3v1h-3zM1 20h1v1h-1zM3 20h1v1h-1zM6 20h3v1h-3zM10 20h8v1h-8zM19 20h1v1h-1zM21 20h3v1h-3zM25 20h3v1h-3zM30 20h4v1h-4zM36 20h42v1h-42zM79 20h2v1h-2zM82 20h1v1h-1zM84 20h2v1h-2zM88 20h3v1h-3zM92 20h5v1h-5zM98 20h5v1h-5zM1 21h1v1h-1zM3 21h1v1h-1zM5 21h4v1h-4zM11 21h7v1h-7zM19 21h2v1h-2zM22 21h2v1h-2zM25 21h4v1h-4zM30 21h6v1h-6zM38 21h36v1h-36zM75 21h3v1h-3zM79 21h4v1h-4zM84 21h4v1h-4zM89 21h2v1h-2zM92 21h4v1h-4zM97 21h7v1h-7zM0 22h1v1h-1zM2 22h6v1h-6zM10 22h18v1h-18zM29 22h16v1h-16zM46 22h31v1h-31zM78 22h1v1h-1zM82 22h2v1h-2zM85 22h1v1h-1zM87 22h5v1h-5zM93 22h8v1h-8zM102 22h2v1h-2zM0 23h82v1h-82zM83 23h21v1h-21zM1 24h1v1h-1zM4 24h100v1h-100zM0 25h11v1h-11zM12 25h80v1h-80zM93 25h11v1h-11z"/><path fill="#fa7d13" d="M74 6h1v1h-1zM53 8h1v1h-1zM62 9h1v1h-1zM66 11h1v1h-1zM16 12h1v1h-1zM54 12h1v1h-1zM65 12h1v1h-1zM26 14h1v1h-1zM39 14h1v1h-1zM50 14h1v1h-1zM59 14h1v1h-1zM27 15h1v1h-1zM40 15h1v1h-1zM51 15h1v1h-1zM74 15h1v1h-1zM12 17h1v1h-1zM25 17h1v1h-1zM44 17h1v1h-1zM61 17h1v1h-1zM11 19h1v1h-1zM20 19h1v1h-1zM68 19h1v1h-1zM29 20h1v1h-1zM37 21h1v1h-1zM74 21h1v1h-1zM78 21h1v1h-1zM28 22h1v1h-1zM45 22h1v1h-1zM84 22h1v1h-1zM86 22h1v1h-1zM101 22h1v1h-1zM11 25h1v1h-1zM92 25h1v1h-1z"/></svg><!-- /pixelfield:hero -->
+  </section>
+
+  <!-- THE FOUR -->
+  <section class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-16 sm:pt-24">
+    <div class="flex items-start gap-4 sm:gap-7">
+      <span class="num pt-2 sm:pt-4 text-aqua">01</span>
+      <h2 class="d2 text-mint max-w-[13ch]" data-reveal>Everything we make</h2>
+    </div>
+
+    <ol class="grid sm:grid-cols-2 gap-px bg-ground mt-10 sm:mt-14">
+
+      <li class="card-mint p-6 sm:p-8 pt-12">
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">SiteMaker websites</h3>
+        <p class="body-s mb-6">
+          A mobile-first business website for &#8377;5,999 once, live in 24 hours.
+        </p>
+        <a href="sitemaker.html" class="arrow-link mt-auto">
+          <span>See SiteMaker</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </li>
+
+      <li class="card-mint p-6 sm:p-8 pt-12">
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">Smart Reviews</h3>
+        <p class="body-s mb-6">
+          Automated WhatsApp and QR workflows that generate 5-star Google
+          reviews on autopilot.
+        </p>
+        <a href="reviews.html" class="arrow-link mt-auto">
+          <span>See Smart Reviews</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </li>
+
+      <li class="card-mint p-6 sm:p-8 pt-12">
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">LeadsFlowPro</h3>
+        <p class="body-s mb-6">
+          Find local businesses on Google Maps that have no website yet.
+        </p>
+        <a href="leadsflowpro.html" class="arrow-link mt-auto">
+          <span>See LeadsFlowPro</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </li>
+
+      <li class="card-mint p-6 sm:p-8 pt-12">
+        <hr class="rule-ink-dash mb-4">
+        <h3 class="serif serif-lg mb-2.5">StarScanner</h3>
+        <p class="body-s mb-6">
+          Scan a site for broken links, security gaps and search problems.
+        </p>
+        <a href="starscanner.html" class="arrow-link mt-auto">
+          <span>See StarScanner</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </li>
+
+    </ol>
+
+    <div class="flex flex-col sm:flex-row gap-3 mt-10 sm:mt-14">
+      <a href="index.html" class="btn">
         <span>Back to the homepage</span>
       </a>
-      <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20hit%20a%20broken%20link%20on%20your%20site."
-         target="_blank" rel="noopener noreferrer"
-         class="text-sm font-semibold text-slate-700 hover:text-slate-950 underline decoration-slate-300 hover:decoration-slate-500">
-        Tell me the link was broken
+      <a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20a%20link%20on%20flowcraftstudio.netlify.app%20was%20broken."
+         target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+        <span>Tell me the link was broken</span>
       </a>
     </div>
+  </section>
+
+  <div class="mt-20 sm:mt-28"></div>
 
   </main>
 
-  <footer class="relative z-10 mt-8 border-t border-slate-200/80 bg-white/70 py-8 px-4 sm:px-6">
-    <div class="max-w-3xl mx-auto text-xs text-slate-500">
-      &copy; 2026 FlowCraft Studio by Subhan Balbale. Mumbai, Maharashtra, India.
+  <!-- shell:footer -->
+  <footer class="bg-ground pt-14 sm:pt-20 pb-10">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
+
+      <a href="index.html" class="d2 text-mint inline-block mb-10 sm:mb-14">Flowcraft</a>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+
+        <div class="col-span-2 md:col-span-1">
+          <p class="body-s text-aqua max-w-xs">
+            Independent software engineering studio run by Subhan Balbale.
+            Based in Navi Mumbai, Maharashtra. Online service, reachable across
+            India on WhatsApp.
+          </p>
+        </div>
+
+        <div class="body-s tnum">
+          <h2 class="serif serif-md text-mint mb-3">Contact</h2>
+          <p><a href="tel:+919372407018" class="text-aqua hover:text-mint">+91 93724 07018</a></p>
+          <p class="mt-1"><a href="mailto:subhanilyasbalbale@gmail.com" class="text-aqua hover:text-mint">subhanilyasbalbale@gmail.com</a></p>
+        </div>
+
+        <nav aria-label="Products" class="body-s">
+          <h2 class="serif serif-md text-mint mb-3">Products</h2>
+          <ul class="space-y-1.5 text-aqua">
+            <li><a href="https://mysitemaker.in" target="_blank" rel="noopener noreferrer" class="hover:text-mint inline-flex items-center gap-1"><span>SiteMaker WebApp</span><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></li>
+            <li><a href="sitemaker.html" class="hover:text-mint">SiteMaker overview</a></li>
+            <li><a href="reviews.html" class="hover:text-mint">Smart Review System</a></li>
+            <li><a href="leadsflowpro.html" class="hover:text-mint">LeadsFlowPro</a></li>
+            <li><a href="starscanner.html" class="hover:text-mint">StarScanner</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Studio" class="body-s">
+          <h2 class="serif serif-md text-mint mb-3">Studio</h2>
+          <ul class="space-y-1.5 text-aqua">
+            <li><a href="about.html" class="hover:text-mint">About Subhan</a></li>
+            <li><a href="index.html#faq" class="hover:text-mint">FAQ</a></li>
+            <li><a href="https://wa.me/919372407018?text=Hi%20Subhan%2C%20I%20want%20to%20start%20a%20project%20with%20FlowCraft." target="_blank" rel="noopener noreferrer" class="hover:text-mint">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/_flowcraft.studio/" target="_blank" rel="noopener noreferrer" class="hover:text-mint">Instagram</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <hr class="rule mt-12 mb-6">
+      <p class="body-s text-aqua">
+        &copy; 2026 FlowCraft Studio by Subhan Balbale. Updated
+        <time datetime="2026-10-31">31 October 2026</time>.
+      </p>
     </div>
   </footer>
+<!-- /shell:footer -->
 
+  <!-- shell:script -->
+  <script>
+    /* ------------------------------------------------------------------
+       Scroll reveal. One observer at threshold 0.15, a 1200ms masked
+       slide-up, no stagger. The extra top check catches blocks taller than
+       0.15 of the viewport can ever cover, which would never fire.
+       ------------------------------------------------------------------ */
+    (function setupReveal() {
+      var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+      if (!els.length) return;
+
+      function show(el, instant) {
+        if (instant) el.classList.add('no-anim');
+        el.classList.add('is-in');
+      }
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+          !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { show(el, true); });
+        return;
+      }
+
+      // threshold 0 with a small bottom inset: an element reveals as soon as
+      // it genuinely enters the viewport, whichever way you are scrolling.
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          show(e.target);
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+      // A reload can restore a scroll position mid-page. Anything already
+      // scrolled past is shown straight away rather than left blank until the
+      // visitor scrolls back down over it again.
+      var restored = (window.scrollY || window.pageYOffset) > 0;
+      els.forEach(function (el) {
+        if (restored && el.getBoundingClientRect().bottom < 0) {
+          show(el, true);
+        } else {
+          io.observe(el);
+        }
+      });
+
+      // Safety net. A suspended or throttled page can withhold observer
+      // callbacks indefinitely, and content that never reveals is content the
+      // visitor never reads. After load, show anything already on screen.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          els.forEach(function (el) {
+            if (el.classList.contains('is-in')) return;
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              show(el);
+              io.unobserve(el);
+            }
+          });
+        }, 400);
+      });
+    })();
+
+    /* ------------------------------------------------------------------
+       Background parallax at speed 0.2, the figure the reference uses.
+       Layers are inset past their section on both sides, so the translate
+       never exposes an edge.
+       ------------------------------------------------------------------ */
+    (function setupParallax() {
+      var layers = document.querySelectorAll('[data-parallax]');
+      if (!layers.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var queued = false;
+      var geom = [];
+
+      /* Geometry is measured once per layout, not once per frame. Reading
+         getBoundingClientRect inside the scroll frame interleaves reads with
+         the transform writes below it, which is how a parallax ends up
+         forcing a synchronous layout on every single frame. Only scrollY
+         changes while scrolling, so that is the only thing worth reading. */
+      function measure() {
+        var y = window.pageYOffset;
+        geom = [];
+        for (var i = 0; i < layers.length; i++) {
+          var r = layers[i].getBoundingClientRect();
+          geom.push({
+            top: r.top + y - (layers[i]._shift || 0),
+            height: r.height,
+            speed: parseFloat(layers[i].getAttribute('data-parallax')) || 0.2
+          });
+        }
+      }
+
+      function frame() {
+        queued = false;
+        var y = window.pageYOffset;
+        var vh = window.innerHeight;
+        for (var i = 0; i < layers.length; i++) {
+          var g = geom[i];
+          if (!g) continue;
+          var p = (vh - (g.top - y)) / (vh + g.height);
+          var shift = (p - 0.5) * g.speed * g.height;
+          layers[i]._shift = shift;
+          layers[i].style.transform =
+            'translate3d(0,' + shift.toFixed(2) + 'px,0)';
+        }
+      }
+
+      function onScroll() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(frame);
+      }
+
+      function onResize() { measure(); onScroll(); }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize, { passive: true });
+      window.addEventListener('load', onResize);
+      measure();
+      frame();
+    })();
+
+    /* ------------------------------------------------------------------
+       Mobile navigation drawer
+       ------------------------------------------------------------------ */
+    (function setupNav() {
+      var btn = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!btn || !menu) return;
+
+      var openIcon = document.getElementById('nav-open-icon');
+      var closeIcon = document.getElementById('nav-close-icon');
+
+      function setOpen(open) {
+        menu.hidden = !open;
+        btn.setAttribute('aria-expanded', String(open));
+        openIcon.classList.toggle('hidden', open);
+        closeIcon.classList.toggle('hidden', !open);
+      }
+
+      btn.addEventListener('click', function () { setOpen(menu.hidden); });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
+      });
+    })();
+
+    /* ------------------------------------------------------------------
+       Mascot: pointer tracking across a 3x3 sprite sheet, click to boop.
+       Only present on pages that render #hero-mascot.
+       ------------------------------------------------------------------ */
+    (function setupMascot() {
+      var box = document.getElementById('hero-mascot');
+      if (!box) return;
+
+      var DIR = {
+        'up-left': '0% 0%',     'up': '50% 0%',      'up-right': '100% 0%',
+        'left': '0% 50%',       'center': '50% 50%', 'right': '100% 50%',
+        'down-left': '0% 100%', 'down': '50% 100%',  'down-right': '100% 100%'
+      };
+      var CLOCKWISE = ['right', 'down-right', 'down', 'down-left',
+                       'left', 'up-left', 'up', 'up-right'];
+      var REACTIONS = ['0% 0%', '50% 0%', '100% 0%',
+                       '0% 50%', '50% 50%', '100% 50%',
+                       '0% 100%', '50% 100%', '100% 100%'];
+      var SECTOR = (Math.PI * 2) / 8;
+      var DEAD_ZONE = 55; // px
+
+      var isBooped = false, boopTimer = null, reactionIdx = 0;
+
+      window.addEventListener('pointermove', function (e) {
+        if (isBooped) return;
+        var rect = box.getBoundingClientRect();
+        var dx = e.clientX - (rect.left + rect.width / 2);
+        var dy = e.clientY - (rect.top + rect.height / 2);
+        var dir = 'center';
+        if (Math.hypot(dx, dy) >= DEAD_ZONE) {
+          var angle = Math.atan2(dy, dx);
+          if (angle < 0) angle += Math.PI * 2;
+          dir = CLOCKWISE[Math.round(angle / SECTOR) % 8];
+        }
+        box.style.backgroundImage = "url('assets/mascot/subhan-directions.webp')";
+        box.style.backgroundPosition = DIR[dir];
+      }, { passive: true });
+
+      box.addEventListener('click', function () {
+        isBooped = true;
+        clearTimeout(boopTimer);
+        reactionIdx = (reactionIdx + 1) % REACTIONS.length;
+        box.style.backgroundImage = "url('assets/mascot/subhan-reactions.webp')";
+        box.style.backgroundPosition = REACTIONS[reactionIdx];
+        box.classList.remove('boop-animation');
+        void box.offsetWidth; // reflow
+        box.classList.add('boop-animation');
+        boopTimer = setTimeout(function () {
+          isBooped = false;
+          box.style.backgroundImage = "url('assets/mascot/subhan-directions.webp')";
+          box.classList.remove('boop-animation');
+        }, 550);
+      });
+    })();
+  </script>
+<!-- /shell:script -->
 </body>
 </html>

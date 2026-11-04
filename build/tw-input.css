@@ -1,3 +1,500 @@
+/* FlowCraft design system.
+   Everything lives in @layer base on purpose: base is emitted whole (never
+   content-scanned away) and sits before Tailwind's utilities, so a utility
+   such as `hidden md:flex` always beats a class such as `.nav-pill`.
+   Edit here, then run `npm run build`. */
+
 @tailwind base;
+
+@layer base {
+  /* =========================================================================
+     TOKENS
+     ========================================================================= */
+  :root {
+    --ground: #0350c4;
+    --navy:   #112967;
+    --azure:  #6091d8;
+    --mint:   #ddf5ec;
+    --aqua:   #c7e5ea;
+    --flame:  #fa7d13;
+    --paper:  #f8f3f3;
+    --ink:    #1c1c1c;
+    --ease:   cubic-bezier(0.645, 0.045, 0.355, 1);
+    --reveal: 900ms;
+    --star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7 1h2v3H7zM6 4h4v2H6zM1 6h14v2H1zM3 8h10v2H3zM2 10h4v2H2zM10 10h4v2h-4zM1 12h4v3H1zM11 12h4v3h-4z'/%3E%3C/svg%3E");
+  }
+
+  /* Metric-matched fallback: holds the space Archivo will take, so swapping it
+     in causes no layout shift. Measured against Arial; re-measure if the
+     display face changes. */
+  @font-face {
+    font-family: 'Archivo Fallback';
+    src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+    size-adjust: 100%;
+    ascent-override: 92%;
+    descent-override: 23%;
+    line-gap-override: 0%;
+  }
+
+  /* =========================================================================
+     BASE
+     ========================================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html {
+    scrollbar-color: var(--azure) var(--navy);
+    caret-color: var(--flame);
+  }
+  body {
+    background-color: var(--ground);
+    color: var(--mint);
+    font-family: 'Archivo', 'Archivo Fallback', Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection { background: var(--flame); color: var(--navy); }
+
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--azure); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--mint); }
+
+  /* Two-tone ring: the mint half carries on the blue ground, the navy half
+     carries on the paper panels and on the flame buttons. */
+  :focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--mint), 0 0 0 5px var(--navy);
+    border-radius: 3px;
+  }
+
+  a { text-underline-offset: 0.22em; }
+
+  .skip-link {
+    position: absolute;
+    left: 50%;
+    top: 0.5rem;
+    transform: translate(-50%, -200%);
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background: var(--flame);
+    color: var(--navy);
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: transform 0.2s ease;
+  }
+  .skip-link:focus-visible { transform: translate(-50%, 0); }
+
+  /* =========================================================================
+     TYPE — one grotesk at display weight, one italic serif as the accent
+     ========================================================================= */
+  .d1, .d2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    text-wrap: balance;
+  }
+  .d1 { font-size: clamp(2.6rem, 7.5vw, 6.75rem); }
+  .d2 { font-size: clamp(2rem, 5.625vw, 5rem); }
+  /* Card and lead-in headings stay sentence case; only the section titles shout. */
+  .h-card {
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .serif {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+  .serif-lg { font-size: clamp(1.3rem, 2.34vw, 2.1rem); }
+  .serif-md { font-size: clamp(1.15rem, 1.8vw, 1.6rem); }
+
+  .num {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    line-height: 1;
+  }
+
+  /* Product watermark: "SiteMaker by Subhan Balbale", set the way the app
+     itself signs its own header. 0.7 alpha clears AA on the paper cards. */
+  .label-mark {
+    font-weight: 700;
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(17, 41, 103, 0.7);
+  }
+
+  .lede {
+    font-size: clamp(1rem, 1.25vw, 1.125rem);
+    line-height: 1.5;
+    max-width: 58ch;
+    text-wrap: pretty;
+  }
+  .body-s {
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    line-height: 1.55;
+  }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* =========================================================================
+     RULES — hairlines and dashes carry the section rhythm
+     ========================================================================= */
+  .rule        { border: 0; border-top: 1px solid rgba(221, 245, 236, 0.40); }
+  .rule-dash   { border: 0; border-top: 1px dashed rgba(221, 245, 236, 0.45); }
+  .rule-ink    { border: 0; border-top: 1px solid rgba(17, 41, 103, 0.28); }
+  .rule-ink-dash { border: 0; border-top: 1px dashed rgba(17, 41, 103, 0.35); }
+
+  /* =========================================================================
+     MOTION — the reference runs one effect: a 1200ms masked slide-up fired
+     by IntersectionObserver at 0.15. Opacity steps, it does not fade.
+     ========================================================================= */
+  /* The slide distance is a fixed 2.25rem, NOT 100% of the element's own
+     height. A percentage made every block travel a different distance (a
+     heading 20px, a card 500px), which read as inconsistent, and it shifted
+     the element's transformed box so far down that the observer only saw it
+     arrive long after its real position had scrolled past. */
+  /* opacity and transform are the only two properties the compositor can
+     animate without the main thread. The wipe used to be a clip-path polygon
+     morph, which repaints the whole element on every frame of a 900ms
+     transition -- with ~38 of these on the homepage that was the page's
+     largest paint cost. No will-change either: declaring it up front promotes
+     every unrevealed element at once, and flipping it to auto on reveal made
+     the compositor tear each layer back down (30ms of Layerize per scroll).
+     Chrome promotes these on its own when the transition starts. */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(2.25rem);
+  }
+  .js [data-reveal="wipe"] { transform: none; }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity var(--reveal) var(--ease),
+                transform var(--reveal) var(--ease);
+  }
+  /* Content restored above the fold on a reloaded page appears without
+     replaying its entrance. */
+  .js [data-reveal].is-in.no-anim { transition: none; }
+
+  .parallax { will-change: transform; }
+
+  /* =========================================================================
+     PIXEL MOTIF — dissolve bands are generated into the markup by
+     build/pixelfield.py; the grid and texture are plain gradients.
+     ========================================================================= */
+  .dissolve { display: block; width: 100%; height: clamp(170px, 23vw, 330px); }
+  #main .dissolve:last-child { height: clamp(80px, 11vw, 165px); }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(3, 80, 196, 0.10) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(3, 80, 196, 0.10) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* Sparse squares, not a plaid: horizontal bands masked by vertical ones
+     leave only the intersections. Two pitches so the lattice reads irregular. */
+  .pixel-texture {
+    background-image: repeating-linear-gradient(0deg, var(--sq) 0 var(--cell), transparent var(--cell) var(--pitch));
+    -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 var(--cell), transparent var(--cell) var(--pitch));
+    mask-image: repeating-linear-gradient(90deg, #000 0 var(--cell), transparent var(--cell) var(--pitch));
+    --sq: rgba(96, 145, 216, 0.42);
+    --cell: 38px;
+    --pitch: 152px;
+  }
+  .pixel-texture-b {
+    --sq: rgba(96, 145, 216, 0.28);
+    --cell: 26px;
+    --pitch: 182px;
+    background-position: 64px 30px;
+    -webkit-mask-position: 64px 30px;
+    mask-position: 64px 30px;
+  }
+
+  /* =========================================================================
+     CONTROLS
+     ========================================================================= */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background: var(--flame);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.95rem 1.75rem;
+    transition: transform 0.22s var(--ease), filter 0.22s var(--ease);
+  }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--mint);
+    border: 1px solid rgba(221, 245, 236, 0.5);
+  }
+  .btn-ghost:hover { background: rgba(221, 245, 236, 0.12); filter: none; }
+
+  .btn-ink {
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid rgba(17, 41, 103, 0.45);
+  }
+  .btn-ink:hover { background: rgba(17, 41, 103, 0.08); filter: none; }
+
+  /* The card CTA: label left, arrow right, hairline underneath. */
+  .arrow-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px dashed currentColor;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+  .arrow-link svg { transition: transform 0.25s var(--ease); }
+  .arrow-link:hover svg { transform: translate(3px, -3px); }
+
+  /* No `display` here: this sheet loads after tailwind.css, so declaring one
+     would outrank the `hidden md:flex` utilities and leave the pill on at
+     every width, which overflows the page on phones. */
+  .nav-pill {
+    align-items: center;
+    background: var(--flame);
+    border-radius: 9999px;
+    padding: 0.3rem 0.35rem;
+  }
+  .nav-pill a {
+    color: var(--navy);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    transition: background-color 0.2s var(--ease);
+  }
+  .nav-pill a:hover { background: rgba(17, 41, 103, 0.14); }
+
+  /* =========================================================================
+     CARDS — square corners, one blue marker, one dashed divider
+     ========================================================================= */
+  .card-mint {
+    position: relative;
+    background: var(--mint);
+    color: var(--navy);
+    display: flex;
+    flex-direction: column;
+  }
+  .card-mint::before {
+    content: "";
+    position: absolute;
+    top: 1.1rem;
+    left: 1.1rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: var(--ground);
+  }
+  .card-paper { background: var(--paper); color: var(--navy); }
+
+  /* =========================================================================
+     MARQUEE — two identical groups, translate half the track, loop forever
+     ========================================================================= */
+  .marquee { overflow: hidden; background: var(--mint); color: var(--navy); }
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 34s linear infinite;
+  }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee__group { display: flex; flex: none; align-items: center; }
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 0.9rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* =========================================================================
+     FAQ — native disclosure, keyboard and crawler friendly, no JS
+     ========================================================================= */
+  .faq summary { list-style: none; cursor: pointer; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq .sign { transition: transform 0.22s var(--ease); }
+  .faq[open] .sign { transform: rotate(45deg); }
+
+  /* =========================================================================
+     MASCOT — pointer tracking sprite sheet, click to boop
+     ========================================================================= */
+  .mascot-avatar-box {
+    width: 132px;
+    height: 132px;
+    background-image: url('../mascot/subhan-directions.webp');
+    background-size: 300% 300%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    filter: drop-shadow(0 10px 18px rgba(17, 41, 103, 0.22));
+    transition: filter 0.15s ease;
+  }
+  .mascot-avatar-box:hover { filter: drop-shadow(0 14px 24px rgba(17, 41, 103, 0.3)); }
+  .boop-animation { animation: boopSquash 440ms var(--ease) forwards; }
+
+  /* =========================================================================
+     DEVICE MOCKUP — the screen is locked to a real handset's 19.5:9, so it
+     never collapses to whatever height its mock content happens to need.
+     ========================================================================= */
+  .phone-frame {
+    position: relative;
+    width: 232px;
+    padding: 8px;
+    border-radius: 38px;
+    background: linear-gradient(160deg, #3f4754 0%, #0f172a 28%, #0b1120 72%, #2b323d 100%);
+    box-shadow: 0 30px 50px -22px rgba(11, 17, 32, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.07) inset;
+  }
+  @media (min-width: 640px) { .phone-frame { width: 248px; } }
+
+  .phone-button {
+    position: absolute;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #4b5563, #1f2937);
+  }
+  .phone-button-power  { right: -2px; top: 126px; height: 50px; }
+  .phone-button-vol-up { left: -2px;  top: 96px;  height: 30px; }
+  .phone-button-vol-dn { left: -2px;  top: 134px; height: 30px; }
+
+  .phone-screen {
+    position: relative;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 31px;
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #0f172a;
+  }
+  .phone-island {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 17px;
+    border-radius: 9999px;
+    background: #0b1120;
+    z-index: 2;
+  }
+  .phone-status {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 16px 4px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .phone-body { flex: 1 1 auto; min-height: 0; overflow: hidden; padding: 8px 14px 0; }
+  .phone-cta {
+    flex: none;
+    padding: 8px 14px 6px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 42%);
+    margin-top: -14px;
+    position: relative;
+  }
+  .phone-home {
+    display: block;
+    width: 86px;
+    height: 4px;
+    border-radius: 9999px;
+    background: #0f172a;
+    opacity: 0.22;
+    margin: 8px auto 0;
+  }
+
+  /* =========================================================================
+     REDUCED MOTION — the reveal, the marquee and the parallax all stop.
+     ========================================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .js [data-reveal] { opacity: 1; transform: none; }
+    .marquee__track { animation: none; }
+    .parallax { transform: none !important; }
+  }
+  /* =========================================================================
+     STAR SIMULATOR (reviews page)
+     ========================================================================= */
+  .star-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    width: 3.9rem;
+    padding: 0.75rem 0.4rem;
+    background: var(--mint);
+    color: var(--navy);
+    border: 2px solid transparent;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: background-color 0.2s var(--ease),
+                border-color 0.2s var(--ease),
+                transform 0.2s var(--ease);
+  }
+  .star-btn:hover { background: var(--aqua); transform: translateY(-2px); }
+  .star-btn.is-picked { background: var(--flame); border-color: var(--navy); }
+
+  .star-face {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: currentColor;
+    -webkit-mask-image: var(--star);
+            mask-image: var(--star);
+    -webkit-mask-size: contain;
+            mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+            mask-position: center;
+  }
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes boopSquash {
+  0%   { transform: scale(1, 1); }
+  18%  { transform: scale(1.12, 0.84); }
+  45%  { transform: scale(0.94, 1.08); }
+  72%  { transform: scale(1.03, 0.98); }
+  100% { transform: scale(1, 1); }
+}
+
 @tailwind components;
 @tailwind utilities;
