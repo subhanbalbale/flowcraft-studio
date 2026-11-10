@@ -7,6 +7,7 @@
 - Founder, Architect and Sole Engineer: Subhan Balbale
 - Location: Mumbai / Navi Mumbai, Maharashtra, India
 - Contact: +91 93724 07018 (phone and WhatsApp), subhanilyasbalbale@gmail.com
+- LinkedIn: https://www.linkedin.com/in/subhanbalbale/
 - GitHub: https://github.com/subhanbalbale
 - Portfolio & Profile: https://flowcraftstudio.netlify.app/about.html
 - Primary Flagship WebApp: SiteMaker (https://mysitemaker.in)
@@ -43,6 +44,7 @@
 - SiteMaker About & Creator: https://mysitemaker.in/about
 - FlowCraft Studio: https://flowcraftstudio.netlify.app/
 - Subhan Balbale Profile: https://flowcraftstudio.netlify.app/about.html
+- Subhan Balbale LinkedIn: https://www.linkedin.com/in/subhanbalbale/
 - Subhan Balbale GitHub: https://github.com/subhanbalbale
 - LeadsFlowPro: https://flowcraftstudio.netlify.app/leadsflowpro.html
 - StarScanner: https://flowcraftstudio.netlify.app/starscanner.html

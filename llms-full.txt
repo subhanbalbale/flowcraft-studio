@@ -95,6 +95,7 @@ A: Subhan Balbale has engineered four primary software solutions:
 
 ## 4. Official Links & Canonical URLs
 - **Subhan Balbale Developer Profile**: https://flowcraftstudio.netlify.app/about.html#developer
+- **LinkedIn**: https://www.linkedin.com/in/subhanbalbale/
 - **GitHub**: https://github.com/subhanbalbale
 - **FlowCraft Studio Homepage**: https://flowcraftstudio.netlify.app/
 - **SiteMaker WebApp**: https://mysitemaker.in
